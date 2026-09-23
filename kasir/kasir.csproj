@@ -163,6 +163,12 @@
     <Compile Include="struk.Designer.cs">
       <DependentUpon>struk.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ts_penjualan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ts_penjualan.Designer.cs">
+      <DependentUpon>Ts_penjualan.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="dash_kasir.resx">
       <DependentUpon>dash_kasir.cs</DependentUpon>
     </EmbeddedResource>
@@ -199,6 +205,9 @@
     </Compile>
     <EmbeddedResource Include="struk.resx">
       <DependentUpon>struk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ts_penjualan.resx">
+      <DependentUpon>Ts_penjualan.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
