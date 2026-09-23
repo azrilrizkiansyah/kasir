@@ -112,6 +112,7 @@ namespace kasir
 
         private void tran_penjulan_Load(object sender, EventArgs e)
         {
+            AktifkanMenu(btn_transaksi);
             SendMessage(textBox1.Handle, 0x1501, (IntPtr)1, "Cari buku disini....");
             MySqlConnection koneksi = new MySqlConnection(konfigurasi);
             MySqlDataReader hasil = null;
@@ -329,8 +330,27 @@ namespace kasir
         {
           
         }
-       
-        
+        // Variabel untuk menyimpan tombol yang sedang aktif saat ini
+        private Button tombolAktif = null;
 
+        private void AktifkanMenu(Button tombolPilihan)
+        {
+            // Jika ada tombol yang sebelumnya aktif, kembalikan warnanya ke normal
+            if (tombolAktif != null)
+            {
+                tombolAktif.BackColor = Color.FromArgb(15, 23, 42); // Warna normal sidebar
+            }
+
+            // Set tombol yang baru dipilih menjadi tombol aktif
+            tombolAktif = tombolPilihan;
+
+            // Berikan warna khusus untuk menandakan menu sedang aktif (misalnya warna biru terang / sedikit lebih terang)
+            tombolAktif.BackColor = Color.FromArgb(37, 99, 235);
+        }
+
+        private void btn_transaksi_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
