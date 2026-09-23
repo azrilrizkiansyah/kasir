@@ -29,7 +29,8 @@ namespace kasir
             btn_tambah_buku.Enabled = false;
             btn_transaksi.Enabled = true;
             Btn_BackupData.Enabled = false;
-            TampilkanChartStokBuku();
+            AktifkanMenu(btn_dashboard);
+
 
 
         }
@@ -40,10 +41,6 @@ namespace kasir
 
         private void btn_sig_out_Click(object sender, EventArgs e)
         {
-            login kembali = new login();
-            kembali.FormClosed += Kembali_FormClosed;
-            kembali.Show();
-            this.Hide();
         }
 
         private void Kembali_FormClosed(object sender, FormClosedEventArgs e)
@@ -53,10 +50,7 @@ namespace kasir
 
         private void btn_transaksi_Click(object sender, EventArgs e)
         {
-            tran_penjulan pindah = new tran_penjulan();
-            pindah.FormClosed += Pindah_FormClosed;
-            pindah.Show();
-            this.Hide();
+            
         }
 
         private void Pindah_FormClosed(object sender, FormClosedEventArgs e)
@@ -69,17 +63,11 @@ namespace kasir
             
         }
 
-        private void Kembali1_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.Close();
-        }
+       
 
         private void btn_manajemenStok_Click(object sender, EventArgs e)
         {
-            kasir_stok pindah = new kasir_stok();
-            pindah.FormClosed += Pindah_FormClosed1;
-            pindah.Show();
-            this.Hide();
+            
         }
 
         private void Pindah_FormClosed1(object sender, FormClosedEventArgs e)
@@ -90,6 +78,53 @@ namespace kasir
         private void chart1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_tambah_buku_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_transaksi_Click_1(object sender, EventArgs e)
+        {
+            tran_penjulan pindah = new tran_penjulan();
+            pindah.FormClosed += Pindah_FormClosed;
+            pindah.Show();
+            this.Hide();
+        }
+
+        private void btn_manajemenStok_Click_1(object sender, EventArgs e)
+        {
+            kasir_stok pindah = new kasir_stok();
+            pindah.FormClosed += Pindah_FormClosed1;
+            pindah.Show();
+            this.Hide();
+        }
+
+        private void btn_log_out_Click(object sender, EventArgs e)
+        {
+
+            login kembali = new login();
+            kembali.FormClosed += Kembali_FormClosed;
+            kembali.Show();
+            this.Hide();
+        }
+        // Variabel untuk menyimpan tombol yang sedang aktif saat ini
+        private Button tombolAktif = null;
+
+        private void AktifkanMenu(Button tombolPilihan)
+        {
+            // Jika ada tombol yang sebelumnya aktif, kembalikan warnanya ke normal
+            if (tombolAktif != null)
+            {
+                tombolAktif.BackColor = Color.FromArgb(15, 23, 42); // Warna normal sidebar
+            }
+
+            // Set tombol yang baru dipilih menjadi tombol aktif
+            tombolAktif = tombolPilihan;
+
+            // Berikan warna khusus untuk menandakan menu sedang aktif (misalnya warna biru terang / sedikit lebih terang)
+            tombolAktif.BackColor = Color.FromArgb(37, 99, 235);
         }
     }
 }

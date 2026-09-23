@@ -147,5 +147,10 @@ namespace kasir
                 }
             }
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

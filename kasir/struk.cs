@@ -97,5 +97,10 @@ namespace kasir
                 if (koneksi.State == ConnectionState.Open) koneksi.Close();
             }
         }
+
+        private void panel2_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

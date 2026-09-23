@@ -33,58 +33,7 @@ namespace kasir
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string username = textBox1.Text;
-            string password = textBox2.Text;
-
-            if (username.Length < 1)
-            {
-                MessageBox.Show("Username tidak boleh kosong","peringatan",MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if(password.Length < 1)
-            {
-                MessageBox.Show("Password tidak boleh kosong", "peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            MySqlConnection koneksi = new MySqlConnection(konfigurasi);
-            MySqlDataReader  hasil = null;
-            try 
-            { 
-                koneksi.Open();
-                string query = "SELECT * FROM users WHERE username=@username AND password=@password";
-                MySqlCommand komando = new MySqlCommand(query, koneksi);
-                komando.Parameters.AddWithValue("@username", username);
-                komando.Parameters.AddWithValue("@password", password);
-                hasil = komando.ExecuteReader();
-                if (hasil.Read())
-                {
-                    string role = hasil["role"].ToString();
-                    if (role == "admin")
-                    {
-                        Dash_admin hal = new Dash_admin();
-                        hal.FormClosed += Hal_FormClosed;
-                        hal.Show();
-                        this.Hide();
-                    }
-                    else if (role == "kasir")
-                    {
-                        dash_kasir ha2 = new dash_kasir();
-                        ha2.FormClosed += Ha2_FormClosed;
-                        ha2.Show();
-                        this.Hide();
-                        
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Username atau password salah", "peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            } 
-            catch (Exception ex)
-            {
-                MessageBox.Show("Terjadi kesalahan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
+            
         }
 
         private void Ha2_FormClosed(object sender, FormClosedEventArgs e)
@@ -108,8 +57,7 @@ namespace kasir
 
         private void button2_Click(object sender, EventArgs e)
         {
-            textBox1.Clear();
-            textBox1.Clear();
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -130,5 +78,66 @@ namespace kasir
         {
 
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string username = textBox1.Text;
+            string password = textBox2.Text;
+
+            if (username.Length < 1)
+            {
+                MessageBox.Show("Username tidak boleh kosong", "peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (password.Length < 1)
+            {
+                MessageBox.Show("Password tidak boleh kosong", "peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            MySqlConnection koneksi = new MySqlConnection(konfigurasi);
+            MySqlDataReader hasil = null;
+            try
+            {
+                koneksi.Open();
+                string query = "SELECT * FROM users WHERE username=@username AND password=@password";
+                MySqlCommand komando = new MySqlCommand(query, koneksi);
+                komando.Parameters.AddWithValue("@username", username);
+                komando.Parameters.AddWithValue("@password", password);
+                hasil = komando.ExecuteReader();
+                if (hasil.Read())
+                {
+                    string role = hasil["role"].ToString();
+                    if (role == "admin")
+                    {
+                        Dash_admin hal = new Dash_admin();
+                        hal.FormClosed += Hal_FormClosed;
+                        hal.Show();
+                        this.Hide();
+                    }
+                    else if (role == "kasir")
+                    {
+                        dash_kasir ha2 = new dash_kasir();
+                        ha2.FormClosed += Ha2_FormClosed;
+                        ha2.Show();
+                        this.Hide();
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Username atau password salah", "peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Terjadi kesalahan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }
