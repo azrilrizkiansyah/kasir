@@ -95,7 +95,7 @@
             this.panel10.Location = new System.Drawing.Point(0, 2);
             this.panel10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(310, 825);
+            this.panel10.Size = new System.Drawing.Size(310, 751);
             this.panel10.TabIndex = 25;
             // 
             // btn_log_out
@@ -103,7 +103,7 @@
             this.btn_log_out.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_log_out.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_log_out.ForeColor = System.Drawing.Color.White;
-            this.btn_log_out.Location = new System.Drawing.Point(18, 764);
+            this.btn_log_out.Location = new System.Drawing.Point(18, 682);
             this.btn_log_out.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_log_out.Name = "btn_log_out";
             this.btn_log_out.Size = new System.Drawing.Size(262, 43);
@@ -261,7 +261,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.label3.Location = new System.Drawing.Point(4, 31);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
@@ -298,7 +298,7 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Location = new System.Drawing.Point(312, 84);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1292, 743);
+            this.panel1.Size = new System.Drawing.Size(1292, 669);
             this.panel1.TabIndex = 27;
             // 
             // button1
@@ -306,7 +306,7 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.button1.Location = new System.Drawing.Point(942, 187);
+            this.button1.Location = new System.Drawing.Point(942, 40);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(146, 52);
@@ -317,25 +317,27 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(793, 590);
+            this.label1.Location = new System.Drawing.Point(870, 483);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 20);
+            this.label1.Size = new System.Drawing.Size(65, 20);
             this.label1.TabIndex = 39;
-            this.label1.Text = "Bayar";
+            this.label1.Text = "BAYAR";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(855, 587);
+            this.textBox2.Location = new System.Drawing.Point(942, 480);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(259, 26);
             this.textBox2.TabIndex = 38;
             // 
             // Listbuku
             // 
+            this.Listbuku.BackColor = System.Drawing.Color.White;
+            this.Listbuku.ForeColor = System.Drawing.Color.Black;
             this.Listbuku.FormattingEnabled = true;
             this.Listbuku.ItemHeight = 20;
-            this.Listbuku.Location = new System.Drawing.Point(19, 245);
+            this.Listbuku.Location = new System.Drawing.Point(9, 138);
             this.Listbuku.Name = "Listbuku";
             this.Listbuku.Size = new System.Drawing.Size(454, 324);
             this.Listbuku.TabIndex = 37;
@@ -343,7 +345,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(510, 249);
+            this.dataGridView1.Location = new System.Drawing.Point(510, 138);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
@@ -354,7 +356,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(176, 213);
+            this.label6.Location = new System.Drawing.Point(170, 106);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(295, 29);
@@ -366,7 +368,7 @@
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(185)))), ((int)(((byte)(129)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button3.Location = new System.Drawing.Point(1096, 187);
+            this.button3.Location = new System.Drawing.Point(1105, 40);
             this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(172, 52);
@@ -376,7 +378,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(592, 588);
+            this.numericUpDown1.Location = new System.Drawing.Point(608, 483);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(147, 26);
@@ -385,7 +387,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(524, 594);
+            this.label5.Location = new System.Drawing.Point(524, 486);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(60, 20);
@@ -394,7 +396,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(19, 163);
+            this.textBox1.Location = new System.Drawing.Point(11, 66);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(454, 26);
@@ -405,7 +407,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(16, 129);
+            this.label4.Location = new System.Drawing.Point(6, 28);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(392, 29);
@@ -416,7 +418,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1606, 823);
+            this.ClientSize = new System.Drawing.Size(1606, 739);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel10);
