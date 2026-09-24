@@ -87,27 +87,18 @@ namespace kasir
 
         private void btn_transaksi_Click_1(object sender, EventArgs e)
         {
-            tran_penjulan pindah = new tran_penjulan();
-            pindah.FormClosed += Pindah_FormClosed;
-            pindah.Show();
-            this.Hide();
+           
         }
 
         private void btn_manajemenStok_Click_1(object sender, EventArgs e)
         {
-            kasir_stok pindah = new kasir_stok();
-            pindah.FormClosed += Pindah_FormClosed1;
-            pindah.Show();
-            this.Hide();
+            
         }
 
         private void btn_log_out_Click(object sender, EventArgs e)
         {
 
-            login kembali = new login();
-            kembali.FormClosed += Kembali_FormClosed;
-            kembali.Show();
-            this.Hide();
+            
         }
         // Variabel untuk menyimpan tombol yang sedang aktif saat ini
         private Button tombolAktif = null;
@@ -125,6 +116,30 @@ namespace kasir
 
             // Berikan warna khusus untuk menandakan menu sedang aktif (misalnya warna biru terang / sedikit lebih terang)
             tombolAktif.BackColor = Color.FromArgb(37, 99, 235);
+        }
+
+        private void btn_transaksi_Click_2(object sender, EventArgs e)
+        {
+            tran_penjulan pindah = new tran_penjulan();
+            pindah.FormClosed += Pindah_FormClosed;
+            pindah.Show();
+            this.Hide();
+        }
+
+        private void btn_manajemenStok_Click_2(object sender, EventArgs e)
+        {
+            kasir_stok pindah = new kasir_stok();
+            pindah.FormClosed += Pindah_FormClosed1;
+            pindah.Show();
+            this.Hide();
+        }
+
+        private void btn_log_out_Click_1(object sender, EventArgs e)
+        {
+            login kembali = new login();
+            kembali.FormClosed += Kembali_FormClosed;
+            kembali.Show();
+            this.Hide();
         }
     }
 }
