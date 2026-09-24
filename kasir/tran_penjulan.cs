@@ -71,41 +71,7 @@ namespace kasir
 
         private void Listbuku_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Listbuku.SelectedItem == null) return;
-
-            string itemSelected = Listbuku.SelectedItem.ToString();
-            string kodeBuku = itemSelected.Split('-')[0].Trim();
-
-            MySqlConnection koneksi = new MySqlConnection(konfigurasi);
-            MySqlDataReader hasil = null;
-            string sql = "SELECT id_buku, kode_buku, judul, harga, stok FROM books WHERE kode_buku = @kode";
-
-            try
-            {
-                koneksi.Open();
-                MySqlCommand komando = new MySqlCommand(sql, koneksi);
-                komando.Parameters.AddWithValue("@kode", kodeBuku);
-
-                hasil = komando.ExecuteReader();
-
-                if (hasil.Read())
-                {
-                    selectedIdBuku = Convert.ToInt32(hasil["id_buku"]);
-                    selectedKodeBuku = hasil["kode_buku"].ToString();
-                    selectedJudulBuku = hasil["judul"].ToString();
-                    selectedHargaBuku = Convert.ToDecimal(hasil["harga"]);
-                    selectedStokBuku = Convert.ToInt32(hasil["stok"]);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Gagal mengambil detail buku: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (hasil != null && !hasil.IsClosed) hasil.Close();
-                if (koneksi != null && koneksi.State == ConnectionState.Open) koneksi.Close();
-            }
+           
             
         }
         
@@ -145,10 +111,6 @@ namespace kasir
 
         private void button2_Click(object sender, EventArgs e)
         {
-            dash_kasir kembali = new dash_kasir();
-            kembali.FormClosed += Kembali_FormClosed;
-            kembali.Show();
-            this.Hide();
 
         }
 
@@ -159,30 +121,7 @@ namespace kasir
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(selectedKodeBuku))
-            {
-                MessageBox.Show("Pilih buku dari ListBox terlebih dahulu!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            int jumlahBeli = (int)numericUpDown1.Value;
-
-            if (jumlahBeli <= 0)
-            {
-                MessageBox.Show("Masukkan jumlah beli yang valid!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (selectedStokBuku < jumlahBeli)
-            {
-                MessageBox.Show($"Stok tidak cukup! Stok tersedia: {selectedStokBuku}", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            decimal subtotal = selectedHargaBuku * jumlahBeli;
-            dtKeranjang.Rows.Add(selectedJudulBuku, selectedHargaBuku, jumlahBeli, subtotal, selectedKodeBuku, selectedIdBuku);
-
-            numericUpDown1.Value = 1;
+           
         }
 
         private void cyberButton1_Click(object sender, EventArgs e)
@@ -288,24 +227,7 @@ namespace kasir
 
         private void cyberButton2_Click(object sender, EventArgs e)
         {
-            // Pastikan ada baris di DataGridView Keranjang yang dipilih oleh kasir
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                // Ambil indeks baris yang sedang dipilih
-                int indexBaris = dataGridView1.SelectedRows[0].Index;
-
-                // Hapus baris tersebut dari DataTable keranjang (dtKeranjang)
-                dtKeranjang.Rows.RemoveAt(indexBaris);
-
-                // Hitung ulang total bayar keseluruhan setelah item dihapus
-                HitungTotalBayar();
-
-                MessageBox.Show("Item berhasil dihapus dari keranjang.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("Pilih baris barang di tabel keranjang yang ingin dihapus terlebih dahulu!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+           
         }
         private void HitungTotalBayar()
         {
@@ -351,6 +273,176 @@ namespace kasir
         private void btn_transaksi_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void btn_dashboard_Click(object sender, EventArgs e)
+        {
+
+            dash_kasir kembali = new dash_kasir();
+            kembali.FormClosed += Kembali_FormClosed;
+            kembali.Show();
+            this.Hide();
+        }
+
+        private void Listbuku_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (Listbuku.SelectedItem == null) return;
+
+            string itemSelected = Listbuku.SelectedItem.ToString();
+            string kodeBuku = itemSelected.Split('-')[0].Trim();
+
+            MySqlConnection koneksi = new MySqlConnection(konfigurasi);
+            MySqlDataReader hasil = null;
+            string sql = "SELECT id_buku, kode_buku, judul, harga, stok FROM books WHERE kode_buku = @kode";
+
+            try
+            {
+                koneksi.Open();
+                MySqlCommand komando = new MySqlCommand(sql, koneksi);
+                komando.Parameters.AddWithValue("@kode", kodeBuku);
+
+                hasil = komando.ExecuteReader();
+
+                if (hasil.Read())
+                {
+                    selectedIdBuku = Convert.ToInt32(hasil["id_buku"]);
+                    selectedKodeBuku = hasil["kode_buku"].ToString();
+                    selectedJudulBuku = hasil["judul"].ToString();
+                    selectedHargaBuku = Convert.ToDecimal(hasil["harga"]);
+                    selectedStokBuku = Convert.ToInt32(hasil["stok"]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal mengambil detail buku: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (hasil != null && !hasil.IsClosed) hasil.Close();
+                if (koneksi != null && koneksi.State == ConnectionState.Open) koneksi.Close();
+            }
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(selectedKodeBuku))
+            {
+                MessageBox.Show("Pilih buku dari ListBox terlebih dahulu!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int jumlahBeli = (int)numericUpDown1.Value;
+
+            if (jumlahBeli <= 0)
+            {
+                MessageBox.Show("Masukkan jumlah beli yang valid!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (selectedStokBuku < jumlahBeli)
+            {
+                MessageBox.Show($"Stok tidak cukup! Stok tersedia: {selectedStokBuku}", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            decimal subtotal = selectedHargaBuku * jumlahBeli;
+            dtKeranjang.Rows.Add(selectedJudulBuku, selectedHargaBuku, jumlahBeli, subtotal, selectedKodeBuku, selectedIdBuku);
+
+            numericUpDown1.Value = 1;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Pastikan ada baris di DataGridView Keranjang yang dipilih oleh kasir
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                // Ambil indeks baris yang sedang dipilih
+                int indexBaris = dataGridView1.SelectedRows[0].Index;
+
+                // Hapus baris tersebut dari DataTable keranjang (dtKeranjang)
+                dtKeranjang.Rows.RemoveAt(indexBaris);
+
+                // Hitung ulang total bayar keseluruhan setelah item dihapus
+                HitungTotalBayar();
+
+                MessageBox.Show("Item berhasil dihapus dari keranjang.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Pilih baris barang di tabel keranjang yang ingin dihapus terlebih dahulu!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            if (dtKeranjang.Rows.Count == 0)
+            {
+                MessageBox.Show("Keranjang belanja masih kosong!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            decimal totalBayar = 0;
+            foreach (DataRow row in dtKeranjang.Rows)
+            {
+                totalBayar += Convert.ToDecimal(row["Subtotal"]);
+            }
+
+            MySqlConnection koneksi = new MySqlConnection(konfigurasi);
+            MySqlTransaction transaksi = null;
+
+            try
+            {
+                koneksi.Open();
+                transaksi = koneksi.BeginTransaction();
+                string insertTransactionQuery = "INSERT INTO transactions (tanggal, total_harga, id_user) VALUES (@tanggal, @totalBayar, @idUser); SELECT LAST_INSERT_ID();";
+                MySqlCommand cmdTrans = new MySqlCommand(insertTransactionQuery, koneksi, transaksi);
+                cmdTrans.Parameters.AddWithValue("@tanggal", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                cmdTrans.Parameters.AddWithValue("@totalBayar", totalBayar);
+                cmdTrans.Parameters.AddWithValue("@idUser", 1);
+
+                long idTransaksiBaru = Convert.ToInt64(cmdTrans.ExecuteScalar());
+
+                foreach (DataRow row in dtKeranjang.Rows)
+                {
+                    int idBuku = Convert.ToInt32(row["IdBuku"]);
+                    string kodeBuku = row["KodeBuku"].ToString();
+                    int jumlahBeli = Convert.ToInt32(row["Jumlah"]);
+                    decimal subtotal = Convert.ToDecimal(row["Subtotal"]);
+
+                    string insertDetailQuery = "INSERT INTO transaction_details (id_transaksi, id_buku, jumlah, subtotal) VALUES (@idTrans, @idBuku, @jumlah, @subtotal)";
+                    MySqlCommand cmdDetail = new MySqlCommand(insertDetailQuery, koneksi, transaksi);
+                    cmdDetail.Parameters.AddWithValue("@idTrans", idTransaksiBaru);
+                    cmdDetail.Parameters.AddWithValue("@idBuku", idBuku);
+                    cmdDetail.Parameters.AddWithValue("@jumlah", jumlahBeli);
+                    cmdDetail.Parameters.AddWithValue("@subtotal", subtotal);
+                    cmdDetail.ExecuteNonQuery();
+
+                    string updateStokQuery = "UPDATE books SET stok = stok - @jumlah WHERE kode_buku = @kodeBuku";
+                    MySqlCommand cmdStok = new MySqlCommand(updateStokQuery, koneksi, transaksi);
+                    cmdStok.Parameters.AddWithValue("@jumlah", jumlahBeli);
+                    cmdStok.Parameters.AddWithValue("@kodeBuku", kodeBuku);
+                    cmdStok.ExecuteNonQuery();
+                }
+
+                transaksi.Commit();
+                MessageBox.Show("Transaksi berhasil disimpan.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                struk tampil = new struk(idTransaksiBaru);
+                tampil.Show();
+
+                dtKeranjang.Clear();
+                selectedKodeBuku = "";
+                MuatDaftarBuku();
+            }
+            catch (Exception ex)
+            {
+                if (transaksi != null) transaksi.Rollback();
+                MessageBox.Show("Transaksi gagal: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (koneksi.State == ConnectionState.Open) koneksi.Close();
+            }
+
         }
     }
 }
