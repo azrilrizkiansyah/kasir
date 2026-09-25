@@ -78,6 +78,10 @@ namespace kasir
 
         private void tran_penjulan_Load(object sender, EventArgs e)
         {
+            btn_tambah_buku.Enabled = false;
+            btn_laporaPenjual.Enabled = false;
+            Btn_BackupData.Enabled = false;
+            btn_Restore_Data.Enabled = false;
             AktifkanMenu(btn_transaksi);
             SendMessage(textBox1.Handle, 0x1501, (IntPtr)1, "Cari buku disini....");
             MySqlConnection koneksi = new MySqlConnection(konfigurasi);
@@ -443,6 +447,24 @@ namespace kasir
                 if (koneksi.State == ConnectionState.Open) koneksi.Close();
             }
 
+        }
+
+        private void btn_manajemenStok_Click(object sender, EventArgs e)
+        {
+            kasir_stok kembali = new kasir_stok();
+            kembali.FormClosed += Kembali_FormClosed1;
+            kembali.Show();
+            this.Hide();
+        }
+
+        private void Kembali_FormClosed1(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_cari_Click(object sender, EventArgs e)
+        {
+            // test
         }
     }
 }

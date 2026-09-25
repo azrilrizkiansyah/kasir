@@ -21,7 +21,12 @@ namespace kasir
 
         private void kasir_stok_Load(object sender, EventArgs e)
         {
-            // Menampilkan data kodebuku, judulbuku, dan stok dari database ke datagridview
+            btn_laporaPenjual.Enabled = false;
+            btn_tambah_buku.Enabled = false;
+            Btn_BackupData.Enabled = false;
+            btn_Restore_Data.Enabled = false;
+            AktifkanMenu(btn_manajemenStok);
+            
             MySqlConnection conn = new MySqlConnection(konfigurasi);
             try
             {
@@ -29,15 +34,9 @@ namespace kasir
                 MySqlCommand cmd = new MySqlCommand("SELECT kode_buku, judul, stok FROM books", conn);
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                // 1. Tampilkan data dari database
-                dataGridView1.DataSource = dt;
-
-                // 2. Hilangkan space abu-abu di sebelah kanan (kolom otomatis melebar)
+                da.Fill(dt);          
+                dataGridView1.DataSource = dt;           
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-                // 3. Atur proporsi lebar kolom agar rapi (opsional)
                 dataGridView1.Columns["kode_buku"].FillWeight = 25;
                 dataGridView1.Columns["judul"].FillWeight = 55;
                 dataGridView1.Columns["stok"].FillWeight = 20;
@@ -51,6 +50,22 @@ namespace kasir
                 conn.Close();
             }
         }
+        private Button tombolAktif = null;
+
+        private void AktifkanMenu(Button tombolPilihan)
+        {
+            // Jika ada tombol yang sebelumnya aktif, kembalikan warnanya ke normal
+            if (tombolAktif != null)
+            {
+                tombolAktif.BackColor = Color.FromArgb(15, 23, 42); // Warna normal sidebar
+            }
+
+            // Set tombol yang baru dipilih menjadi tombol aktif
+            tombolAktif = tombolPilihan;
+
+            // Berikan warna khusus untuk menandakan menu sedang aktif (misalnya warna biru terang / sedikit lebih terang)
+            tombolAktif.BackColor = Color.FromArgb(37, 99, 235);
+        }
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -61,6 +76,32 @@ namespace kasir
         }
 
         private void Kembali_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_transaksi_Click(object sender, EventArgs e)
+        {
+            tran_penjulan kembali = new tran_penjulan();
+            kembali.FormClosed += Kembali_FormClosed1;
+            kembali.Show();
+            this.Hide();
+        }
+
+        private void Kembali_FormClosed1(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_log_out_Click(object sender, EventArgs e)
+        {
+            login kembali2 = new login();
+            kembali2.FormClosed += Kembali2_FormClosed;
+            kembali2.Show();
+            this.Hide();
+        }
+
+        private void Kembali2_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Close();
         }

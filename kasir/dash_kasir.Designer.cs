@@ -581,6 +581,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "dash_kasir";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "dash_kasir";
             this.Load += new System.EventHandler(this.dash_kasir_Load);
             this.panel1.ResumeLayout(false);
