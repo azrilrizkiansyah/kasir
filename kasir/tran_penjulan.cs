@@ -461,5 +461,10 @@ namespace kasir
         {
             this.Close();
         }
+
+        private void btn_cari_Click(object sender, EventArgs e)
+        {
+            // test
+        }
     }
 }

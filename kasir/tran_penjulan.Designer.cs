@@ -55,6 +55,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.btn_cari = new System.Windows.Forms.Button();
             this.panel10.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -271,6 +272,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.panel1.Controls.Add(this.btn_cari);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.textBox2);
@@ -390,7 +392,7 @@
             this.textBox1.Location = new System.Drawing.Point(11, 66);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(438, 26);
+            this.textBox1.Size = new System.Drawing.Size(375, 26);
             this.textBox1.TabIndex = 31;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -404,6 +406,16 @@
             this.label4.Size = new System.Drawing.Size(392, 29);
             this.label4.TabIndex = 30;
             this.label4.Text = "Cari && Tambah Buku Ke Keranjang ";
+            // 
+            // btn_cari
+            // 
+            this.btn_cari.Location = new System.Drawing.Point(411, 66);
+            this.btn_cari.Name = "btn_cari";
+            this.btn_cari.Size = new System.Drawing.Size(75, 26);
+            this.btn_cari.TabIndex = 42;
+            this.btn_cari.Text = "button4cari";
+            this.btn_cari.UseVisualStyleBackColor = true;
+            this.btn_cari.Click += new System.EventHandler(this.btn_cari_Click);
             // 
             // tran_penjulan
             // 
@@ -458,5 +470,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_cari;
     }
 }
