@@ -48,6 +48,7 @@ namespace kasir
         private void Dash_admin_Load(object sender, EventArgs e)
         {
             btn_transaksi.Enabled = false;
+            AktifkanMenu(btn_Dashboard);
         }
 
         private void btn_tambah_buku_Click(object sender, EventArgs e)
@@ -151,6 +152,53 @@ namespace kasir
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+        private Button tombolAktif = null;
+
+        private void AktifkanMenu(Button tombolPilihan)
+        {
+            // Jika ada tombol yang sebelumnya aktif, kembalikan warnanya ke normal
+            if (tombolAktif != null)
+            {
+                tombolAktif.BackColor = Color.FromArgb(15, 23, 42); // Warna normal sidebar
+            }
+
+            // Set tombol yang baru dipilih menjadi tombol aktif
+            tombolAktif = tombolPilihan;
+
+            // Berikan warna khusus untuk menandakan menu sedang aktif (misalnya warna biru terang / sedikit lebih terang)
+            tombolAktif.BackColor = Color.FromArgb(37, 99, 235);
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_tambah_buku_Click_1(object sender, EventArgs e)
+        {
+            dafta_buku pindah = new dafta_buku();
+            pindah.FormClosed += Pindah_FormClosed1;
+            pindah.Show();
+            this.Hide();
+        }
+
+        private void Pindah_FormClosed1(object sender, FormClosedEventArgs e)
+        {
+           this.Close();
+        }
+
+        private void btn_laporaPenjual_Click(object sender, EventArgs e)
+        {
+            Laporan_penjualan pindah2 = new Laporan_penjualan();
+            pindah2.FormClosed += Pindah2_FormClosed1;
+            pindah2.Show();
+            this.Hide();
+        }
+
+        private void Pindah2_FormClosed1(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

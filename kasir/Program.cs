@@ -16,7 +16,7 @@ namespace kasir
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new dash_kasir());
+            Application.Run(new Dash_admin());
         }
     }
 }
