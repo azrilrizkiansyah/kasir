@@ -466,5 +466,10 @@ namespace kasir
         {
             // test
         }
+
+        private void btn_laporaPenjual_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -79,39 +79,7 @@ namespace kasir
 
         private void Btn_BackupData_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "SQL Files (*.sql)|*.sql";
-            saveFileDialog.FileName = $"Backup_Database_{DateTime.Now:yyyyMMdd_HHmmss}.sql";
 
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                // Sesuaikan dengan connection string kamu
-                string connString = "server=localhost;user=root;password=;database=toko_buku;";
-
-                using (MySqlConnection conn = new MySqlConnection(connString))
-                {
-                    using (MySqlCommand cmd = new MySqlCommand())
-                    {
-                        using (MySqlBackup mb = new MySqlBackup(cmd))
-                        {
-                            try
-                            {
-                                cmd.Connection = conn;
-                                conn.Open();
-
-                                // Ekspor data ke file SQL
-                                mb.ExportToFile(saveFileDialog.FileName);
-
-                                MessageBox.Show("Backup data berhasil disimpan!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show("Gagal melakukan backup data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                    }
-                }
-            }
         }
 
         private void btn_Restore_Data_Click(object sender, EventArgs e)
@@ -185,7 +153,7 @@ namespace kasir
 
         private void Pindah_FormClosed1(object sender, FormClosedEventArgs e)
         {
-           this.Close();
+            this.Close();
         }
 
         private void btn_laporaPenjual_Click(object sender, EventArgs e)
@@ -200,5 +168,44 @@ namespace kasir
         {
             this.Close();
         }
+
+        private void Btn_BackupData_Click_1(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "SQL Files (*.sql)|*.sql";
+            saveFileDialog.FileName = $"Backup_Database_{DateTime.Now:yyyyMMdd_HHmmss}.sql";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Sesuaikan dengan connection string kamu
+                string connString = "server=localhost;user=root;password=;database=toko_buku;";
+
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        using (MySqlBackup mb = new MySqlBackup(cmd))
+                        {
+                            try
+                            {
+                                cmd.Connection = conn;
+                                conn.Open();
+
+                                // Ekspor data ke file SQL
+                                mb.ExportToFile(saveFileDialog.FileName);
+
+                                MessageBox.Show("Backup data berhasil disimpan!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Gagal melakukan backup data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
     }
+    
 }

@@ -111,6 +111,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Backup_data.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="dash_kasir.cs">
       <SubType>Form</SubType>
     </Compile>
