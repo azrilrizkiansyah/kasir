@@ -153,7 +153,7 @@ namespace kasir
 
         private void Pindah_FormClosed1(object sender, FormClosedEventArgs e)
         {
-           this.Close();
+            this.Close();
         }
 
         private void btn_laporaPenjual_Click(object sender, EventArgs e)
@@ -234,4 +234,5 @@ namespace kasir
             this.Close();
         }
     }
+    
 }

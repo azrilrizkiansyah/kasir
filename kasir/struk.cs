@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+
 
 namespace kasir
 {
@@ -40,9 +40,9 @@ namespace kasir
 
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        public struk()
         {
-
+            InitializeComponent();
         }
 
         private void struk_Load(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace kasir
 
         }
 
-        private void panel2_Paint_1(object sender, PaintEventArgs e)
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
 
         }

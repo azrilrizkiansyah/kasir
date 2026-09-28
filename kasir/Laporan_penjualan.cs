@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace kasir
@@ -30,16 +25,87 @@ namespace kasir
         }
 
 
-        private void label1_Click(object sender, EventArgs e)
+        private List<DataPenjualan> dataPenjualan = new List<DataPenjualan>()
         {
+            new DataPenjualan
+            {
+                Tanggal = new DateTime(2026, 9, 1),
+                NoTransaksi = "TRX001",
+                Buku = "Laskar Pelangi",
+                Jumlah = 3,
+                Harga = 75000
+            },
 
+            new DataPenjualan
+            {
+                Tanggal = new DateTime(2026, 9, 5),
+                NoTransaksi = "TRX002",
+                Buku = "Bumi",
+                Jumlah = 2,
+                Harga = 85000
+            },
+
+            new DataPenjualan
+            {
+                Tanggal = new DateTime(2026, 9, 10),
+                NoTransaksi = "TRX003",
+                Buku = "Negeri 5 Menara",
+                Jumlah = 4,
+                Harga = 90000
+            },
+
+            new DataPenjualan
+            {
+                Tanggal = new DateTime(2026, 9, 15),
+                NoTransaksi = "TRX004",
+                Buku = "Dilan 1990",
+                Jumlah = 5,
+                Harga = 80000
+            },
+
+            new DataPenjualan
+            {
+                Tanggal = new DateTime(2026, 9, 20),
+                NoTransaksi = "TRX005",
+                Buku = "Atomic Habits",
+                Jumlah = 3,
+                Harga = 120000
+            },
+
+            new DataPenjualan
+            {
+                Tanggal = new DateTime(2026, 9, 25),
+                NoTransaksi = "TRX006",
+                Buku = "Filosofi Teras",
+                Jumlah = 2,
+                Harga = 95000
+            },
+
+            new DataPenjualan
+            {
+                Tanggal = new DateTime(2026, 9, 28),
+                NoTransaksi = "TRX007",
+                Buku = "Bumi Manusia",
+                Jumlah = 4,
+                Harga = 100000
+            }
+        };
+
+
+        public Laporan_penjualan()
+        {
+            InitializeComponent();
+            TampilkanLaporan();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-           Dash_admin kembali = new Dash_admin();
+            Dash_admin kembali = new Dash_admin();
+
             kembali.FormClosed += Kembali_FormClosed;
+
             kembali.Show();
+
             this.Hide();
         }
 
