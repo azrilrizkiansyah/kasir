@@ -147,6 +147,12 @@
     <Compile Include="Laporan_penjualan.Designer.cs">
       <DependentUpon>Laporan_penjualan.cs</DependentUpon>
     </Compile>
+    <Compile Include="struk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="struk.Designer.cs">
+      <DependentUpon>struk.cs</DependentUpon>
+    </Compile>
     <Compile Include="tran_penjulan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,12 +167,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="struk.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="struk.Designer.cs">
-      <DependentUpon>struk.cs</DependentUpon>
-    </Compile>
     <Compile Include="Ts_penjualan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +191,9 @@
     <EmbeddedResource Include="Laporan_penjualan.resx">
       <DependentUpon>Laporan_penjualan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="struk.resx">
+      <DependentUpon>struk.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="tran_penjulan.resx">
       <DependentUpon>tran_penjulan.cs</DependentUpon>
     </EmbeddedResource>
@@ -207,9 +210,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="struk.resx">
-      <DependentUpon>struk.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Ts_penjualan.resx">
       <DependentUpon>Ts_penjualan.cs</DependentUpon>
     </EmbeddedResource>
