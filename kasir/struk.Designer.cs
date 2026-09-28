@@ -1,6 +1,6 @@
 ﻿namespace kasir
 {
-    partial class struk
+    partial class PrintPreviewControl
     {
         /// <summary>
         /// Required designer variable.
@@ -28,53 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(struk));
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.btnCetak = new ReaLTaiizor.Controls.Button();
+            this.btnCetakStruk = new System.Windows.Forms.Button();
+            this.btnTutup = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // printDocument1
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
-            // printPreviewDialog1
+            // btnCetakStruk
             // 
-            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
-            this.printPreviewDialog1.Enabled = true;
-            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
-            this.printPreviewDialog1.Name = "printPreviewDialog1";
-            this.printPreviewDialog1.Visible = false;
+            this.btnCetakStruk.Location = new System.Drawing.Point(206, 596);
+            this.btnCetakStruk.Name = "btnCetakStruk";
+            this.btnCetakStruk.Size = new System.Drawing.Size(184, 43);
+            this.btnCetakStruk.TabIndex = 0;
+            this.btnCetakStruk.Text = "Cetak";
+            this.btnCetakStruk.UseVisualStyleBackColor = true;
+            this.btnCetakStruk.Click += new System.EventHandler(this.btnCetakStruk_Click);
             // 
-            // btnCetak
+            // btnTutup
             // 
-            this.btnCetak.BackColor = System.Drawing.Color.Transparent;
-            this.btnCetak.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.btnCetak.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCetak.EnteredBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.btnCetak.EnteredColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.btnCetak.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnCetak.Image = null;
-            this.btnCetak.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCetak.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.btnCetak.Location = new System.Drawing.Point(657, 389);
-            this.btnCetak.Name = "btnCetak";
-            this.btnCetak.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.btnCetak.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.btnCetak.Size = new System.Drawing.Size(120, 40);
-            this.btnCetak.TabIndex = 0;
-            this.btnCetak.Text = "cetak";
-            this.btnCetak.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnTutup.Location = new System.Drawing.Point(396, 596);
+            this.btnTutup.Name = "btnTutup";
+            this.btnTutup.Size = new System.Drawing.Size(184, 43);
+            this.btnTutup.TabIndex = 1;
+            this.btnTutup.Text = "Tutup";
+            this.btnTutup.UseVisualStyleBackColor = true;
+            this.btnTutup.Click += new System.EventHandler(this.btnTutup_Click);
             // 
-            // struk
+            // PrintPreviewControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnCetak);
-            this.Name = "struk";
+            this.ClientSize = new System.Drawing.Size(597, 680);
+            this.Controls.Add(this.btnTutup);
+            this.Controls.Add(this.btnCetakStruk);
+            this.DoubleBuffered = true;
+            this.Name = "PrintPreviewControl";
             this.Text = "struk";
             this.Load += new System.EventHandler(this.struk_Load);
             this.ResumeLayout(false);
@@ -84,7 +75,7 @@
         #endregion
 
         private System.Drawing.Printing.PrintDocument printDocument1;
-        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
-        private ReaLTaiizor.Controls.Button btnCetak;
+        private System.Windows.Forms.Button btnCetakStruk;
+        private System.Windows.Forms.Button btnTutup;
     }
 }

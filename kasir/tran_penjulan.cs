@@ -130,73 +130,7 @@ namespace kasir
 
         private void cyberButton1_Click(object sender, EventArgs e)
         {
-            if (dtKeranjang.Rows.Count == 0)
-            {
-                MessageBox.Show("Keranjang belanja masih kosong!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            decimal totalBayar = 0;
-            foreach (DataRow row in dtKeranjang.Rows)
-            {
-                totalBayar += Convert.ToDecimal(row["Subtotal"]);
-            }
-
-            MySqlConnection koneksi = new MySqlConnection(konfigurasi);
-            MySqlTransaction transaksi = null;
-
-            try
-            {
-                koneksi.Open();
-                transaksi = koneksi.BeginTransaction();           
-                string insertTransactionQuery = "INSERT INTO transactions (tanggal, total_harga, id_user) VALUES (@tanggal, @totalBayar, @idUser); SELECT LAST_INSERT_ID();";
-                MySqlCommand cmdTrans = new MySqlCommand(insertTransactionQuery, koneksi, transaksi);
-                cmdTrans.Parameters.AddWithValue("@tanggal", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-                cmdTrans.Parameters.AddWithValue("@totalBayar", totalBayar);
-                cmdTrans.Parameters.AddWithValue("@idUser", 1);
-
-                long idTransaksiBaru = Convert.ToInt64(cmdTrans.ExecuteScalar());
-         
-                foreach (DataRow row in dtKeranjang.Rows)
-                {
-                    int idBuku = Convert.ToInt32(row["IdBuku"]); 
-                    string kodeBuku = row["KodeBuku"].ToString();
-                    int jumlahBeli = Convert.ToInt32(row["Jumlah"]);
-                    decimal subtotal = Convert.ToDecimal(row["Subtotal"]);
-
-                    string insertDetailQuery = "INSERT INTO transaction_details (id_transaksi, id_buku, jumlah, subtotal) VALUES (@idTrans, @idBuku, @jumlah, @subtotal)";
-                    MySqlCommand cmdDetail = new MySqlCommand(insertDetailQuery, koneksi, transaksi);
-                    cmdDetail.Parameters.AddWithValue("@idTrans", idTransaksiBaru);
-                    cmdDetail.Parameters.AddWithValue("@idBuku", idBuku); 
-                    cmdDetail.Parameters.AddWithValue("@jumlah", jumlahBeli);
-                    cmdDetail.Parameters.AddWithValue("@subtotal", subtotal);
-                    cmdDetail.ExecuteNonQuery();
-
-                    string updateStokQuery = "UPDATE books SET stok = stok - @jumlah WHERE kode_buku = @kodeBuku";
-                    MySqlCommand cmdStok = new MySqlCommand(updateStokQuery, koneksi, transaksi);
-                    cmdStok.Parameters.AddWithValue("@jumlah", jumlahBeli);
-                    cmdStok.Parameters.AddWithValue("@kodeBuku", kodeBuku);
-                    cmdStok.ExecuteNonQuery();
-                }
-
-                transaksi.Commit();
-                MessageBox.Show("Transaksi berhasil disimpan.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                struk tampil = new struk(idTransaksiBaru);
-                tampil.Show();
-
-                dtKeranjang.Clear();
-                selectedKodeBuku = "";
-                MuatDaftarBuku();
-            }
-            catch (Exception ex)
-            {
-                if (transaksi != null) transaksi.Rollback();
-                MessageBox.Show("Transaksi gagal: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (koneksi.State == ConnectionState.Open) koneksi.Close();
-            }
+           
         }
         private void MuatDaftarBuku()
         {
@@ -379,6 +313,7 @@ namespace kasir
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+
             if (dtKeranjang.Rows.Count == 0)
             {
                 MessageBox.Show("Keranjang belanja masih kosong!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -430,7 +365,7 @@ namespace kasir
 
                 transaksi.Commit();
                 MessageBox.Show("Transaksi berhasil disimpan.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                struk tampil = new struk(idTransaksiBaru);
+                PrintPreviewControl tampil = new PrintPreviewControl(idTransaksiBaru);
                 tampil.Show();
 
                 dtKeranjang.Clear();
@@ -467,9 +402,17 @@ namespace kasir
             // test
         }
 
-        private void btn_laporaPenjual_Click(object sender, EventArgs e)
+        private void btn_log_out_Click(object sender, EventArgs e)
         {
+            login kembali = new login();
+            kembali.FormClosed += Kembali_FormClosed2;
+            kembali.Show();
+            this.Hide();
+        }
 
+        private void Kembali_FormClosed2(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

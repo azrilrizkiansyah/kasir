@@ -107,6 +107,7 @@
             this.btn_log_out.Text = "↩ keluar";
             this.btn_log_out.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_log_out.UseVisualStyleBackColor = false;
+            this.btn_log_out.Click += new System.EventHandler(this.btn_log_out_Click);
             // 
             // btn_Restore_Data
             // 
@@ -291,8 +292,7 @@
             // 
             this.button2.BackColor = System.Drawing.Color.Yellow;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Location = new System.Drawing.Point(770, 311);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Location = new System.Drawing.Point(1153, 477);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(50, 23);
             this.button2.TabIndex = 41;

@@ -56,7 +56,7 @@ namespace kasir
 
         private void btn_log_out_Click(object sender, EventArgs e)
         {
-            Dash_admin kembali = new Dash_admin();
+            login kembali = new login();
             kembali.FormClosed += Kembali_FormClosed;
             kembali.Show();
             this.Hide();
@@ -81,6 +81,32 @@ namespace kasir
         }
 
         private void Kembali_FormClosed1(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_laporaPenjual_Click(object sender, EventArgs e)
+        {
+            Laporan_penjualan pindah = new Laporan_penjualan();
+            pindah.FormClosed += Pindah_FormClosed;
+            pindah.Show();
+            this.Hide();
+        }
+
+        private void Pindah_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_manajemenStok_Click(object sender, EventArgs e)
+        {
+            Stok_buku pindah = new Stok_buku();
+            pindah.FormClosed += Pindah_FormClosed1;
+            pindah.Show();
+            this.Hide();
+        }
+
+        private void Pindah_FormClosed1(object sender, FormClosedEventArgs e)
         {
             this.Close();
         }

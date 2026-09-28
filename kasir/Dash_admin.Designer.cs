@@ -401,6 +401,7 @@
             this.btn_log_out.Text = "↩ keluar";
             this.btn_log_out.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_log_out.UseVisualStyleBackColor = false;
+            this.btn_log_out.Click += new System.EventHandler(this.btn_log_out_Click);
             // 
             // btn_Restore_Data
             // 
@@ -442,6 +443,7 @@
             this.btn_manajemenStok.Text = "Manajemen Stok";
             this.btn_manajemenStok.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_manajemenStok.UseVisualStyleBackColor = false;
+            this.btn_manajemenStok.Click += new System.EventHandler(this.btn_manajemenStok_Click_1);
             // 
             // btn_transaksi
             // 
@@ -466,7 +468,7 @@
             this.btn_tambah_buku.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_tambah_buku.Size = new System.Drawing.Size(175, 28);
             this.btn_tambah_buku.TabIndex = 4;
-            this.btn_tambah_buku.Text = "Tambah Buku Data";
+            this.btn_tambah_buku.Text = "Manajemen Buku";
             this.btn_tambah_buku.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_tambah_buku.UseMnemonic = false;
             this.btn_tambah_buku.UseVisualStyleBackColor = false;

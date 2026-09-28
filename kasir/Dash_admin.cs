@@ -79,7 +79,7 @@ namespace kasir
 
         private void Btn_BackupData_Click(object sender, EventArgs e)
         {
-
+           
         }
 
         private void btn_Restore_Data_Click(object sender, EventArgs e)
@@ -169,6 +169,21 @@ namespace kasir
             this.Close();
         }
 
+        private void btn_manajemenStok_Click_1(object sender, EventArgs e)
+        {
+            Stok_buku pindah3 = new Stok_buku();
+            pindah3.FormClosed += Pindah3_FormClosed1;
+            pindah3.Show();
+            this.Hide();
+        }
+
+        private void Pindah3_FormClosed1(object sender, FormClosedEventArgs e)
+        {
+           
+            this.Close();
+        
+        }
+
         private void Btn_BackupData_Click_1(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -206,6 +221,18 @@ namespace kasir
             }
         }
 
+        private void btn_log_out_Click(object sender, EventArgs e)
+        {
+            login kembali = new login();
+            kembali.FormClosed += Kembali_FormClosed1;
+            kembali.Show();
+            this.Hide();
+        }
+
+        private void Kembali_FormClosed1(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
+        }
     }
     
 }
