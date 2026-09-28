@@ -31,6 +31,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_log_out = new System.Windows.Forms.Button();
             this.btn_Restore_Data = new System.Windows.Forms.Button();
@@ -43,36 +45,34 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_Batal = new System.Windows.Forms.Button();
+            this.btn_Hapus = new System.Windows.Forms.Button();
+            this.btn_Perbarui = new System.Windows.Forms.Button();
+            this.btn_Tambah = new System.Windows.Forms.Button();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txt_Stok = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txt_Harga = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txt_penerbit = new System.Windows.Forms.Label();
+            this.txt_Pengarang = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txt_Judul = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txt_KodeBuku = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.txt_idBuku = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txt_KodeBuku = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.txt_Judul = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.txt_Pengarang = new System.Windows.Forms.Label();
-            this.txt_penerbit = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.txt_Harga = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.txt_Stok = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.btn_Tambah = new System.Windows.Forms.Button();
-            this.btn_Perbarui = new System.Windows.Forms.Button();
-            this.btn_Hapus = new System.Windows.Forms.Button();
-            this.btn_Batal = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
             this.panel10.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -124,6 +124,28 @@
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(310, 825);
             this.panel10.TabIndex = 30;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Location = new System.Drawing.Point(339, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1292, 87);
+            this.panel3.TabIndex = 31;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
+            this.label3.Location = new System.Drawing.Point(4, 31);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(230, 27);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Transaksi Penjualan";
             // 
             // label2
             // 
@@ -195,6 +217,7 @@
             this.btn_manajemenStok.Text = "Manajemen Stok";
             this.btn_manajemenStok.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_manajemenStok.UseVisualStyleBackColor = false;
+            this.btn_manajemenStok.Click += new System.EventHandler(this.btn_manajemenStok_Click);
             // 
             // btn_transaksi
             // 
@@ -240,6 +263,7 @@
             this.btn_laporaPenjual.Text = "Laporan Penjualan ";
             this.btn_laporaPenjual.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_laporaPenjual.UseVisualStyleBackColor = false;
+            this.btn_laporaPenjual.Click += new System.EventHandler(this.btn_laporaPenjual_Click);
             // 
             // button16
             // 
@@ -287,28 +311,6 @@
             this.label23.Size = new System.Drawing.Size(120, 33);
             this.label23.TabIndex = 0;
             this.label23.Text = "BukuKita";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Location = new System.Drawing.Point(339, 2);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1292, 87);
-            this.panel3.TabIndex = 31;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
-            this.label3.Location = new System.Drawing.Point(4, 31);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(230, 27);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Transaksi Penjualan";
             // 
             // panel1
             // 
@@ -360,6 +362,138 @@
             this.panel2.Size = new System.Drawing.Size(511, 630);
             this.panel2.TabIndex = 33;
             // 
+            // btn_Batal
+            // 
+            this.btn_Batal.Location = new System.Drawing.Point(109, 570);
+            this.btn_Batal.Name = "btn_Batal";
+            this.btn_Batal.Size = new System.Drawing.Size(279, 43);
+            this.btn_Batal.TabIndex = 53;
+            this.btn_Batal.Text = "Batal";
+            this.btn_Batal.UseVisualStyleBackColor = true;
+            // 
+            // btn_Hapus
+            // 
+            this.btn_Hapus.Location = new System.Drawing.Point(324, 511);
+            this.btn_Hapus.Name = "btn_Hapus";
+            this.btn_Hapus.Size = new System.Drawing.Size(135, 43);
+            this.btn_Hapus.TabIndex = 52;
+            this.btn_Hapus.Text = "Hapus";
+            this.btn_Hapus.UseVisualStyleBackColor = true;
+            // 
+            // btn_Perbarui
+            // 
+            this.btn_Perbarui.Location = new System.Drawing.Point(186, 511);
+            this.btn_Perbarui.Name = "btn_Perbarui";
+            this.btn_Perbarui.Size = new System.Drawing.Size(135, 43);
+            this.btn_Perbarui.TabIndex = 51;
+            this.btn_Perbarui.Text = "Perbarui";
+            this.btn_Perbarui.UseVisualStyleBackColor = true;
+            // 
+            // btn_Tambah
+            // 
+            this.btn_Tambah.Location = new System.Drawing.Point(48, 511);
+            this.btn_Tambah.Name = "btn_Tambah";
+            this.btn_Tambah.Size = new System.Drawing.Size(135, 43);
+            this.btn_Tambah.TabIndex = 50;
+            this.btn_Tambah.Text = "Tambah";
+            this.btn_Tambah.UseVisualStyleBackColor = true;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(48, 464);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(414, 26);
+            this.textBox7.TabIndex = 49;
+            // 
+            // txt_Stok
+            // 
+            this.txt_Stok.AutoSize = true;
+            this.txt_Stok.Location = new System.Drawing.Point(41, 437);
+            this.txt_Stok.Name = "txt_Stok";
+            this.txt_Stok.Size = new System.Drawing.Size(42, 20);
+            this.txt_Stok.TabIndex = 48;
+            this.txt_Stok.Text = "Stok";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(45, 401);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(414, 26);
+            this.textBox6.TabIndex = 47;
+            // 
+            // txt_Harga
+            // 
+            this.txt_Harga.AutoSize = true;
+            this.txt_Harga.Location = new System.Drawing.Point(41, 378);
+            this.txt_Harga.Name = "txt_Harga";
+            this.txt_Harga.Size = new System.Drawing.Size(57, 20);
+            this.txt_Harga.TabIndex = 46;
+            this.txt_Harga.Text = "Harga ";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(45, 349);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(414, 26);
+            this.textBox5.TabIndex = 45;
+            // 
+            // txt_penerbit
+            // 
+            this.txt_penerbit.AutoSize = true;
+            this.txt_penerbit.Location = new System.Drawing.Point(41, 325);
+            this.txt_penerbit.Name = "txt_penerbit";
+            this.txt_penerbit.Size = new System.Drawing.Size(68, 20);
+            this.txt_penerbit.TabIndex = 44;
+            this.txt_penerbit.Text = "Penerbit";
+            // 
+            // txt_Pengarang
+            // 
+            this.txt_Pengarang.AutoSize = true;
+            this.txt_Pengarang.Location = new System.Drawing.Point(44, 265);
+            this.txt_Pengarang.Name = "txt_Pengarang";
+            this.txt_Pengarang.Size = new System.Drawing.Size(87, 20);
+            this.txt_Pengarang.TabIndex = 43;
+            this.txt_Pengarang.Text = "Pengarang";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(45, 290);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(414, 26);
+            this.textBox4.TabIndex = 42;
+            // 
+            // txt_Judul
+            // 
+            this.txt_Judul.AutoSize = true;
+            this.txt_Judul.Location = new System.Drawing.Point(44, 208);
+            this.txt_Judul.Name = "txt_Judul";
+            this.txt_Judul.Size = new System.Drawing.Size(47, 20);
+            this.txt_Judul.TabIndex = 41;
+            this.txt_Judul.Text = "Judul";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(45, 231);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(414, 26);
+            this.textBox3.TabIndex = 40;
+            // 
+            // txt_KodeBuku
+            // 
+            this.txt_KodeBuku.Location = new System.Drawing.Point(45, 168);
+            this.txt_KodeBuku.Name = "txt_KodeBuku";
+            this.txt_KodeBuku.Size = new System.Drawing.Size(414, 26);
+            this.txt_KodeBuku.TabIndex = 39;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(44, 145);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(87, 20);
+            this.label7.TabIndex = 38;
+            this.label7.Text = "Kode Buku";
+            // 
             // txt_idBuku
             // 
             this.txt_idBuku.Location = new System.Drawing.Point(45, 103);
@@ -400,6 +534,31 @@
             this.panel4.Size = new System.Drawing.Size(860, 630);
             this.panel4.TabIndex = 34;
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(233, 111);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(57, 31);
+            this.button5.TabIndex = 55;
+            this.button5.Text = "Cari";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(7, 113);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(220, 26);
+            this.textBox8.TabIndex = 54;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(7, 90);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(90, 20);
+            this.label15.TabIndex = 54;
+            this.label15.Text = "Cari Buku...";
+            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -421,163 +580,6 @@
             this.label5.Size = new System.Drawing.Size(140, 27);
             this.label5.TabIndex = 33;
             this.label5.Text = "Daftar Buku";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(44, 145);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(87, 20);
-            this.label7.TabIndex = 38;
-            this.label7.Text = "Kode Buku";
-            // 
-            // txt_KodeBuku
-            // 
-            this.txt_KodeBuku.Location = new System.Drawing.Point(45, 168);
-            this.txt_KodeBuku.Name = "txt_KodeBuku";
-            this.txt_KodeBuku.Size = new System.Drawing.Size(414, 26);
-            this.txt_KodeBuku.TabIndex = 39;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(45, 231);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(414, 26);
-            this.textBox3.TabIndex = 40;
-            // 
-            // txt_Judul
-            // 
-            this.txt_Judul.AutoSize = true;
-            this.txt_Judul.Location = new System.Drawing.Point(44, 208);
-            this.txt_Judul.Name = "txt_Judul";
-            this.txt_Judul.Size = new System.Drawing.Size(47, 20);
-            this.txt_Judul.TabIndex = 41;
-            this.txt_Judul.Text = "Judul";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(45, 290);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(414, 26);
-            this.textBox4.TabIndex = 42;
-            // 
-            // txt_Pengarang
-            // 
-            this.txt_Pengarang.AutoSize = true;
-            this.txt_Pengarang.Location = new System.Drawing.Point(44, 265);
-            this.txt_Pengarang.Name = "txt_Pengarang";
-            this.txt_Pengarang.Size = new System.Drawing.Size(87, 20);
-            this.txt_Pengarang.TabIndex = 43;
-            this.txt_Pengarang.Text = "Pengarang";
-            // 
-            // txt_penerbit
-            // 
-            this.txt_penerbit.AutoSize = true;
-            this.txt_penerbit.Location = new System.Drawing.Point(41, 325);
-            this.txt_penerbit.Name = "txt_penerbit";
-            this.txt_penerbit.Size = new System.Drawing.Size(68, 20);
-            this.txt_penerbit.TabIndex = 44;
-            this.txt_penerbit.Text = "Penerbit";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(45, 349);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(414, 26);
-            this.textBox5.TabIndex = 45;
-            // 
-            // txt_Harga
-            // 
-            this.txt_Harga.AutoSize = true;
-            this.txt_Harga.Location = new System.Drawing.Point(41, 378);
-            this.txt_Harga.Name = "txt_Harga";
-            this.txt_Harga.Size = new System.Drawing.Size(57, 20);
-            this.txt_Harga.TabIndex = 46;
-            this.txt_Harga.Text = "Harga ";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(45, 401);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(414, 26);
-            this.textBox6.TabIndex = 47;
-            // 
-            // txt_Stok
-            // 
-            this.txt_Stok.AutoSize = true;
-            this.txt_Stok.Location = new System.Drawing.Point(41, 437);
-            this.txt_Stok.Name = "txt_Stok";
-            this.txt_Stok.Size = new System.Drawing.Size(42, 20);
-            this.txt_Stok.TabIndex = 48;
-            this.txt_Stok.Text = "Stok";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(48, 464);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(414, 26);
-            this.textBox7.TabIndex = 49;
-            // 
-            // btn_Tambah
-            // 
-            this.btn_Tambah.Location = new System.Drawing.Point(48, 511);
-            this.btn_Tambah.Name = "btn_Tambah";
-            this.btn_Tambah.Size = new System.Drawing.Size(135, 43);
-            this.btn_Tambah.TabIndex = 50;
-            this.btn_Tambah.Text = "Tambah";
-            this.btn_Tambah.UseVisualStyleBackColor = true;
-            // 
-            // btn_Perbarui
-            // 
-            this.btn_Perbarui.Location = new System.Drawing.Point(186, 511);
-            this.btn_Perbarui.Name = "btn_Perbarui";
-            this.btn_Perbarui.Size = new System.Drawing.Size(135, 43);
-            this.btn_Perbarui.TabIndex = 51;
-            this.btn_Perbarui.Text = "Perbarui";
-            this.btn_Perbarui.UseVisualStyleBackColor = true;
-            // 
-            // btn_Hapus
-            // 
-            this.btn_Hapus.Location = new System.Drawing.Point(324, 511);
-            this.btn_Hapus.Name = "btn_Hapus";
-            this.btn_Hapus.Size = new System.Drawing.Size(135, 43);
-            this.btn_Hapus.TabIndex = 52;
-            this.btn_Hapus.Text = "Hapus";
-            this.btn_Hapus.UseVisualStyleBackColor = true;
-            // 
-            // btn_Batal
-            // 
-            this.btn_Batal.Location = new System.Drawing.Point(109, 570);
-            this.btn_Batal.Name = "btn_Batal";
-            this.btn_Batal.Size = new System.Drawing.Size(279, 43);
-            this.btn_Batal.TabIndex = 53;
-            this.btn_Batal.Text = "Batal";
-            this.btn_Batal.UseVisualStyleBackColor = true;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(7, 90);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(90, 20);
-            this.label15.TabIndex = 54;
-            this.label15.Text = "Cari Buku...";
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(7, 113);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(220, 26);
-            this.textBox8.TabIndex = 54;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(233, 111);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(57, 31);
-            this.button5.TabIndex = 55;
-            this.button5.Text = "Cari";
-            this.button5.UseVisualStyleBackColor = true;
             // 
             // dafta_buku
             // 
