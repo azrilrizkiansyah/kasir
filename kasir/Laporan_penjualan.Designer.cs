@@ -67,6 +67,9 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.panel10.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -77,6 +80,7 @@
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel10
@@ -144,7 +148,6 @@
             this.btn_log_out.Text = "↩ keluar";
             this.btn_log_out.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_log_out.UseVisualStyleBackColor = false;
-            this.btn_log_out.Click += new System.EventHandler(this.btn_log_out_Click);
             // 
             // btn_Restore_Data
             // 
@@ -158,7 +161,6 @@
             this.btn_Restore_Data.Text = "Restore Data";
             this.btn_Restore_Data.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Restore_Data.UseVisualStyleBackColor = false;
-            this.btn_Restore_Data.Click += new System.EventHandler(this.btn_Restore_Data_Click);
             // 
             // Btn_BackupData
             // 
@@ -173,7 +175,6 @@
             this.Btn_BackupData.Text = "Backup Data";
             this.Btn_BackupData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Btn_BackupData.UseVisualStyleBackColor = false;
-            this.Btn_BackupData.Click += new System.EventHandler(this.Btn_BackupData_Click);
             // 
             // btn_manajemenStok
             // 
@@ -201,7 +202,6 @@
             this.btn_transaksi.Text = "Transaksi Penjualan";
             this.btn_transaksi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_transaksi.UseVisualStyleBackColor = false;
-            this.btn_transaksi.Click += new System.EventHandler(this.btn_transaksi_Click);
             // 
             // btn_manajemenBuku
             // 
@@ -231,7 +231,6 @@
             this.btn_laporaPenjual.Text = "Laporan Penjualan ";
             this.btn_laporaPenjual.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_laporaPenjual.UseVisualStyleBackColor = false;
-            this.btn_laporaPenjual.Click += new System.EventHandler(this.btn_laporaPenjual_Click);
             // 
             // button16
             // 
@@ -325,7 +324,7 @@
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(804, 22);
+            this.button1.Location = new System.Drawing.Point(776, 13);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(104, 28);
             this.button1.TabIndex = 14;
@@ -334,16 +333,16 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(548, 22);
+            this.dateTimePicker2.Location = new System.Drawing.Point(527, 15);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(231, 26);
+            this.dateTimePicker2.Size = new System.Drawing.Size(231, 20);
             this.dateTimePicker2.TabIndex = 13;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(285, 22);
+            this.dateTimePicker1.Location = new System.Drawing.Point(236, 14);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(241, 26);
+            this.dateTimePicker1.Size = new System.Drawing.Size(232, 20);
             this.dateTimePicker1.TabIndex = 12;
             // 
             // comboBox1
@@ -369,7 +368,7 @@
             this.label5.Location = new System.Drawing.Point(18, 20);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(94, 27);
+            this.label5.Size = new System.Drawing.Size(64, 18);
             this.label5.TabIndex = 10;
             this.label5.Text = "Periode";
             // 
@@ -378,7 +377,7 @@
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.label10);
             this.panel4.Controls.Add(this.label6);
-            this.panel4.Location = new System.Drawing.Point(232, 181);
+            this.panel4.Location = new System.Drawing.Point(226, 181);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(215, 122);
@@ -389,10 +388,10 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
-            this.label10.Location = new System.Drawing.Point(18, 88);
+            this.label10.Location = new System.Drawing.Point(12, 55);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(157, 29);
+            this.label10.Size = new System.Drawing.Size(106, 19);
             this.label10.TabIndex = 34;
             this.label10.Text = "Rp 2.000.000";
             // 
@@ -411,9 +410,9 @@
             this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.Controls.Add(this.label11);
             this.panel5.Controls.Add(this.label7);
-            this.panel5.Location = new System.Drawing.Point(688, 279);
+            this.panel5.Location = new System.Drawing.Point(457, 183);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(323, 188);
+            this.panel5.Size = new System.Drawing.Size(215, 122);
             this.panel5.TabIndex = 16;
             // 
             // label11
@@ -432,7 +431,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(14, 16);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(132, 20);
+            this.label7.Size = new System.Drawing.Size(89, 13);
             this.label7.TabIndex = 1;
             this.label7.Text = "Jumlah Transaksi";
             // 
@@ -441,9 +440,9 @@
             this.panel6.BackColor = System.Drawing.Color.White;
             this.panel6.Controls.Add(this.label12);
             this.panel6.Controls.Add(this.label8);
-            this.panel6.Location = new System.Drawing.Point(1036, 279);
+            this.panel6.Location = new System.Drawing.Point(690, 181);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(323, 188);
+            this.panel6.Size = new System.Drawing.Size(215, 122);
             this.panel6.TabIndex = 16;
             // 
             // label12
@@ -462,7 +461,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(12, 16);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(136, 20);
+            this.label8.Size = new System.Drawing.Size(94, 13);
             this.label8.TabIndex = 2;
             this.label8.Text = "Total Buku Terjual";
             // 
@@ -492,7 +491,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(13, 16);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(101, 20);
+            this.label9.Size = new System.Drawing.Size(69, 13);
             this.label9.TabIndex = 3;
             this.label9.Text = "Buku Terlaris";
             // 
@@ -500,9 +499,9 @@
             // 
             this.panel8.BackColor = System.Drawing.Color.White;
             this.panel8.Controls.Add(this.label14);
-            this.panel8.Location = new System.Drawing.Point(209, 311);
+            this.panel8.Location = new System.Drawing.Point(226, 311);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(949, 49);
+            this.panel8.Size = new System.Drawing.Size(909, 49);
             this.panel8.TabIndex = 33;
             // 
             // label14
@@ -519,19 +518,51 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(209, 358);
+            this.dataGridView1.Location = new System.Drawing.Point(224, 358);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(949, 156);
+            this.dataGridView1.Size = new System.Drawing.Size(911, 178);
             this.dataGridView1.TabIndex = 34;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.White;
+            this.panel9.Controls.Add(this.label15);
+            this.panel9.Controls.Add(this.label16);
+            this.panel9.Location = new System.Drawing.Point(920, 181);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(215, 122);
+            this.panel9.TabIndex = 35;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
+            this.label15.Location = new System.Drawing.Point(18, 57);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(115, 38);
+            this.label15.TabIndex = 36;
+            this.label15.Text = "Desain Grafis \r\nModern\r\n";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(12, 16);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(69, 13);
+            this.label16.TabIndex = 2;
+            this.label16.Text = "Buku Terlaris";
             // 
             // Laporan_penjualan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 487);
+            this.ClientSize = new System.Drawing.Size(1159, 549);
+            this.Controls.Add(this.panel9);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel7);
@@ -565,6 +596,8 @@
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -611,5 +644,8 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
     }
 }

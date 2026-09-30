@@ -56,6 +56,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.btn_bayar = new System.Windows.Forms.Button();
             this.panel10.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -191,7 +192,6 @@
             this.btn_laporaPenjual.Text = "Laporan Penjualan ";
             this.btn_laporaPenjual.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_laporaPenjual.UseVisualStyleBackColor = false;
-            this.btn_laporaPenjual.Click += new System.EventHandler(this.btn_laporaPenjual_Click);
             // 
             // btn_dashboard
             // 
@@ -259,6 +259,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.panel1.Controls.Add(this.btn_bayar);
             this.panel1.Controls.Add(this.btn_cari);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
@@ -272,7 +273,7 @@
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Location = new System.Drawing.Point(208, 55);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(861, 435);
             this.panel1.TabIndex = 27;
@@ -280,11 +281,11 @@
             // btn_cari
             // 
             this.btn_cari.Location = new System.Drawing.Point(274, 43);
-            this.btn_cari.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_cari.Margin = new System.Windows.Forms.Padding(2);
             this.btn_cari.Name = "btn_cari";
-            this.btn_cari.Size = new System.Drawing.Size(50, 17);
+            this.btn_cari.Size = new System.Drawing.Size(50, 20);
             this.btn_cari.TabIndex = 42;
-            this.btn_cari.Text = "button4cari";
+            this.btn_cari.Text = "cari";
             this.btn_cari.UseVisualStyleBackColor = true;
             this.btn_cari.Click += new System.EventHandler(this.btn_cari_Click);
             // 
@@ -315,8 +316,8 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(576, 313);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox2.Location = new System.Drawing.Point(567, 313);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(174, 20);
             this.textBox2.TabIndex = 38;
@@ -327,7 +328,7 @@
             this.Listbuku.ForeColor = System.Drawing.Color.Black;
             this.Listbuku.FormattingEnabled = true;
             this.Listbuku.Location = new System.Drawing.Point(6, 90);
-            this.Listbuku.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Listbuku.Margin = new System.Windows.Forms.Padding(2);
             this.Listbuku.Name = "Listbuku";
             this.Listbuku.Size = new System.Drawing.Size(304, 212);
             this.Listbuku.TabIndex = 37;
@@ -399,11 +400,23 @@
             this.label4.TabIndex = 30;
             this.label4.Text = "Cari && Tambah Buku Ke Keranjang ";
             // 
+            // btn_bayar
+            // 
+            this.btn_bayar.BackColor = System.Drawing.Color.Yellow;
+            this.btn_bayar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_bayar.Location = new System.Drawing.Point(765, 311);
+            this.btn_bayar.Name = "btn_bayar";
+            this.btn_bayar.Size = new System.Drawing.Size(80, 23);
+            this.btn_bayar.TabIndex = 43;
+            this.btn_bayar.Text = "Bayar";
+            this.btn_bayar.UseVisualStyleBackColor = false;
+            this.btn_bayar.Click += new System.EventHandler(this.btn_bayar_Click);
+            // 
             // tran_penjulan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 480);
+            this.ClientSize = new System.Drawing.Size(1065, 480);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel10);
@@ -452,5 +465,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btn_cari;
+        private System.Windows.Forms.Button btn_bayar;
     }
 }
