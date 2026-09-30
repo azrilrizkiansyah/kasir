@@ -16,7 +16,11 @@ namespace kasir
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< HEAD
             Application.Run(new tran_penjulan());
+=======
+            Application.Run(new Dash_admin());
+>>>>>>> parent of 0e318d8 (membuat struk)
         }
     }
 }
