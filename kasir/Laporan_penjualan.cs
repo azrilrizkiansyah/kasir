@@ -16,6 +16,8 @@ namespace kasir
         {
             InitializeComponent();
         }
+
+        // halo
         private Button tombolAktif = null;
 
         private void AktifkanMenu(Button tombolPilihan)

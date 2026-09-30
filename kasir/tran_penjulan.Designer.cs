@@ -44,7 +44,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_cari = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -56,7 +55,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.btn_bayar = new System.Windows.Forms.Button();
+            this.btn_cari = new System.Windows.Forms.Button();
             this.panel10.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -278,17 +277,6 @@
             this.panel1.Size = new System.Drawing.Size(861, 435);
             this.panel1.TabIndex = 27;
             // 
-            // btn_cari
-            // 
-            this.btn_cari.Location = new System.Drawing.Point(274, 43);
-            this.btn_cari.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_cari.Name = "btn_cari";
-            this.btn_cari.Size = new System.Drawing.Size(50, 20);
-            this.btn_cari.TabIndex = 42;
-            this.btn_cari.Text = "cari";
-            this.btn_cari.UseVisualStyleBackColor = true;
-            this.btn_cari.Click += new System.EventHandler(this.btn_cari_Click);
-            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Yellow;
@@ -400,17 +388,15 @@
             this.label4.TabIndex = 30;
             this.label4.Text = "Cari && Tambah Buku Ke Keranjang ";
             // 
-            // btn_bayar
+            // btn_cari
             // 
-            this.btn_bayar.BackColor = System.Drawing.Color.Yellow;
-            this.btn_bayar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_bayar.Location = new System.Drawing.Point(765, 311);
-            this.btn_bayar.Name = "btn_bayar";
-            this.btn_bayar.Size = new System.Drawing.Size(80, 23);
-            this.btn_bayar.TabIndex = 43;
-            this.btn_bayar.Text = "Bayar";
-            this.btn_bayar.UseVisualStyleBackColor = false;
-            this.btn_bayar.Click += new System.EventHandler(this.btn_bayar_Click);
+            this.btn_cari.Location = new System.Drawing.Point(411, 66);
+            this.btn_cari.Name = "btn_cari";
+            this.btn_cari.Size = new System.Drawing.Size(75, 26);
+            this.btn_cari.TabIndex = 42;
+            this.btn_cari.Text = "button4cari";
+            this.btn_cari.UseVisualStyleBackColor = true;
+            this.btn_cari.Click += new System.EventHandler(this.btn_cari_Click);
             // 
             // tran_penjulan
             // 
