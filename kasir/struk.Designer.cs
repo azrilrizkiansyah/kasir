@@ -28,14 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.btnCetakStruk = new System.Windows.Forms.Button();
-            this.btnTutup = new System.Windows.Forms.Button();
-=======
-=======
->>>>>>> parent of 0e318d8 (membuat struk)
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblDaftarItem = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
@@ -59,10 +51,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-<<<<<<< HEAD
->>>>>>> parent of 0e318d8 (membuat struk)
-=======
->>>>>>> parent of 0e318d8 (membuat struk)
+
             this.SuspendLayout();
             // 
             // panel1
@@ -94,8 +83,7 @@
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
             // btnCetakStruk
             // 
             this.btnCetakStruk.Location = new System.Drawing.Point(206, 596);
@@ -115,9 +103,7 @@
             this.btnTutup.Text = "Tutup";
             this.btnTutup.UseVisualStyleBackColor = true;
             this.btnTutup.Click += new System.EventHandler(this.btnTutup_Click);
-=======
-            // lblDaftarItem
-=======
+
             // lblDaftarItem
             // 
             this.lblDaftarItem.AutoSize = true;
@@ -309,7 +295,7 @@
             this.label9.Size = new System.Drawing.Size(88, 20);
             this.label9.TabIndex = 37;
             this.label9.Text = "Rp 420000";
->>>>>>> parent of 0e318d8 (membuat struk)
+
             // 
             this.lblDaftarItem.AutoSize = true;
             this.lblDaftarItem.Location = new System.Drawing.Point(34, 256);
@@ -318,7 +304,7 @@
             this.lblDaftarItem.TabIndex = 31;
             this.lblDaftarItem.Text = "label4";
             // 
-<<<<<<< HEAD
+
             // label29
             // 
             this.label29.AutoSize = true;
@@ -501,27 +487,23 @@
             this.label9.Size = new System.Drawing.Size(88, 20);
             this.label9.TabIndex = 37;
             this.label9.Text = "Rp 420000";
->>>>>>> parent of 0e318d8 (membuat struk)
+
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
             // 
             // PrintPreviewControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(597, 680);
-<<<<<<< HEAD
-            this.Controls.Add(this.btnTutup);
-            this.Controls.Add(this.btnCetakStruk);
-            this.DoubleBuffered = true;
-            this.Name = "PrintPreviewControl";
-=======
-=======
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(597, 680);
->>>>>>> parent of 0e318d8 (membuat struk)
             this.Controls.Add(this.panel1);
             this.Name = "struk";
->>>>>>> parent of 0e318d8 (membuat struk)
+
             this.Text = "struk";
             this.Load += new System.EventHandler(this.struk_Load);
             this.panel1.ResumeLayout(false);
@@ -532,14 +514,6 @@
 
         #endregion
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        private System.Drawing.Printing.PrintDocument printDocument1;
-        private System.Windows.Forms.Button btnCetakStruk;
-        private System.Windows.Forms.Button btnTutup;
-=======
-=======
->>>>>>> parent of 0e318d8 (membuat struk)
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -562,9 +536,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
-<<<<<<< HEAD
->>>>>>> parent of 0e318d8 (membuat struk)
-=======
->>>>>>> parent of 0e318d8 (membuat struk)
+
     }
 }

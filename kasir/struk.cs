@@ -14,53 +14,24 @@ namespace kasir
 {
     public partial class PrintPreviewControl : Form
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-        string konfigurasi = "server=localhost;username=root;password=;database=toko_buku";
-        public PrintPreviewControl(long idTrans)
-        {
-            InitializeComponent();
-
-        }
-        public static void TampilkanPreviewStruk()
-        {
-            PrintDocument printDoc = new PrintDocument();
-
-            // Menentukan ukuran kertas struk (lebar: 300, tinggi auto/sesuai kebutuhan)
-            printDoc.DefaultPageSettings.PaperSize = new PaperSize("Receipt", 300, 500);
-            printDoc.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
-
-            // Menampilkan dialog preview struk
-            PrintPreviewDialog previewDialog = new PrintPreviewDialog();
-            previewDialog.Document = printDoc;
-            previewDialog.ShowDialog();
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         public struk()
-=======
-        string konfigurasi = "server=localhost;username=root;password=;database=toko_buku";
-        private long idTransaksi;
-        
-        public struk(long idTrans)
->>>>>>> parent of 0e318d8 (membuat struk)
-        {
-            InitializeComponent();
-=======
         string konfigurasi = "server=localhost;username=root;password=;database=toko_buku";
         private long idTransaksi;
         
         public struk(long idTrans)
         {
             InitializeComponent();
->>>>>>> parent of 0e318d8 (membuat struk)
+
+        string konfigurasi = "server=localhost;username=root;password=;database=toko_buku";
+        private long idTransaksi;
+        
+        public struk(long idTrans)
+        {
+            InitializeComponent();
+
             this.idTransaksi = idTrans;
         }
+
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -75,11 +46,6 @@ namespace kasir
         private void struk_Load(object sender, EventArgs e)
         {
             MySqlConnection koneksi = new MySqlConnection(konfigurasi);
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-
-=======
             try
             {
                 koneksi.Open();
@@ -140,13 +106,11 @@ namespace kasir
             {
                 if (koneksi.State == ConnectionState.Open) koneksi.Close();
             }
->>>>>>> parent of 0e318d8 (membuat struk)
         }
 
         private void panel2_Paint_1(object sender, PaintEventArgs e)
         {
-=======
->>>>>>> parent of 0e318d8 (membuat struk)
+
 
             try
             {
