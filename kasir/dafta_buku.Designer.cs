@@ -126,6 +126,7 @@
             this.panel10.TabIndex = 30;
             // 
 <<<<<<< HEAD
+<<<<<<< HEAD
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
@@ -148,6 +149,8 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Transaksi Penjualan";
             // 
+=======
+>>>>>>> parent of 0e318d8 (membuat struk)
 =======
 >>>>>>> parent of 0e318d8 (membuat struk)
             // label2
@@ -388,6 +391,7 @@
             this.panel2.TabIndex = 33;
             // 
 <<<<<<< HEAD
+<<<<<<< HEAD
             // btn_Batal
             // 
             this.btn_Batal.Location = new System.Drawing.Point(109, 570);
@@ -523,6 +527,8 @@
             // 
 =======
 >>>>>>> parent of 0e318d8 (membuat struk)
+=======
+>>>>>>> parent of 0e318d8 (membuat struk)
             // txt_idBuku
             // 
             this.txt_idBuku.Location = new System.Drawing.Point(45, 103);
@@ -564,6 +570,7 @@
             this.panel4.TabIndex = 34;
             // 
 <<<<<<< HEAD
+<<<<<<< HEAD
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(233, 111);
@@ -590,6 +597,8 @@
             this.label15.TabIndex = 54;
             this.label15.Text = "Cari Buku...";
             // 
+=======
+>>>>>>> parent of 0e318d8 (membuat struk)
 =======
 >>>>>>> parent of 0e318d8 (membuat struk)
             // dataGridView1
