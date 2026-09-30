@@ -48,7 +48,6 @@ namespace kasir
         private void Dash_admin_Load(object sender, EventArgs e)
         {
             btn_transaksi.Enabled = false;
-            AktifkanMenu(btn_Dashboard);
         }
 
         private void btn_tambah_buku_Click(object sender, EventArgs e)
@@ -121,6 +120,7 @@ namespace kasir
         {
 
         }
+<<<<<<< HEAD
         private Button tombolAktif = null;
 
         private void AktifkanMenu(Button tombolPilihan)
@@ -233,6 +233,8 @@ namespace kasir
         {
             this.Close();
         }
+=======
+>>>>>>> parent of 15e0414 (Mengubah Tampilan Manajemen Buku dan Laporan Penjualan)
     }
     
 }

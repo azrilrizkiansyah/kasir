@@ -18,6 +18,7 @@ namespace kasir
             Application.SetCompatibleTextRenderingDefault(false);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             Application.Run(new tran_penjulan());
 =======
             Application.Run(new Dash_admin());
@@ -25,6 +26,9 @@ namespace kasir
 =======
             Application.Run(new Dash_admin());
 >>>>>>> parent of 0e318d8 (membuat struk)
+=======
+            Application.Run(new dash_kasir());
+>>>>>>> parent of 15e0414 (Mengubah Tampilan Manajemen Buku dan Laporan Penjualan)
         }
     }
 }
