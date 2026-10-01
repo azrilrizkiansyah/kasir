@@ -29,7 +29,6 @@ namespace kasir
 
         private void button1_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             
         }
 
@@ -40,16 +39,13 @@ namespace kasir
 
         private void btn_log_out_Click(object sender, EventArgs e)
         {
-            login kembali = new login();
-=======
-            Dash_admin kembali = new Dash_admin();
->>>>>>> parent of 15e0414 (Mengubah Tampilan Manajemen Buku dan Laporan Penjualan)
-            kembali.FormClosed += Kembali_FormClosed;
-            kembali.Show();
+            Dash_admin kembali2 = new Dash_admin();
+            kembali2.FormClosed += Kembali2_FormClosed;
+            kembali2.Show();
             this.Hide();
         }
 
-        private void Kembali_FormClosed(object sender, FormClosedEventArgs e)
+        private void Kembali2_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Close();
         }

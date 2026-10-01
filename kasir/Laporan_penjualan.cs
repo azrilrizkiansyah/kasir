@@ -15,6 +15,7 @@ namespace kasir
         public Laporan_penjualan()
         {
             InitializeComponent();
+
         }
 
         // halo
@@ -49,8 +50,7 @@ namespace kasir
 
         private void Laporan_penjualan_Load(object sender, EventArgs e)
         {
-            btn_transaksi.Enabled = false;
-            AktifkanMenu(btn_laporaPenjual);
+           
         }
 
         private void button16_Click(object sender, EventArgs e)

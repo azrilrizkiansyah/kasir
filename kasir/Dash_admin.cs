@@ -141,7 +141,6 @@ namespace kasir
         {
 
         }
-<<<<<<< HEAD
         private Button tombolAktif = null;
 
         private void AktifkanMenu(Button tombolPilihan)
@@ -254,8 +253,6 @@ namespace kasir
         {
             this.Close();
         }
-=======
->>>>>>> parent of 15e0414 (Mengubah Tampilan Manajemen Buku dan Laporan Penjualan)
     }
     
 }
