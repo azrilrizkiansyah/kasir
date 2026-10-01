@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace kasir
 {
     public partial class dafta_buku : Form
     {
+        MySqlConnection conn = new MySqlConnection(
+           "server=localhost;database=toko_buku;username=root;password=;"
+            ); 
         public dafta_buku()
         {
             InitializeComponent();
@@ -19,7 +23,21 @@ namespace kasir
 
         private void Form3_Load(object sender, EventArgs e)
         {
+            conn.Open();
 
+            MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM books", conn);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            dataGridView1.DataSource = dt;
+
+            conn.Close();
+
+            txt_id.ReadOnly = true;
+
+            btn_update.Enabled = false;
+            btn_hapus.Enabled = false;
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -79,6 +97,144 @@ namespace kasir
         private void label9_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_tambah_Click(object sender, EventArgs e)
+        {
+            conn.Open();
+
+            string sql = "INSERT INTO books (kode_buku, judul, pengarang, penerbit, harga, stok) VALUES (@kode, @judul, @pengarang, @penerbit, @harga, @stok)";
+
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@kode", txt_kode.Text);
+            cmd.Parameters.AddWithValue("@judul", txt_judul.Text);
+            cmd.Parameters.AddWithValue("@pengarang", txt_pengarang.Text);
+            cmd.Parameters.AddWithValue("@penerbit", txt_penerbit.Text);
+            cmd.Parameters.AddWithValue("@harga", txt_harga.Text);
+            cmd.Parameters.AddWithValue("@stok", txt_hargabuku.Text);
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+            MessageBox.Show("Data berhasil ditambahkan");
+
+            Form3_Load(sender, e);
+        }
+
+        private void btn_update_Click(object sender, EventArgs e)
+        {
+            conn.Open();
+
+            string sql = "UPDATE books SET kode_buku=@kode, judul=@judul, pengarang=@pengarang, penerbit=@penerbit, harga=@harga, stok=@stok WHERE id_buku=@id";
+
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@id", txt_id.Text);
+            cmd.Parameters.AddWithValue("@kode", txt_kode.Text);
+            cmd.Parameters.AddWithValue("@judul", txt_judul.Text);
+            cmd.Parameters.AddWithValue("@pengarang", txt_pengarang.Text);
+            cmd.Parameters.AddWithValue("@penerbit", txt_penerbit.Text);
+            cmd.Parameters.AddWithValue("@harga", txt_harga.Text);
+            cmd.Parameters.AddWithValue("@stok", txt_hargabuku.Text);
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+            MessageBox.Show("Data berhasil diubah");
+
+            Form3_Load(sender, e);
+        }
+
+        private void btn_hapus_Click(object sender, EventArgs e)
+        {
+            conn.Open();
+
+            string sql = "DELETE FROM books WHERE id_buku=@id";
+
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@id", txt_id.Text);
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+            MessageBox.Show("Data berhasil dihapus");
+
+            Form3_Load(sender, e);
+        }
+
+        private void btn_batal_Click(object sender, EventArgs e)
+        {
+            txt_id.Clear();
+            txt_kode.Clear();
+            txt_judul.Clear();
+            txt_pengarang.Clear();
+            txt_penerbit.Clear();
+            txt_harga.Clear();
+            txt_hargabuku.Clear();
+
+            btn_tambah.Enabled = true;
+            btn_update.Enabled = false;
+            btn_hapus.Enabled = false;
+        }
+
+        private void btn_cari_Click(object sender, EventArgs e)
+        {
+            conn.Open();
+
+            string sql = "SELECT * FROM books WHERE judul LIKE @cari";
+
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue(
+                "@cari",
+                "%" + textBox8.Text + "%"
+            );
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
+
+            dataGridView1.DataSource = dt;
+
+            conn.Close();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                txt_id.Text =
+                    dataGridView1.Rows[e.RowIndex].Cells["id_buku"].Value.ToString();
+
+                txt_kode.Text =
+                    dataGridView1.Rows[e.RowIndex].Cells["kode_buku"].Value.ToString();
+
+                txt_judul.Text =
+                    dataGridView1.Rows[e.RowIndex].Cells["judul"].Value.ToString();
+
+                txt_pengarang.Text =
+                    dataGridView1.Rows[e.RowIndex].Cells["pengarang"].Value.ToString();
+
+                txt_penerbit.Text =
+                    dataGridView1.Rows[e.RowIndex].Cells["penerbit"].Value.ToString();
+
+                txt_harga.Text =
+                    dataGridView1.Rows[e.RowIndex].Cells["harga"].Value.ToString();
+
+                txt_hargabuku.Text =
+                    dataGridView1.Rows[e.RowIndex].Cells["stok"].Value.ToString();
+
+                btn_tambah.Enabled = false;
+                btn_update.Enabled = true;
+                btn_hapus.Enabled = true;
+            }
         }
     }
 }
