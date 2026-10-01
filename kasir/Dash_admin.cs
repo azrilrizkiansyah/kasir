@@ -49,7 +49,7 @@ namespace kasir
         private void Dash_admin_Load(object sender, EventArgs e)
         {
             btn_transaksi.Enabled = false;
-            AktifkanMenu(btn_Dashboard);
+            AktifkanMenu(button16);
 
             MySqlConnection koneksi = new MySqlConnection(konfigurasi);
             try 
