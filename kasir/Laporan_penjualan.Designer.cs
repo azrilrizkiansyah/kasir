@@ -296,7 +296,7 @@
             this.panel4.Controls.Add(this.dateTimePicker2);
             this.panel4.Controls.Add(this.comboBox2);
             this.panel4.Controls.Add(this.label11);
-            this.panel4.Location = new System.Drawing.Point(344, 149);
+            this.panel4.Location = new System.Drawing.Point(344, 133);
             this.panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(847, 60);
@@ -358,7 +358,7 @@
             this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.Controls.Add(this.label16);
             this.panel5.Controls.Add(this.label12);
-            this.panel5.Location = new System.Drawing.Point(343, 217);
+            this.panel5.Location = new System.Drawing.Point(343, 201);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(200, 124);
             this.panel5.TabIndex = 36;
@@ -368,7 +368,7 @@
             this.panel6.BackColor = System.Drawing.Color.White;
             this.panel6.Controls.Add(this.label17);
             this.panel6.Controls.Add(this.label13);
-            this.panel6.Location = new System.Drawing.Point(558, 217);
+            this.panel6.Location = new System.Drawing.Point(558, 201);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(200, 124);
             this.panel6.TabIndex = 37;
@@ -378,7 +378,7 @@
             this.panel7.BackColor = System.Drawing.Color.White;
             this.panel7.Controls.Add(this.label18);
             this.panel7.Controls.Add(this.label14);
-            this.panel7.Location = new System.Drawing.Point(773, 217);
+            this.panel7.Location = new System.Drawing.Point(773, 201);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(200, 124);
             this.panel7.TabIndex = 38;
@@ -388,7 +388,7 @@
             this.panel8.BackColor = System.Drawing.Color.White;
             this.panel8.Controls.Add(this.label19);
             this.panel8.Controls.Add(this.label15);
-            this.panel8.Location = new System.Drawing.Point(990, 217);
+            this.panel8.Location = new System.Drawing.Point(990, 201);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(200, 124);
             this.panel8.TabIndex = 38;
@@ -473,7 +473,7 @@
             // 
             this.panel9.BackColor = System.Drawing.Color.White;
             this.panel9.Controls.Add(this.label20);
-            this.panel9.Location = new System.Drawing.Point(343, 373);
+            this.panel9.Location = new System.Drawing.Point(343, 357);
             this.panel9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(847, 60);
@@ -494,7 +494,7 @@
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(344, 433);
+            this.dataGridView2.Location = new System.Drawing.Point(344, 417);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 62;
             this.dataGridView2.RowTemplate.Height = 28;
