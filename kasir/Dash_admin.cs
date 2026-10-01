@@ -13,6 +13,7 @@ namespace kasir
 {
     public partial class Dash_admin : Form
     {
+        string konfigurasi = "server=localhost;username=root;password=;database=toko_buku;";
         public Dash_admin()
         {
             InitializeComponent();
@@ -48,6 +49,26 @@ namespace kasir
         private void Dash_admin_Load(object sender, EventArgs e)
         {
             btn_transaksi.Enabled = false;
+            AktifkanMenu(btn_Dashboard);
+
+            MySqlConnection koneksi = new MySqlConnection(konfigurasi);
+            try 
+            {
+                koneksi.Open();
+                string query = "select * from transaction_details;";
+                MySqlCommand eksekusi = new MySqlCommand(query, koneksi);
+                MySqlDataReader cmd = eksekusi.ExecuteReader();
+                while (cmd.Read())
+                {
+                    dataGridView1.Rows.Add(cmd.GetInt32("id_detail").ToString(),cmd.GetInt32("id_transaksi").ToString(),cmd.GetInt32("id_buku").ToString(),cmd.GetInt32("jumlah").ToString(),cmd.GetDecimal("subtotal").ToString());
+                }
+                  
+
+
+            } catch
+            {
+
+            }
         }
 
         private void btn_tambah_buku_Click(object sender, EventArgs e)
@@ -120,7 +141,6 @@ namespace kasir
         {
 
         }
-<<<<<<< HEAD
         private Button tombolAktif = null;
 
         private void AktifkanMenu(Button tombolPilihan)
@@ -233,8 +253,6 @@ namespace kasir
         {
             this.Close();
         }
-=======
->>>>>>> parent of 15e0414 (Mengubah Tampilan Manajemen Buku dan Laporan Penjualan)
     }
     
 }
