@@ -6,8 +6,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Util;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace kasir
 {
@@ -65,9 +67,150 @@ namespace kasir
                   
 
 
-            } catch
+            } catch (Exception ex)
             {
+                MessageBox.Show("Gagal menampilkan data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            koneksi.Close();
+            
+            UpdateDashboardPenjualan();
+            TampilkanTotalSemuaTransaksi();
+            tampilkanunitbuku();
+            tampilkanStok();
 
+
+        }
+
+        private void tampilkanStok()
+        {
+
+            MySqlConnection koneksi = new MySqlConnection(konfigurasi);
+            try 
+            {
+                koneksi.Open();
+                string query = "SELECT SUM(stok) FROM books";
+                MySqlCommand cmd = new MySqlCommand(query, koneksi);
+                int totalStok = System.Convert.ToInt32(cmd.ExecuteScalar());
+                label12.Text = totalStok > 0 ? totalStok + " " : "";
+            } 
+            catch (Exception ex) 
+            { 
+                MessageBox.Show("Gagal menampilkan data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+
+         private void tampilkanunitbuku()
+        {
+            MySqlConnection koneksi = new MySqlConnection(konfigurasi);
+            try 
+            { 
+                koneksi .Open();
+                string query = "SELECT SUM(jumlah) FROM transaction_details";
+                MySqlCommand cmd = new MySqlCommand(query, koneksi);
+                int totalUnit = System.Convert.ToInt32(cmd.ExecuteScalar());
+                label14.Text = totalUnit > 0 ? totalUnit + " " : "";
+
+                if(totalUnit > 0)
+                {
+                    label13.Text = totalUnit.ToString() + " unit buku terjual";
+                    label13.ForeColor = Color.ForestGreen;
+                }
+                else
+                {
+                    label13.Text = "Belum ada buku terjual";
+                    label13.ForeColor = Color.Gray;
+                }
+            } 
+            catch ( Exception ex) 
+            {
+                MessageBox.Show("Gagal menampilkan data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void TampilkanTotalSemuaTransaksi()
+        {
+            MySqlConnection koneksi = new MySqlConnection(konfigurasi);
+            try
+            {
+                koneksi.Open();
+                string query = "SELECT COUNT(id_transaksi) FROM transactions";
+                MySqlCommand cmd = new MySqlCommand(query, koneksi);
+
+                int total = System.Convert.ToInt32(cmd.ExecuteScalar());
+                label11.Text = total > 0 ? total + " " : "";
+
+                if(total > 0)
+                {
+                    label10.Text =total.ToString() + " transaksi tercatat";
+                    label10.ForeColor = Color.ForestGreen;
+                }
+                else
+                {
+                    label10.Text = "Belum ada transaksi";
+                    label10.ForeColor = Color.Gray;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                koneksi.Close();
+            }
+        }
+        private void UpdateDashboardPenjualan()
+        {
+            // Deklarasi variabel di luar try agar bisa diakses di blok finally
+            MySqlConnection conn = null;
+            MySqlCommand cmd = null;
+            MySqlDataReader reader = null;
+            MySqlConnection koneksi = new MySqlConnection(konfigurasi);
+            try
+            {
+               
+                koneksi.Open();
+                // Query untuk mengambil total nominal dan total jumlah transaksi
+                string query = @"SELECT COALESCE(SUM(total_harga), 0) AS total_nominal,COUNT(id_transaksi) AS total_jumlah FROM transactions WHERE DATE(tanggal) = CURDATE()";
+                MySqlCommand kemando = new MySqlCommand(query, koneksi);
+                MySqlDataReader pembaca = kemando.ExecuteReader();
+
+                if (pembaca.Read())
+                {
+                    decimal totalNominal = pembaca.GetDecimal("total_nominal");
+                    int totalJumlah = pembaca.GetInt32("total_jumlah");
+
+                   
+                    label8.Text = totalNominal.ToString("C0", new System.Globalization.CultureInfo("id-ID"));
+
+                   
+                    if (totalJumlah > 0)
+                    {
+                        label9.Text = totalJumlah.ToString() + " Transaksi hari ini";
+                        label9.ForeColor = System.Drawing.Color.ForestGreen;
+                    }
+                    else
+                    {
+                        label9.Text = "Belum ada transaksi hari ini";
+                        label9.ForeColor = System.Drawing.Color.Gray;
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Gagal memuat data: " + ex.Message);
+            }
+            finally
+            {
+               
+                if (reader != null) reader.Close();
+                if (cmd != null) cmd.Dispose();
+                if (conn != null && conn.State == System.Data.ConnectionState.Open)
+                {
+                    conn.Close();
+                    conn.Dispose();
+                }
             }
         }
 
@@ -165,10 +308,7 @@ namespace kasir
 
         private void btn_tambah_buku_Click_1(object sender, EventArgs e)
         {
-            dafta_buku pindah = new dafta_buku();
-            pindah.FormClosed += Pindah_FormClosed1;
-            pindah.Show();
-            this.Hide();
+            
         }
 
         private void Pindah_FormClosed1(object sender, FormClosedEventArgs e)
@@ -178,10 +318,7 @@ namespace kasir
 
         private void btn_laporaPenjual_Click(object sender, EventArgs e)
         {
-            Laporan_penjualan pindah2 = new Laporan_penjualan();
-            pindah2.FormClosed += Pindah2_FormClosed1;
-            pindah2.Show();
-            this.Hide();
+          
         }
 
         private void Pindah2_FormClosed1(object sender, FormClosedEventArgs e)
@@ -252,6 +389,22 @@ namespace kasir
         private void Kembali_FormClosed1(object sender, FormClosedEventArgs e)
         {
             this.Close();
+        }
+
+        private void btn_tambah_buku_Click_2(object sender, EventArgs e)
+        {
+            dafta_buku pindah = new dafta_buku();
+            pindah.FormClosed += Pindah_FormClosed1;
+            pindah.Show();
+            this.Hide();
+        }
+
+        private void btn_laporaPenjual_Click_1(object sender, EventArgs e)
+        {
+            Laporan_penjualan pindah2 = new Laporan_penjualan();
+            pindah2.FormClosed += Pindah2_FormClosed1;
+            pindah2.Show();
+            this.Hide();
         }
     }
     

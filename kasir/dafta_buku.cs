@@ -34,10 +34,27 @@ namespace kasir
 
             conn.Close();
 
+            btn_transaksi.Enabled = false;
             txt_id.ReadOnly = true;
-
+            AktifkanMenu(btn_manajemenBuku);
             btn_update.Enabled = false;
             btn_hapus.Enabled = false;
+        }
+        private Button tombolAktif = null;
+
+        private void AktifkanMenu(Button tombolPilihan)
+        {
+            // Jika ada tombol yang sebelumnya aktif, kembalikan warnanya ke normal
+            if (tombolAktif != null)
+            {
+                tombolAktif.BackColor = Color.FromArgb(15, 23, 42); // Warna normal sidebar
+            }
+
+            // Set tombol yang baru dipilih menjadi tombol aktif
+            tombolAktif = tombolPilihan;
+
+            // Berikan warna khusus untuk menandakan menu sedang aktif (misalnya warna biru terang / sedikit lebih terang)
+            tombolAktif.BackColor = Color.FromArgb(37, 99, 235);
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -57,10 +74,7 @@ namespace kasir
 
         private void btn_log_out_Click(object sender, EventArgs e)
         {
-            Dash_admin kembali2 = new Dash_admin();
-            kembali2.FormClosed += Kembali2_FormClosed;
-            kembali2.Show();
-            this.Hide();
+            
         }
 
         private void Kembali2_FormClosed(object sender, FormClosedEventArgs e)
@@ -70,10 +84,7 @@ namespace kasir
 
         private void btn_laporaPenjual_Click(object sender, EventArgs e)
         {
-            Laporan_penjualan pindah = new Laporan_penjualan();
-            pindah.FormClosed += Pindah_FormClosed;
-            pindah.Show();
-            this.Hide();
+            
         }
 
         private void Pindah_FormClosed(object sender, FormClosedEventArgs e)
@@ -83,10 +94,7 @@ namespace kasir
 
         private void btn_manajemenStok_Click(object sender, EventArgs e)
         {
-            Stok_buku pindah = new Stok_buku();
-            pindah.FormClosed += Pindah_FormClosed1;
-            pindah.Show();
-            this.Hide();
+            
         }
 
         private void Pindah_FormClosed1(object sender, FormClosedEventArgs e)
@@ -235,6 +243,48 @@ namespace kasir
                 btn_update.Enabled = true;
                 btn_hapus.Enabled = true;
             }
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            Dash_admin kembali = new Dash_admin();
+            kembali.FormClosed += Kembali_FormClosed1;
+            kembali.Show();
+            this.Hide();
+        }
+
+        private void Kembali_FormClosed1(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_manajemenBuku_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_laporaPenjual_Click_1(object sender, EventArgs e)
+        {
+            Laporan_penjualan pindah = new Laporan_penjualan();
+            pindah.FormClosed += Pindah_FormClosed;
+            pindah.Show();
+            this.Hide();
+        }
+
+        private void btn_manajemenStok_Click_1(object sender, EventArgs e)
+        {
+            Stok_buku pindah = new Stok_buku();
+            pindah.FormClosed += Pindah_FormClosed1;
+            pindah.Show();
+            this.Hide();
+        }
+
+        private void btn_log_out_Click_1(object sender, EventArgs e)
+        {
+            Dash_admin kembali2 = new Dash_admin();
+            kembali2.FormClosed += Kembali2_FormClosed;
+            kembali2.Show();
+            this.Hide();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace kasir
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new dafta_buku());
+            Application.Run(new Dash_admin());
         }
     }
 }

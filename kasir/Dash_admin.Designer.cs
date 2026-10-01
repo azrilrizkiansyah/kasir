@@ -89,7 +89,7 @@
             this.panel3.Location = new System.Drawing.Point(309, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1062, 88);
+            this.panel3.Size = new System.Drawing.Size(1240, 88);
             this.panel3.TabIndex = 1;
             // 
             // label4
@@ -150,7 +150,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(6, 128);
+            this.label1.Location = new System.Drawing.Point(20, 83);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 34);
@@ -549,6 +549,7 @@
             this.btn_tambah_buku.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_tambah_buku.UseMnemonic = false;
             this.btn_tambah_buku.UseVisualStyleBackColor = false;
+            this.btn_tambah_buku.Click += new System.EventHandler(this.btn_tambah_buku_Click_2);
             // 
             // btn_laporaPenjual
             // 
@@ -563,6 +564,7 @@
             this.btn_laporaPenjual.Text = "Laporan Penjualan ";
             this.btn_laporaPenjual.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_laporaPenjual.UseVisualStyleBackColor = false;
+            this.btn_laporaPenjual.Click += new System.EventHandler(this.btn_laporaPenjual_Click_1);
             // 
             // button16
             // 
@@ -595,9 +597,9 @@
             this.label22.Location = new System.Drawing.Point(98, 64);
             this.label22.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(114, 22);
+            this.label22.Size = new System.Drawing.Size(123, 22);
             this.label22.TabIndex = 1;
-            this.label22.Text = "Kasir Toko Buku";
+            this.label22.Text = "Admin Toko Buku";
             // 
             // label23
             // 
@@ -615,7 +617,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 709);
+            this.ClientSize = new System.Drawing.Size(1552, 709);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
