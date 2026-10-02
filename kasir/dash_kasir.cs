@@ -40,12 +40,12 @@ namespace kasir
             try 
             {
                 koneksi.Open();
-                string query = "select * from traction_details";
+                string query = "select * from  transaction_details";
                 MySqlCommand cmd = new MySqlCommand(query, koneksi);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    dataGridView1.Rows.Add(reader.GetInt32("id").ToString(),reader
+                    dataGridView1.Rows.Add(reader.GetInt32("id_detail").ToString(), reader.GetInt32("id_transaksi").ToString(), reader.GetInt32("id_buku").ToString(), reader.GetInt32("jumlah").ToString(), reader.GetDecimal("subtotal").ToString());
                 }
             }
             catch (Exception ex)
