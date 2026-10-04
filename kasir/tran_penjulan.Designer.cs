@@ -56,6 +56,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.btn_bayar = new System.Windows.Forms.Button();
             this.panel10.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -273,6 +274,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.panel1.Controls.Add(this.btn_bayar);
             this.panel1.Controls.Add(this.btn_cari);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
@@ -421,6 +423,16 @@
             this.label4.TabIndex = 30;
             this.label4.Text = "Cari && Tambah Buku Ke Keranjang ";
             // 
+            // btn_bayar
+            // 
+            this.btn_bayar.Location = new System.Drawing.Point(1152, 482);
+            this.btn_bayar.Name = "btn_bayar";
+            this.btn_bayar.Size = new System.Drawing.Size(90, 38);
+            this.btn_bayar.TabIndex = 43;
+            this.btn_bayar.Text = "Bayar";
+            this.btn_bayar.UseVisualStyleBackColor = true;
+            this.btn_bayar.Click += new System.EventHandler(this.btn_bayar_Click);
+            // 
             // tran_penjulan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -475,6 +487,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btn_cari;
-        
+        private System.Windows.Forms.Button btn_bayar;
     }
 }

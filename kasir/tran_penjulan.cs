@@ -314,6 +314,50 @@ namespace kasir
         private void button2_Click_1(object sender, EventArgs e)
         {
 
+            
+
+        }
+
+        private void btn_manajemenStok_Click(object sender, EventArgs e)
+        {
+            kasir_stok kembali = new kasir_stok();
+            kembali.FormClosed += Kembali_FormClosed1;
+            kembali.Show();
+            this.Hide();
+        }
+
+        private void Kembali_FormClosed1(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_cari_Click(object sender, EventArgs e)
+        {
+            // test
+        }
+
+        private void btn_log_out_Click(object sender, EventArgs e)
+        {
+            login kembali = new login();
+            kembali.FormClosed += Kembali_FormClosed2;
+            kembali.Show();
+            this.Hide();
+        }
+
+        private void Kembali_FormClosed2(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
+        }
+
+       
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btn_bayar_Click(object sender, EventArgs e)
+        {
             if (dtKeranjang.Rows.Count == 0)
             {
                 MessageBox.Show("Keranjang belanja masih kosong!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -365,7 +409,7 @@ namespace kasir
 
                 transaksi.Commit();
                 MessageBox.Show("Transaksi berhasil disimpan.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
+
 
                 dtKeranjang.Clear();
                 selectedKodeBuku = "";
@@ -380,45 +424,6 @@ namespace kasir
             {
                 if (koneksi.State == ConnectionState.Open) koneksi.Close();
             }
-
-        }
-
-        private void btn_manajemenStok_Click(object sender, EventArgs e)
-        {
-            kasir_stok kembali = new kasir_stok();
-            kembali.FormClosed += Kembali_FormClosed1;
-            kembali.Show();
-            this.Hide();
-        }
-
-        private void Kembali_FormClosed1(object sender, FormClosedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btn_cari_Click(object sender, EventArgs e)
-        {
-            // test
-        }
-
-        private void btn_log_out_Click(object sender, EventArgs e)
-        {
-            login kembali = new login();
-            kembali.FormClosed += Kembali_FormClosed2;
-            kembali.Show();
-            this.Hide();
-        }
-
-        private void Kembali_FormClosed2(object sender, FormClosedEventArgs e)
-        {
-            this.Close();
-        }
-
-       
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

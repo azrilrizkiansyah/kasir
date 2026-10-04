@@ -46,9 +46,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.dtpsampai = new System.Windows.Forms.DateTimePicker();
+            this.dtpdari = new System.Windows.Forms.DateTimePicker();
+            this.cmbperiode = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
@@ -65,6 +65,7 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.label20 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.btn_ekspor = new System.Windows.Forms.Button();
             this.panel10.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -296,10 +297,11 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.btn_ekspor);
             this.panel4.Controls.Add(this.button3);
-            this.panel4.Controls.Add(this.dateTimePicker3);
-            this.panel4.Controls.Add(this.dateTimePicker2);
-            this.panel4.Controls.Add(this.comboBox2);
+            this.panel4.Controls.Add(this.dtpsampai);
+            this.panel4.Controls.Add(this.dtpdari);
+            this.panel4.Controls.Add(this.cmbperiode);
             this.panel4.Controls.Add(this.label11);
             this.panel4.Location = new System.Drawing.Point(344, 133);
             this.panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -313,38 +315,38 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Location = new System.Drawing.Point(646, 18);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(95, 27);
+            this.button3.Size = new System.Drawing.Size(76, 27);
             this.button3.TabIndex = 38;
             this.button3.Text = "Terapkan";
             this.button3.UseVisualStyleBackColor = false;
             // 
-            // dateTimePicker3
+            // dtpsampai
             // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(447, 18);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(182, 26);
-            this.dateTimePicker3.TabIndex = 37;
+            this.dtpsampai.Location = new System.Drawing.Point(447, 18);
+            this.dtpsampai.Name = "dtpsampai";
+            this.dtpsampai.Size = new System.Drawing.Size(182, 26);
+            this.dtpsampai.TabIndex = 37;
             // 
-            // dateTimePicker2
+            // dtpdari
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(259, 19);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(182, 26);
-            this.dateTimePicker2.TabIndex = 36;
+            this.dtpdari.Location = new System.Drawing.Point(259, 19);
+            this.dtpdari.Name = "dtpdari";
+            this.dtpdari.Size = new System.Drawing.Size(182, 26);
+            this.dtpdari.TabIndex = 36;
             // 
-            // comboBox2
+            // cmbperiode
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "semua",
-            "Harian",
+            this.cmbperiode.FormattingEnabled = true;
+            this.cmbperiode.Items.AddRange(new object[] {
+            "Hari ini",
             "Mingguan",
             "Bulanan",
-            ""});
-            this.comboBox2.Location = new System.Drawing.Point(117, 20);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 28);
-            this.comboBox2.TabIndex = 35;
+            "Rentang Tanggal"});
+            this.cmbperiode.Location = new System.Drawing.Point(117, 20);
+            this.cmbperiode.Name = "cmbperiode";
+            this.cmbperiode.Size = new System.Drawing.Size(121, 28);
+            this.cmbperiode.TabIndex = 35;
+            this.cmbperiode.SelectedIndexChanged += new System.EventHandler(this.cmbperiode_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -507,6 +509,19 @@
             this.dataGridView2.TabIndex = 40;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
+            // btn_ekspor
+            // 
+            this.btn_ekspor.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btn_ekspor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_ekspor.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_ekspor.Location = new System.Drawing.Point(759, 12);
+            this.btn_ekspor.Name = "btn_ekspor";
+            this.btn_ekspor.Size = new System.Drawing.Size(76, 39);
+            this.btn_ekspor.TabIndex = 39;
+            this.btn_ekspor.Text = "Ekspor";
+            this.btn_ekspor.UseVisualStyleBackColor = false;
+            this.btn_ekspor.Click += new System.EventHandler(this.btn_ekspor_Click);
+            // 
             // Laporan_penjualan
             // 
             this.ClientSize = new System.Drawing.Size(1222, 723);
@@ -578,9 +593,9 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.DateTimePicker dtpsampai;
+        private System.Windows.Forms.DateTimePicker dtpdari;
+        private System.Windows.Forms.ComboBox cmbperiode;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label16;
@@ -597,5 +612,6 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button btn_ekspor;
     }
 }
