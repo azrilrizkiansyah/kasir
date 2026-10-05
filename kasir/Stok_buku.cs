@@ -14,7 +14,8 @@ namespace kasir
 {
     public partial class Stok_buku : Form
     {
-        string koneksi = "server=localhost;database=toko_buku;username=root;password=;";
+        string konfigurasi = "server=localhost;database=toko_buku;username=root;password=;";
+        DataTable dtStok = new DataTable();
         public Stok_buku()
         {
             InitializeComponent();
@@ -31,6 +32,34 @@ namespace kasir
             tombolAktif = tombolPilihan;
             tombolAktif.BackColor = Color.FromArgb(37, 99, 235);
         }
+        private void BuatStrukturTabel()
+        {
+            dtStok.Columns.Clear();
+            dtStok.Columns.Add("id_buku", typeof(int));
+            dtStok.Columns.Add("Kode Buku", typeof(string));
+            dtStok.Columns.Add("Judul Buku", typeof(string));
+            dtStok.Columns.Add("Stok Saat Ini", typeof(int));
+            dtStok.Columns.Add("Jumlah Buku Baru", typeof(int));
+
+            dataGridView1.DataSource = dtStok;
+
+            // Sembunyikan Primary Key id_buku
+            if (dataGridView1.Columns["id_buku"] != null)
+            {
+                dataGridView1.Columns["id_buku"].Visible = false;
+            }
+
+            // Kunci kolom info buku agar tidak bisa diedit acak
+            if (dataGridView1.Columns["Kode Buku"] != null) dataGridView1.Columns["Kode Buku"].ReadOnly = true;
+            if (dataGridView1.Columns["Judul Buku"] != null) dataGridView1.Columns["Judul Buku"].ReadOnly = true;
+            if (dataGridView1.Columns["Stok Saat Ini"] != null) dataGridView1.Columns["Stok Saat Ini"].ReadOnly = true;
+
+            // Kolom Jumlah Buku Baru dapat diedit di tabel atau via panel kanan
+            if (dataGridView1.Columns["Jumlah Buku Baru"] != null) dataGridView1.Columns["Jumlah Buku Baru"].ReadOnly = false;
+
+            // Atur lebar kolom penuh tanpa space kosong di kanan
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -44,22 +73,8 @@ namespace kasir
 
         private void Stok_buku_Load(object sender, EventArgs e)
         {
-            btn_transaksi.Enabled = false;
             AktifkanMenu(btn_manajemenStok);
-
-            MySqlConnection conn = new MySqlConnection(koneksi);
-
-            conn.Open();
-
-            MySqlDataAdapter da = new MySqlDataAdapter(
-                "SELECT * FROM books", conn);
-
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-
-            dataGridView1.DataSource = dt;
-
-            conn.Close();
+            BuatStrukturTabel();
         }
 
         private void button16_Click(object sender, EventArgs e)
@@ -108,65 +123,171 @@ namespace kasir
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow == null)
+            if (dataGridView1.CurrentRow == null || dtStok.Rows.Count == 0)
             {
-                MessageBox.Show("Pilih buku terlebih dahulu!");
+                MessageBox.Show("Pilih baris buku di dalam tabel terlebih dahulu!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            int jumlah;
+            int inputJumlah;
+            bool isAngka = int.TryParse(txt_buku_baru.Text.Trim(), out inputJumlah);
 
-            if (!int.TryParse(textBox2.Text, out jumlah))
+            if (!isAngka || inputJumlah <= 0)
             {
-                MessageBox.Show("Masukkan jumlah stok berupa angka!");
+                MessageBox.Show("Jumlah buku baru harus valid untuk semua buku.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            int id = Convert.ToInt32(
-                dataGridView1.CurrentRow.Cells["id_buku"].Value
-            );
+            // Set nilai ke kolom Jumlah Buku Baru di DataGridView pada baris yang dipilih
+            dataGridView1.CurrentRow.Cells["Jumlah Buku Baru"].Value = inputJumlah;
+            txt_buku_baru.Clear();
+            SimpanPerubahanStok();
+        }
 
-            MySqlConnection conn = new MySqlConnection(koneksi);
+        // 4. Proses Simpan & Perubahan Stok ke Database (Poin 3, 4, 5, 6)
+        private void SimpanPerubahanStok()
+        {
+            if (dtStok.Rows.Count == 0)
+            {
+                MessageBox.Show("Tabel masih kosong!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            conn.Open();
+            // Poin 3: Validasi Input untuk seluruh baris tabel
+            foreach (DataRow row in dtStok.Rows)
+            {
+                if (row["Jumlah Buku Baru"] == DBNull.Value)
+                {
+                    MessageBox.Show("Jumlah buku baru harus valid untuk semua buku.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-            string sql = "UPDATE books SET stok = stok + "
-                       + jumlah + " WHERE id_buku = " + id;
+                int val;
+                bool valid = int.TryParse(row["Jumlah Buku Baru"].ToString(), out val);
 
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            cmd.ExecuteNonQuery();
+                if (!valid || val <= 0)
+                {
+                    MessageBox.Show("Jumlah buku baru harus valid untuk semua buku.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
 
-            conn.Close();
+            // Poin 4 & 5: Proses Perubahan Stok dan Simpan ke Database MySQL
+            MySqlConnection koneksi = new MySqlConnection(konfigurasi);
 
-            MessageBox.Show("Stok berhasil ditambahkan!");
+            try
+            {
+                koneksi.Open();
 
-            Stok_buku_Load(null, null);
+                foreach (DataRow row in dtStok.Rows)
+                {
+                    int idBuku = Convert.ToInt32(row["id_buku"]);
+                    int jumlahBaru = Convert.ToInt32(row["Jumlah Buku Baru"]);
 
-            textBox2.Clear();
+                    string queryUpdate = "UPDATE books SET stok = stok + @jumlahBaru WHERE id_buku = @idBuku";
+
+                    MySqlCommand cmdUpdate = new MySqlCommand(queryUpdate, koneksi);
+                    cmdUpdate.Parameters.AddWithValue("@jumlahBaru", jumlahBaru);
+                    cmdUpdate.Parameters.AddWithValue("@idBuku", idBuku);
+
+                    cmdUpdate.ExecuteNonQuery();
+                }
+
+                // Poin 6: Pesan Konfirmasi Sukses
+                MessageBox.Show("Stok berhasil diperbarui untuk semua buku.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Mengosongkan tabel kembali
+                dtStok.Rows.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal memperbarui stok: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (koneksi.State == ConnectionState.Open)
+                {
+                    koneksi.Close();
+                }
+            }
         }
 
         private void btn_cari_Click(object sender, EventArgs e)
         {
-            MySqlConnection conn = new MySqlConnection(koneksi);
+            if (string.IsNullOrWhiteSpace(txt_cari.Text))
+            {
+                MessageBox.Show("Masukkan Kode Buku atau Judul Buku terlebih dahulu!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            conn.Open();
+            MySqlConnection koneksi = new MySqlConnection(konfigurasi);
 
-            string sql = "SELECT * FROM books WHERE judul LIKE '%" + txt_cari.Text + "%'";
+            try
+            {
+                koneksi.Open();
 
-            MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
-            DataTable dt = new DataTable();
+                string query = "SELECT id_buku, kode_buku, judul, stok FROM books WHERE kode_buku = @keyword OR judul LIKE @keywordLike LIMIT 1";
 
-            da.Fill(dt);
+                MySqlCommand cmd = new MySqlCommand(query, koneksi);
+                cmd.Parameters.AddWithValue("@keyword", txt_cari.Text.Trim());
+                cmd.Parameters.AddWithValue("@keywordLike", "%" + txt_cari.Text.Trim() + "%");
 
-            dataGridView1.DataSource = dt;
+                MySqlDataReader reader = cmd.ExecuteReader();
 
-            conn.Close();
+                if (reader.Read())
+                {
+                    int idBuku = Convert.ToInt32(reader["id_buku"]);
+                    string kode = reader["kode_buku"].ToString();
+                    string judul = reader["judul"].ToString();
+                    int stokSaatIni = Convert.ToInt32(reader["stok"]);
+
+                    // Cek apakah buku sudah ada di dalam tabel agar tidak terduplikasi
+                    bool sudahAda = false;
+                    foreach (DataRow row in dtStok.Rows)
+                    {
+                        if (Convert.ToInt32(row["id_buku"]) == idBuku)
+                        {
+                            sudahAda = true;
+                            break;
+                        }
+                    }
+
+                    if (sudahAda)
+                    {
+                        MessageBox.Show("Buku ini sudah ada di dalam tabel!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        // Tambahkan ke tabel dengan nilai awal Jumlah Buku Baru = 0
+                        dtStok.Rows.Add(idBuku, kode, judul, stokSaatIni, 0);
+                        txt_cari.Clear();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Buku tidak ditemukan!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Terjadi kesalahan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (koneksi.State == ConnectionState.Open)
+                {
+                    koneksi.Close();
+                }
+            }
         }
 
         private void btn_batal_Click(object sender, EventArgs e)
         {
             txt_cari.Clear();
-            textBox2.Clear();
+            txt_buku_baru.Clear();
+            dtStok.Rows.Clear();
         }
     }
 }
