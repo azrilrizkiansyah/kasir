@@ -54,8 +54,8 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -86,19 +86,17 @@
             this.panel10.Controls.Add(this.label22);
             this.panel10.Controls.Add(this.label23);
             this.panel10.Location = new System.Drawing.Point(0, -1);
-            this.panel10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(310, 717);
+            this.panel10.Size = new System.Drawing.Size(207, 466);
             this.panel10.TabIndex = 31;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.label3);
-            this.panel3.Location = new System.Drawing.Point(339, 2);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel3.Location = new System.Drawing.Point(226, 1);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1292, 87);
+            this.panel3.Size = new System.Drawing.Size(861, 57);
             this.panel3.TabIndex = 31;
             // 
             // label3
@@ -106,10 +104,9 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
-            this.label3.Location = new System.Drawing.Point(4, 31);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(3, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(230, 27);
+            this.label3.Size = new System.Drawing.Size(147, 18);
             this.label3.TabIndex = 9;
             this.label3.Text = "Transaksi Penjualan";
             // 
@@ -119,10 +116,9 @@
             this.label2.BackColor = System.Drawing.Color.DodgerBlue;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(13, 31);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(9, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 55);
+            this.label2.Size = new System.Drawing.Size(47, 37);
             this.label2.TabIndex = 30;
             this.label2.Text = "🕮";
             // 
@@ -131,10 +127,9 @@
             this.btn_log_out.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_log_out.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_log_out.ForeColor = System.Drawing.Color.White;
-            this.btn_log_out.Location = new System.Drawing.Point(18, 657);
-            this.btn_log_out.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_log_out.Location = new System.Drawing.Point(12, 427);
             this.btn_log_out.Name = "btn_log_out";
-            this.btn_log_out.Size = new System.Drawing.Size(262, 43);
+            this.btn_log_out.Size = new System.Drawing.Size(175, 28);
             this.btn_log_out.TabIndex = 8;
             this.btn_log_out.Text = "↩ keluar";
             this.btn_log_out.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -145,10 +140,9 @@
             this.btn_Restore_Data.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.btn_Restore_Data.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Restore_Data.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_Restore_Data.Location = new System.Drawing.Point(18, 533);
-            this.btn_Restore_Data.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Restore_Data.Location = new System.Drawing.Point(12, 346);
             this.btn_Restore_Data.Name = "btn_Restore_Data";
-            this.btn_Restore_Data.Size = new System.Drawing.Size(262, 43);
+            this.btn_Restore_Data.Size = new System.Drawing.Size(175, 28);
             this.btn_Restore_Data.TabIndex = 8;
             this.btn_Restore_Data.Text = "Restore Data";
             this.btn_Restore_Data.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -160,10 +154,9 @@
             this.Btn_BackupData.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Btn_BackupData.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Btn_BackupData.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_BackupData.Location = new System.Drawing.Point(18, 464);
-            this.Btn_BackupData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Btn_BackupData.Location = new System.Drawing.Point(12, 302);
             this.Btn_BackupData.Name = "Btn_BackupData";
-            this.Btn_BackupData.Size = new System.Drawing.Size(262, 43);
+            this.Btn_BackupData.Size = new System.Drawing.Size(175, 28);
             this.Btn_BackupData.TabIndex = 9;
             this.Btn_BackupData.Text = "Backup Data";
             this.Btn_BackupData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -174,10 +167,9 @@
             this.btn_manajemenStok.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.btn_manajemenStok.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_manajemenStok.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_manajemenStok.Location = new System.Drawing.Point(18, 400);
-            this.btn_manajemenStok.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_manajemenStok.Location = new System.Drawing.Point(12, 260);
             this.btn_manajemenStok.Name = "btn_manajemenStok";
-            this.btn_manajemenStok.Size = new System.Drawing.Size(262, 43);
+            this.btn_manajemenStok.Size = new System.Drawing.Size(175, 28);
             this.btn_manajemenStok.TabIndex = 7;
             this.btn_manajemenStok.Text = "Manajemen Stok";
             this.btn_manajemenStok.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -188,10 +180,9 @@
             this.btn_transaksi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.btn_transaksi.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_transaksi.ForeColor = System.Drawing.Color.White;
-            this.btn_transaksi.Location = new System.Drawing.Point(18, 201);
-            this.btn_transaksi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_transaksi.Location = new System.Drawing.Point(12, 131);
             this.btn_transaksi.Name = "btn_transaksi";
-            this.btn_transaksi.Size = new System.Drawing.Size(262, 43);
+            this.btn_transaksi.Size = new System.Drawing.Size(175, 28);
             this.btn_transaksi.TabIndex = 3;
             this.btn_transaksi.Text = "Transaksi Penjualan";
             this.btn_transaksi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -202,11 +193,10 @@
             this.btn_manajemenBuku.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.btn_manajemenBuku.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_manajemenBuku.ForeColor = System.Drawing.Color.White;
-            this.btn_manajemenBuku.Location = new System.Drawing.Point(18, 272);
-            this.btn_manajemenBuku.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_manajemenBuku.Location = new System.Drawing.Point(12, 177);
             this.btn_manajemenBuku.Name = "btn_manajemenBuku";
             this.btn_manajemenBuku.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_manajemenBuku.Size = new System.Drawing.Size(262, 43);
+            this.btn_manajemenBuku.Size = new System.Drawing.Size(175, 28);
             this.btn_manajemenBuku.TabIndex = 4;
             this.btn_manajemenBuku.Text = "Manajemen Buku";
             this.btn_manajemenBuku.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -219,10 +209,9 @@
             this.btn_laporaPenjual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.btn_laporaPenjual.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_laporaPenjual.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_laporaPenjual.Location = new System.Drawing.Point(18, 336);
-            this.btn_laporaPenjual.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_laporaPenjual.Location = new System.Drawing.Point(12, 218);
             this.btn_laporaPenjual.Name = "btn_laporaPenjual";
-            this.btn_laporaPenjual.Size = new System.Drawing.Size(262, 43);
+            this.btn_laporaPenjual.Size = new System.Drawing.Size(175, 28);
             this.btn_laporaPenjual.TabIndex = 6;
             this.btn_laporaPenjual.Text = "Laporan Penjualan ";
             this.btn_laporaPenjual.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -233,10 +222,9 @@
             // 
             this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button16.ForeColor = System.Drawing.Color.White;
-            this.button16.Location = new System.Drawing.Point(18, 131);
-            this.button16.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button16.Location = new System.Drawing.Point(12, 85);
             this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(262, 43);
+            this.button16.Size = new System.Drawing.Size(175, 28);
             this.button16.TabIndex = 1;
             this.button16.Text = "Dashboard";
             this.button16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -246,10 +234,9 @@
             // panel11
             // 
             this.panel11.BackColor = System.Drawing.Color.White;
-            this.panel11.Location = new System.Drawing.Point(0, 98);
-            this.panel11.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel11.Location = new System.Drawing.Point(0, 64);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(306, 1);
+            this.panel11.Size = new System.Drawing.Size(204, 1);
             this.panel11.TabIndex = 1;
             // 
             // label22
@@ -257,10 +244,9 @@
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label22.Location = new System.Drawing.Point(84, 65);
-            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Location = new System.Drawing.Point(56, 42);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(123, 22);
+            this.label22.Size = new System.Drawing.Size(81, 15);
             this.label22.TabIndex = 1;
             this.label22.Text = "Admin Toko Buku";
             // 
@@ -269,10 +255,9 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.White;
-            this.label23.Location = new System.Drawing.Point(82, 31);
-            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label23.Location = new System.Drawing.Point(55, 20);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(120, 33);
+            this.label23.Size = new System.Drawing.Size(79, 23);
             this.label23.TabIndex = 0;
             this.label23.Text = "BukuKita";
             // 
@@ -280,10 +265,9 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(309, -1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel1.Location = new System.Drawing.Point(206, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(893, 102);
+            this.panel1.Size = new System.Drawing.Size(595, 66);
             this.panel1.TabIndex = 32;
             // 
             // label1
@@ -291,10 +275,9 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(25, 36);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(17, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(192, 27);
+            this.label1.Size = new System.Drawing.Size(125, 18);
             this.label1.TabIndex = 9;
             this.label1.Text = "Manajemen Stok";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -304,48 +287,52 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(334, 129);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(223, 84);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(118, 27);
+            this.label4.Size = new System.Drawing.Size(77, 18);
             this.label4.TabIndex = 10;
             this.label4.Text = "Cari Buku";
             // 
             // txt_cari
             // 
-            this.txt_cari.Location = new System.Drawing.Point(339, 159);
+            this.txt_cari.Location = new System.Drawing.Point(226, 103);
+            this.txt_cari.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txt_cari.Name = "txt_cari";
-            this.txt_cari.Size = new System.Drawing.Size(306, 26);
+            this.txt_cari.Size = new System.Drawing.Size(205, 20);
             this.txt_cari.TabIndex = 33;
             // 
             // btn_cari
             // 
             this.btn_cari.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btn_cari.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_cari.Location = new System.Drawing.Point(665, 151);
+            this.btn_cari.Location = new System.Drawing.Point(443, 98);
+            this.btn_cari.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_cari.Name = "btn_cari";
-            this.btn_cari.Size = new System.Drawing.Size(75, 43);
+            this.btn_cari.Size = new System.Drawing.Size(50, 28);
             this.btn_cari.TabIndex = 34;
             this.btn_cari.Text = "Cari";
             this.btn_cari.UseVisualStyleBackColor = false;
+            this.btn_cari.Click += new System.EventHandler(this.btn_cari_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(309, 294);
+            this.dataGridView1.Location = new System.Drawing.Point(206, 191);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(552, 422);
+            this.dataGridView1.Size = new System.Drawing.Size(368, 274);
             this.dataGridView1.TabIndex = 35;
             // 
             // btn_tambah_stok
             // 
             this.btn_tambah_stok.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(185)))), ((int)(((byte)(129)))));
             this.btn_tambah_stok.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_tambah_stok.Location = new System.Drawing.Point(24, 142);
+            this.btn_tambah_stok.Location = new System.Drawing.Point(16, 92);
+            this.btn_tambah_stok.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_tambah_stok.Name = "btn_tambah_stok";
-            this.btn_tambah_stok.Size = new System.Drawing.Size(131, 35);
+            this.btn_tambah_stok.Size = new System.Drawing.Size(87, 23);
             this.btn_tambah_stok.TabIndex = 36;
             this.btn_tambah_stok.Text = "Tambah Stok";
             this.btn_tambah_stok.UseVisualStyleBackColor = false;
@@ -356,26 +343,30 @@
             this.btn_batal.BackColor = System.Drawing.Color.Red;
             this.btn_batal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_batal.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_batal.Location = new System.Drawing.Point(193, 142);
+            this.btn_batal.Location = new System.Drawing.Point(129, 92);
+            this.btn_batal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_batal.Name = "btn_batal";
-            this.btn_batal.Size = new System.Drawing.Size(131, 35);
+            this.btn_batal.Size = new System.Drawing.Size(87, 23);
             this.btn_batal.TabIndex = 37;
             this.btn_batal.Text = "Batal";
             this.btn_batal.UseVisualStyleBackColor = false;
+            this.btn_batal.Click += new System.EventHandler(this.btn_batal_Click);
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(24, 74);
+            this.textBox2.Location = new System.Drawing.Point(16, 48);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(300, 26);
+            this.textBox2.Size = new System.Drawing.Size(201, 20);
             this.textBox2.TabIndex = 38;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 48);
+            this.label5.Location = new System.Drawing.Point(13, 31);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(82, 20);
+            this.label5.Size = new System.Drawing.Size(56, 13);
             this.label5.TabIndex = 39;
             this.label5.Text = "Buku baru";
             // 
@@ -384,31 +375,30 @@
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Location = new System.Drawing.Point(309, 221);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel2.Location = new System.Drawing.Point(206, 144);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(552, 73);
+            this.panel2.Size = new System.Drawing.Size(368, 47);
             this.panel2.TabIndex = 33;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.DimGray;
+            this.panel4.Location = new System.Drawing.Point(373, 47);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(221, 240);
+            this.panel4.TabIndex = 40;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(25, 26);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(17, 17);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(195, 27);
+            this.label6.Size = new System.Drawing.Size(126, 18);
             this.label6.TabIndex = 9;
             this.label6.Text = "Daftar Stok Buku";
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.DimGray;
-            this.panel4.Location = new System.Drawing.Point(560, 73);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(332, 370);
-            this.panel4.TabIndex = 40;
             // 
             // panel5
             // 
@@ -417,9 +407,10 @@
             this.panel5.Controls.Add(this.btn_tambah_stok);
             this.panel5.Controls.Add(this.btn_batal);
             this.panel5.Controls.Add(this.textBox2);
-            this.panel5.Location = new System.Drawing.Point(859, 296);
+            this.panel5.Location = new System.Drawing.Point(573, 192);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(340, 420);
+            this.panel5.Size = new System.Drawing.Size(227, 273);
             this.panel5.TabIndex = 40;
             // 
             // panel6
@@ -427,18 +418,18 @@
             this.panel6.BackColor = System.Drawing.Color.White;
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Controls.Add(this.label7);
-            this.panel6.Location = new System.Drawing.Point(859, 221);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel6.Location = new System.Drawing.Point(573, 144);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(340, 73);
+            this.panel6.Size = new System.Drawing.Size(227, 47);
             this.panel6.TabIndex = 41;
             // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.DimGray;
-            this.panel7.Location = new System.Drawing.Point(560, 73);
+            this.panel7.Location = new System.Drawing.Point(373, 47);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(332, 370);
+            this.panel7.Size = new System.Drawing.Size(221, 240);
             this.panel7.TabIndex = 40;
             // 
             // label7
@@ -446,18 +437,17 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(25, 26);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(17, 17);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(265, 27);
+            this.label7.Size = new System.Drawing.Size(168, 18);
             this.label7.TabIndex = 9;
             this.label7.Text = "Tambah buku baru/stok";
             // 
             // Stok_buku
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 717);
+            this.ClientSize = new System.Drawing.Size(800, 466);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel2);
@@ -467,7 +457,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel10);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Stok_buku";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "form2";

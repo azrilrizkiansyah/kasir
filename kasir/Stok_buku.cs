@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,11 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace kasir
 {
     public partial class Stok_buku : Form
     {
+        string koneksi = "server=localhost;database=toko_buku;username=root;password=;";
         public Stok_buku()
         {
             InitializeComponent();
@@ -43,6 +46,20 @@ namespace kasir
         {
             btn_transaksi.Enabled = false;
             AktifkanMenu(btn_manajemenStok);
+
+            MySqlConnection conn = new MySqlConnection(koneksi);
+
+            conn.Open();
+
+            MySqlDataAdapter da = new MySqlDataAdapter(
+                "SELECT * FROM books", conn);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            dataGridView1.DataSource = dt;
+
+            conn.Close();
         }
 
         private void button16_Click(object sender, EventArgs e)
@@ -91,7 +108,65 @@ namespace kasir
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.CurrentRow == null)
+            {
+                MessageBox.Show("Pilih buku terlebih dahulu!");
+                return;
+            }
 
+            int jumlah;
+
+            if (!int.TryParse(textBox2.Text, out jumlah))
+            {
+                MessageBox.Show("Masukkan jumlah stok berupa angka!");
+                return;
+            }
+
+            int id = Convert.ToInt32(
+                dataGridView1.CurrentRow.Cells["id_buku"].Value
+            );
+
+            MySqlConnection conn = new MySqlConnection(koneksi);
+
+            conn.Open();
+
+            string sql = "UPDATE books SET stok = stok + "
+                       + jumlah + " WHERE id_buku = " + id;
+
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+            MessageBox.Show("Stok berhasil ditambahkan!");
+
+            Stok_buku_Load(null, null);
+
+            textBox2.Clear();
+        }
+
+        private void btn_cari_Click(object sender, EventArgs e)
+        {
+            MySqlConnection conn = new MySqlConnection(koneksi);
+
+            conn.Open();
+
+            string sql = "SELECT * FROM books WHERE judul LIKE '%" + txt_cari.Text + "%'";
+
+            MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
+
+            dataGridView1.DataSource = dt;
+
+            conn.Close();
+        }
+
+        private void btn_batal_Click(object sender, EventArgs e)
+        {
+            txt_cari.Clear();
+            textBox2.Clear();
         }
     }
 }

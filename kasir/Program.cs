@@ -16,7 +16,7 @@ namespace kasir
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Laporan_penjualan());
+            Application.Run(new Stok_buku());
         }
     }
 }
