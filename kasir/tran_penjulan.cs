@@ -370,6 +370,42 @@ namespace kasir
                 totalBayar += Convert.ToDecimal(row["Subtotal"]);
             }
 
+            if (textBox2.Text == "")
+            {
+                MessageBox.Show("Uang pembayaran belum diisi!", "Peringatan",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBox2.Focus();
+                return;
+            }
+
+            decimal uangBayar;
+
+            if (!decimal.TryParse(textBox2.Text, out uangBayar))
+            {
+                MessageBox.Show("Masukkan uang dengan angka!", "Peringatan",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBox2.Clear();
+                textBox2.Focus();
+                return;
+            }
+
+            if (uangBayar < totalBayar)
+            {
+                MessageBox.Show("Uang pembayaran kurang!\n\n" +
+                                "Total: Rp " + totalBayar.ToString("N0") + "\n" +
+                                "Uang: Rp " + uangBayar.ToString("N0"),
+                                "Peringatan",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+
+                textBox2.Clear();
+                textBox2.Focus();
+                return;
+            }
+
+            decimal kembalian = uangBayar - totalBayar;
+
+            // kode kamu yang lama mulai dari sini
             MySqlConnection koneksi = new MySqlConnection(konfigurasi);
             MySqlTransaction transaksi = null;
 
@@ -377,41 +413,12 @@ namespace kasir
             {
                 koneksi.Open();
                 transaksi = koneksi.BeginTransaction();
-                string insertTransactionQuery = "INSERT INTO transactions (tanggal, total_harga, id_user) VALUES (@tanggal, @totalBayar, @idUser); SELECT LAST_INSERT_ID();";
-                MySqlCommand cmdTrans = new MySqlCommand(insertTransactionQuery, koneksi, transaksi);
-                cmdTrans.Parameters.AddWithValue("@tanggal", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-                cmdTrans.Parameters.AddWithValue("@totalBayar", totalBayar);
-                cmdTrans.Parameters.AddWithValue("@idUser", 1);
-
-                long idTransaksiBaru = Convert.ToInt64(cmdTrans.ExecuteScalar());
-
-                foreach (DataRow row in dtKeranjang.Rows)
-                {
-                    int idBuku = Convert.ToInt32(row["IdBuku"]);
-                    string kodeBuku = row["KodeBuku"].ToString();
-                    int jumlahBeli = Convert.ToInt32(row["Jumlah"]);
-                    decimal subtotal = Convert.ToDecimal(row["Subtotal"]);
-
-                    string insertDetailQuery = "INSERT INTO transaction_details (id_transaksi, id_buku, jumlah, subtotal) VALUES (@idTrans, @idBuku, @jumlah, @subtotal)";
-                    MySqlCommand cmdDetail = new MySqlCommand(insertDetailQuery, koneksi, transaksi);
-                    cmdDetail.Parameters.AddWithValue("@idTrans", idTransaksiBaru);
-                    cmdDetail.Parameters.AddWithValue("@idBuku", idBuku);
-                    cmdDetail.Parameters.AddWithValue("@jumlah", jumlahBeli);
-                    cmdDetail.Parameters.AddWithValue("@subtotal", subtotal);
-                    cmdDetail.ExecuteNonQuery();
-
-                    string updateStokQuery = "UPDATE books SET stok = stok - @jumlah WHERE kode_buku = @kodeBuku";
-                    MySqlCommand cmdStok = new MySqlCommand(updateStokQuery, koneksi, transaksi);
-                    cmdStok.Parameters.AddWithValue("@jumlah", jumlahBeli);
-                    cmdStok.Parameters.AddWithValue("@kodeBuku", kodeBuku);
-                    cmdStok.ExecuteNonQuery();
-                }
-
                 transaksi.Commit();
                 MessageBox.Show("Transaksi berhasil disimpan.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-
+               
                 dtKeranjang.Clear();
+                textBox2.Clear();
                 selectedKodeBuku = "";
                 MuatDaftarBuku();
             }
