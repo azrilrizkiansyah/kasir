@@ -45,6 +45,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btn_ekspor = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.dtpsampai = new System.Windows.Forms.DateTimePicker();
             this.dtpdari = new System.Windows.Forms.DateTimePicker();
@@ -65,7 +66,6 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.label20 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.btn_ekspor = new System.Windows.Forms.Button();
             this.panel10.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -107,7 +107,7 @@
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(30, 22);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(73, 55);
+            this.label7.Size = new System.Drawing.Size(46, 37);
             this.label7.TabIndex = 33;
             this.label7.Text = "🕮";
             // 
@@ -119,7 +119,7 @@
             this.label22.Location = new System.Drawing.Point(112, 56);
             this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(114, 22);
+            this.label22.Size = new System.Drawing.Size(76, 15);
             this.label22.TabIndex = 33;
             this.label22.Text = "Kasir Toko Buku";
             // 
@@ -131,7 +131,7 @@
             this.label23.Location = new System.Drawing.Point(110, 22);
             this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(120, 33);
+            this.label23.Size = new System.Drawing.Size(79, 23);
             this.label23.TabIndex = 32;
             this.label23.Text = "BukuKita";
             // 
@@ -290,7 +290,7 @@
             this.label10.Location = new System.Drawing.Point(21, 27);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(216, 27);
+            this.label10.Size = new System.Drawing.Size(138, 18);
             this.label10.TabIndex = 34;
             this.label10.Text = "Laporan Penjualan";
             // 
@@ -309,6 +309,19 @@
             this.panel4.Size = new System.Drawing.Size(847, 60);
             this.panel4.TabIndex = 35;
             // 
+            // btn_ekspor
+            // 
+            this.btn_ekspor.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btn_ekspor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_ekspor.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_ekspor.Location = new System.Drawing.Point(759, 12);
+            this.btn_ekspor.Name = "btn_ekspor";
+            this.btn_ekspor.Size = new System.Drawing.Size(76, 39);
+            this.btn_ekspor.TabIndex = 39;
+            this.btn_ekspor.Text = "Ekspor";
+            this.btn_ekspor.UseVisualStyleBackColor = false;
+            this.btn_ekspor.Click += new System.EventHandler(this.btn_ekspor_Click);
+            // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.DarkGray;
@@ -319,19 +332,20 @@
             this.button3.TabIndex = 38;
             this.button3.Text = "Terapkan";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // dtpsampai
             // 
             this.dtpsampai.Location = new System.Drawing.Point(447, 18);
             this.dtpsampai.Name = "dtpsampai";
-            this.dtpsampai.Size = new System.Drawing.Size(182, 26);
+            this.dtpsampai.Size = new System.Drawing.Size(182, 20);
             this.dtpsampai.TabIndex = 37;
             // 
             // dtpdari
             // 
             this.dtpdari.Location = new System.Drawing.Point(259, 19);
             this.dtpdari.Name = "dtpdari";
-            this.dtpdari.Size = new System.Drawing.Size(182, 26);
+            this.dtpdari.Size = new System.Drawing.Size(182, 20);
             this.dtpdari.TabIndex = 36;
             // 
             // cmbperiode
@@ -344,7 +358,7 @@
             "Rentang Tanggal"});
             this.cmbperiode.Location = new System.Drawing.Point(117, 20);
             this.cmbperiode.Name = "cmbperiode";
-            this.cmbperiode.Size = new System.Drawing.Size(121, 28);
+            this.cmbperiode.Size = new System.Drawing.Size(121, 21);
             this.cmbperiode.TabIndex = 35;
             this.cmbperiode.SelectedIndexChanged += new System.EventHandler(this.cmbperiode_SelectedIndexChanged);
             // 
@@ -356,7 +370,7 @@
             this.label11.Location = new System.Drawing.Point(16, 18);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(94, 27);
+            this.label11.Size = new System.Drawing.Size(64, 18);
             this.label11.TabIndex = 34;
             this.label11.Text = "Periode";
             // 
@@ -376,7 +390,7 @@
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(18, 57);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(117, 20);
+            this.label16.Size = new System.Drawing.Size(84, 13);
             this.label16.TabIndex = 1;
             this.label16.Text = "Rp 2.000.000";
             // 
@@ -385,7 +399,7 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(3, 9);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(117, 20);
+            this.label12.Size = new System.Drawing.Size(80, 13);
             this.label12.TabIndex = 0;
             this.label12.Text = "Total Pendatan";
             // 
@@ -405,7 +419,7 @@
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(18, 57);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(29, 20);
+            this.label17.Size = new System.Drawing.Size(21, 13);
             this.label17.TabIndex = 2;
             this.label17.Text = "14";
             // 
@@ -414,7 +428,7 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(3, 9);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(132, 20);
+            this.label13.Size = new System.Drawing.Size(89, 13);
             this.label13.TabIndex = 1;
             this.label13.Text = "Jumlah Transaksi";
             // 
@@ -434,7 +448,7 @@
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(14, 57);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(29, 20);
+            this.label18.Size = new System.Drawing.Size(21, 13);
             this.label18.TabIndex = 3;
             this.label18.Text = "37";
             // 
@@ -443,7 +457,7 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(3, 9);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(136, 20);
+            this.label14.Size = new System.Drawing.Size(94, 13);
             this.label14.TabIndex = 2;
             this.label14.Text = "Total Buku Terjual";
             // 
@@ -463,7 +477,7 @@
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.Location = new System.Drawing.Point(3, 47);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(124, 40);
+            this.label19.Size = new System.Drawing.Size(87, 26);
             this.label19.TabIndex = 4;
             this.label19.Text = "Desain Grafis \r\nModern";
             // 
@@ -472,7 +486,7 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(3, 9);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(101, 20);
+            this.label15.Size = new System.Drawing.Size(69, 13);
             this.label15.TabIndex = 3;
             this.label15.Text = "Buku Terlaris";
             // 
@@ -494,7 +508,7 @@
             this.label20.Location = new System.Drawing.Point(16, 18);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(209, 27);
+            this.label20.Size = new System.Drawing.Size(137, 18);
             this.label20.TabIndex = 34;
             this.label20.Text = "Laporan Transaksi";
             // 
@@ -508,19 +522,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(846, 278);
             this.dataGridView2.TabIndex = 40;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
-            // 
-            // btn_ekspor
-            // 
-            this.btn_ekspor.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btn_ekspor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_ekspor.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_ekspor.Location = new System.Drawing.Point(759, 12);
-            this.btn_ekspor.Name = "btn_ekspor";
-            this.btn_ekspor.Size = new System.Drawing.Size(76, 39);
-            this.btn_ekspor.TabIndex = 39;
-            this.btn_ekspor.Text = "Ekspor";
-            this.btn_ekspor.UseVisualStyleBackColor = false;
-            this.btn_ekspor.Click += new System.EventHandler(this.btn_ekspor_Click);
             // 
             // Laporan_penjualan
             // 
