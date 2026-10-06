@@ -52,6 +52,7 @@ namespace kasir
             
             SendMessage(textBox2.Handle, 0x1501, (IntPtr)1, "Masukan password Anda");
             textBox1.Focus();
+            
 
         }
 
@@ -62,15 +63,15 @@ namespace kasir
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (textBox2.UseSystemPasswordChar == false)
-            {
-                textBox2.UseSystemPasswordChar = true; 
-                button3.Text = "👁"; 
-            }
-            else
+            if (textBox2.UseSystemPasswordChar == true)
             {
                 textBox2.UseSystemPasswordChar = false; 
                 button3.Text = "🙈"; 
+            }
+            else
+            {
+                textBox2.UseSystemPasswordChar = true; 
+                button3.Text = "👁"; 
             }
         }
 

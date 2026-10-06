@@ -169,6 +169,7 @@
             this.btn_Restore_Data.Text = "Restore Data";
             this.btn_Restore_Data.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Restore_Data.UseVisualStyleBackColor = false;
+            this.btn_Restore_Data.Click += new System.EventHandler(this.btn_Restore_Data_Click);
             // 
             // Btn_BackupData
             // 
@@ -184,6 +185,7 @@
             this.Btn_BackupData.Text = "Backup Data";
             this.Btn_BackupData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Btn_BackupData.UseVisualStyleBackColor = false;
+            this.Btn_BackupData.Click += new System.EventHandler(this.Btn_BackupData_Click);
             // 
             // btn_manajemenStok
             // 

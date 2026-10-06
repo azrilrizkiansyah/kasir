@@ -26,28 +26,57 @@ namespace kasir
             Btn_BackupData.Enabled = false;
             btn_Restore_Data.Enabled = false;
             AktifkanMenu(btn_manajemenStok);
-            
+            MuatDataStok();
+
+        }
+        private void MuatDataStok()
+        {
             MySqlConnection conn = new MySqlConnection(konfigurasi);
             try
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT kode_buku, judul, stok FROM books", conn);
+
+                // Query UNION ALL: Ambil rincian stok buku + tambahkan 1 baris TOTAL di paling bawah
+                string query = @"
+                    SELECT kode_buku, judul, stok FROM books
+                    UNION ALL
+                    SELECT 'TOTAL' AS kode_buku, 'TOTAL KESELURUHAN STOK' AS judul, IFNULL(SUM(stok), 0) AS stok FROM books";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
-                da.Fill(dt);          
-                dataGridView1.DataSource = dt;           
+                da.Fill(dt);
+
+                dataGridView1.DataSource = dt;
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                // Pengaturan Header & Lebar Kolom
+                dataGridView1.Columns["kode_buku"].HeaderText = "Kode Buku";
                 dataGridView1.Columns["kode_buku"].FillWeight = 25;
+
+                dataGridView1.Columns["judul"].HeaderText = "Judul Buku";
                 dataGridView1.Columns["judul"].FillWeight = 55;
+
+                dataGridView1.Columns["stok"].HeaderText = "Sisa Stok";
                 dataGridView1.Columns["stok"].FillWeight = 20;
+
+                // Memberi warna abu-abu & teks tebal (bold) pada baris TOTAL di paling bawah
+                if (dataGridView1.Rows.Count > 0)
+                {
+                    int lastIndex = dataGridView1.Rows.Count - 1;
+                    DataGridViewRow lastRow = dataGridView1.Rows[lastIndex];
+
+                    lastRow.DefaultCellStyle.BackColor = Color.LightGray;
+                    lastRow.DefaultCellStyle.Font = new Font(dataGridView1.Font, FontStyle.Bold);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Error saat memuat stok: " + ex.Message, "Error Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                conn.Close();
+                if (conn.State == ConnectionState.Open) conn.Close();
             }
         }
         private Button tombolAktif = null;

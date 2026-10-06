@@ -85,23 +85,23 @@ namespace kasir
         {
 
             MySqlConnection koneksi = new MySqlConnection(konfigurasi);
-            try 
+            try
             {
                 koneksi.Open();
                 string query = "SELECT SUM(stok) FROM books";
                 MySqlCommand cmd = new MySqlCommand(query, koneksi);
                 int totalStok = System.Convert.ToInt32(cmd.ExecuteScalar());
-                label12.Text = totalStok > 0 ? totalStok + " " : "";
-            } 
-            catch (Exception ex) 
-            { 
+                label3.Text = totalStok > 0 ? totalStok + " " : "";
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show("Gagal menampilkan data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
 
-         private void tampilkanunitbuku()
+        private void tampilkanunitbuku()
         {
             MySqlConnection koneksi = new MySqlConnection(konfigurasi);
             try 
@@ -247,37 +247,7 @@ namespace kasir
 
         private void btn_Restore_Data_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "SQL Files (*.sql)|*.sql";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    // Path ke mysql.exe XAMPP
-                    string mysqlPath = @"C:\xampp\mysql\bin\mysql.exe";
-
-                    string cmdText = $"-u root nama_database_kamu -e \"source {openFileDialog.FileName.Replace(@"\", "/")}\"";
-
-                    System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo();
-                    psi.FileName = mysqlPath;
-                    psi.Arguments = cmdText;
-                    psi.RedirectStandardOutput = true;
-                    psi.UseShellExecute = false;
-                    psi.CreateNoWindow = true;
-
-                    using (System.Diagnostics.Process process = System.Diagnostics.Process.Start(psi))
-                    {
-                        process.WaitForExit();
-                    }
-
-                    MessageBox.Show("Data berhasil dipulihkan.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Gagal memulihkan data. Error: " + ex.Message, "Error Validation", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+           
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -405,6 +375,64 @@ namespace kasir
             pindah2.FormClosed += Pindah2_FormClosed1;
             pindah2.Show();
             this.Hide();
+        }
+
+        private void btn_Restore_Data_Click_1(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "SQL Files (*.sql)|*.sql";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    // Path ke mysql.exe XAMPP
+                    string mysqlPath = @"C:\xampp\mysql\bin\mysql.exe";
+
+                    string cmdText = $"-u root nama_database_kamu -e \"source {openFileDialog.FileName.Replace(@"\", "/")}\"";
+
+                    System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo();
+                    psi.FileName = mysqlPath;
+                    psi.Arguments = cmdText;
+                    psi.RedirectStandardOutput = true;
+                    psi.UseShellExecute = false;
+                    psi.CreateNoWindow = true;
+
+                    using (System.Diagnostics.Process process = System.Diagnostics.Process.Start(psi))
+                    {
+                        process.WaitForExit();
+                    }
+
+                    MessageBox.Show("Data berhasil dipulihkan.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Gagal memulihkan data. Error: " + ex.Message, "Error Validation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void Kembalii_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Fitur ini belum tersedia. Silakan login atau hubungi admin.", "Informasi", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+            if (MessageBox.Show("Apakah Anda ingin login kembali?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                login kembali = new login();
+                kembali.FormClosed += Kembali_FormClosed1;
+                kembali.Show();
+                this.Hide();
+            }
         }
     }
     

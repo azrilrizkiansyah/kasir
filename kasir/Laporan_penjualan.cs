@@ -269,5 +269,78 @@ namespace kasir
         {
 
         }
+
+        private void Btn_BackupData_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "SQL Files (*.sql)|*.sql";
+            saveFileDialog.FileName = $"Backup_Database_{DateTime.Now:yyyyMMdd_HHmmss}.sql";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Sesuaikan dengan connection string kamu
+                string connString = "server=localhost;user=root;password=;database=toko_buku;";
+
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        using (MySqlBackup mb = new MySqlBackup(cmd))
+                        {
+                            try
+                            {
+                                cmd.Connection = conn;
+                                conn.Open();
+
+                                // Ekspor data ke file SQL
+                                mb.ExportToFile(saveFileDialog.FileName);
+
+                                MessageBox.Show("Backup data berhasil disimpan!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Gagal melakukan backup data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void btn_Restore_Data_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "SQL Files (*.sql)|*.sql";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    // Path ke mysql.exe XAMPP
+                    string mysqlPath = @"C:\xampp\mysql\bin\mysql.exe";
+
+                    string cmdText = $"-u root nama_database_kamu -e \"source {openFileDialog.FileName.Replace(@"\", "/")}\"";
+
+                    System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo();
+                    psi.FileName = mysqlPath;
+                    psi.Arguments = cmdText;
+                    psi.RedirectStandardOutput = true;
+                    psi.UseShellExecute = false;
+                    psi.CreateNoWindow = true;
+
+                    using (System.Diagnostics.Process process = System.Diagnostics.Process.Start(psi))
+                    {
+                        process.WaitForExit();
+                    }
+
+                    MessageBox.Show("Data berhasil dipulihkan.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Gagal memulihkan data. Error: " + ex.Message, "Error Validation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
+    
 }

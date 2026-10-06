@@ -180,32 +180,43 @@ namespace kasir
             return grandTotal;
         }
 
+        
         private string BuatTeksStruk(long idTransaksi, decimal total, decimal bayar, decimal kembali)
         {
-            var sb = new StringBuilder();
-            int width = 40;
+            decimal kembalian = total - bayar;
+            StringBuilder sb = new StringBuilder();
+            int width = 36;
             Func<string, string> center = s => s.PadLeft((width + s.Length) / 2).PadRight(width);
 
-            sb.AppendLine("========================================");
+            sb.AppendLine("====================================");
             sb.AppendLine(center("TOKO BUKU"));
-            sb.AppendLine("========================================");
-            sb.AppendLine($"No: {idTransaksi}\nTanggal: {DateTime.Now:yyyy-MM-dd HH:mm}");
-            sb.AppendLine("----------------------------------------");
-            sb.AppendLine(string.Format("{0,-6}{1,-18}{2,3}{3,9}", "Kode", "Judul", "Jml", "Subtotal"));
+            sb.AppendLine("====================================");
+            sb.AppendLine($"No Struk : TRX-{idTransaksi}");
+            sb.AppendLine($"Tanggal  : {DateTime.Now:yyyy-MM-dd HH:mm}");
+            sb.AppendLine("------------------------------------");
+            sb.AppendLine(string.Format("{0,-15}{1,3}{2,8}{3,10}", "Barang", "Qty", "Harga", "Total"));
+            sb.AppendLine("------------------------------------");
 
-            foreach (DataRow row in dataGridView1.Rows)
+            // KUNCI PERBAIKAN: Gunakan dtKeranjang.Rows, BUKAN dataGridView1.Rows
+            foreach (DataRow row in dtKeranjang.Rows)
             {
-                string judul = row["judul"].ToString();
-                judul = judul.Length > 15 ? judul.Substring(0, 15) + ".." : judul;
-                sb.AppendLine(string.Format("{0,-6}{1,-18}{2,3} {3,9:N0}", row["kode_buku"], judul, row["jumlah"], row["subtotal"]));
+                string judul = row["Judul"].ToString();
+                if (judul.Length > 14) judul = judul.Substring(0, 14);
+
+                int qty = Convert.ToInt32(row["Jumlah"]);
+                decimal harga = Convert.ToDecimal(row["Harga"]);
+                decimal subtotal = Convert.ToDecimal(row["Subtotal"]);
+
+                sb.AppendLine(string.Format("{0,-15}{1,3}{2,8:N0}{3,10:N0}", judul, qty, harga, subtotal));
             }
 
-            sb.AppendLine("----------------------------------------");
-            sb.AppendLine(string.Format("{0,-30}{1,10:N0}", "TOTAL:", total));
-            sb.AppendLine(string.Format("{0,-30}{1,10:N0}", "BAYAR:", bayar));
-            sb.AppendLine(string.Format("{0,-30}{1,10:N0}", "KEMBALIAN:", kembali));
-            sb.AppendLine("========================================");
-            sb.AppendLine(center("TERIMA KASIH"));
+            sb.AppendLine("------------------------------------");
+            sb.AppendLine(string.Format("{0,-26}{1,10:N0}", "TOTAL:", total));
+            sb.AppendLine(string.Format("{0,-26}{1,10:N0}", "BAYAR:", bayar));
+            sb.AppendLine(string.Format("{0,-26}{1,10:N0}", "KEMBALI:", kembali));
+            sb.AppendLine("====================================");
+            sb.AppendLine(center("TERIMA KASIH ATAS KUNJUNGAN ANDA"));
+            sb.AppendLine("====================================");
 
             return sb.ToString();
         }
@@ -368,9 +379,14 @@ namespace kasir
         private void btn_log_out_Click(object sender, EventArgs e)
         {
             login kembali = new login();
-            kembali.FormClosed += Kembali_FormClosed2;
+            kembali.FormClosed += Kembali_FormClosed3; ;
             kembali.Show();
             this.Hide();
+        }
+
+        private void Kembali_FormClosed3(object sender, FormClosedEventArgs e)
+        {
+           this.Close();
         }
 
         private void Kembali_FormClosed2(object sender, FormClosedEventArgs e)
@@ -420,22 +436,25 @@ namespace kasir
                 koneksi.Open();
                 transaksi = koneksi.BeginTransaction();
 
-                // A. Insert Header Transaksi (Tabel: transactions)
+                // A. Insert Header Transaksi
                 string sqlPenjualan = "INSERT INTO transactions (tanggal, total_harga, id_user) VALUES (NOW(), @total, @idUser); SELECT LAST_INSERT_ID();";
                 MySqlCommand cmdPenjualan = new MySqlCommand(sqlPenjualan, koneksi, transaksi);
                 cmdPenjualan.Parameters.AddWithValue("@total", totalBayar);
-                cmdPenjualan.Parameters.AddWithValue("@idUser", 2);
+                cmdPenjualan.Parameters.AddWithValue("@idUser", 2); 
 
                 long idTransaksi = Convert.ToInt64(cmdPenjualan.ExecuteScalar());
 
-                // B. Insert Detail Transaksi (Tabel: transaction_details) & Update Stok (Tabel: books)
-                foreach (DataRow row in dtKeranjang.Rows)
+                // B. Insert Detail Transaksi & Update Stok
+                foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    int idBuku = Convert.ToInt32(row["IdBuku"]);
-                    int jumlah = Convert.ToInt32(row["Jumlah"]);
-                    decimal subtotal = Convert.ToDecimal(row["Subtotal"]);
+                    // Lewati baris kosong paling bawah (NewRow) jika ada
+                    if (row.IsNewRow) continue;
 
-                    // Detail
+                    int idBuku = Convert.ToInt32(row.Cells["IdBuku"].Value);
+                    int jumlah = Convert.ToInt32(row.Cells["Jumlah"].Value);
+                    decimal subtotal = Convert.ToDecimal(row.Cells["Subtotal"].Value);
+
+                    // Insert Detail
                     string sqlDetail = "INSERT INTO transaction_details (id_transaksi, id_buku, jumlah, subtotal) VALUES (@idTrx, @idBuku, @jumlah, @subtotal)";
                     MySqlCommand cmdDetail = new MySqlCommand(sqlDetail, koneksi, transaksi);
                     cmdDetail.Parameters.AddWithValue("@idTrx", idTransaksi);
@@ -470,13 +489,31 @@ namespace kasir
             }
             catch (Exception ex)
             {
-                if (transaksi != null) transaksi.Rollback();
-                MessageBox.Show("Transaksi gagal disimpan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Cek apakah transaksi masih aktif sebelum melakukan Rollback
+                if (transaksi != null && transaksi.Connection != null)
+                {
+                    try
+                    {
+                        transaksi.Rollback();
+                    }
+                    catch
+                    {
+                        // Abaikan jika rollback gagal
+                    }
+                }
+
+                // Tampilkan pesan error SQL yang sebenarnya terjadi
+                MessageBox.Show("Transaksi gagal disimpan:\n" + ex.Message, "Error Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
                 if (koneksi != null && koneksi.State == ConnectionState.Open) koneksi.Close();
             }
+        }
+
+        private void panel10_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

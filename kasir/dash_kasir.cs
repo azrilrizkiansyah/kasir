@@ -65,7 +65,7 @@ namespace kasir
                 string query = "SELECT SUM(stok) FROM books";
                 MySqlCommand cmd = new MySqlCommand(query, koneksi);
                 int totalStok = System.Convert.ToInt32(cmd.ExecuteScalar());
-                label12.Text = totalStok > 0 ? totalStok + " " : "";
+                label3.Text = totalStok > 0 ? totalStok + " " : "";
             }
             catch (Exception ex)
             {
@@ -297,15 +297,15 @@ namespace kasir
 
         private void button10_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Fitur ini belum tersedia. Silakan login atau hubungi admin.", "Informasi", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            kasir_stok pindah = new kasir_stok();
+            pindah.FormClosed += Pindah_FormClosed3; 
+            pindah.Show();
+            this.Hide();
+        }
 
-           if(MessageBox.Show("Apakah Anda ingin login kembali?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                login kembali = new login();
-                kembali.FormClosed += Kembali_FormClosed1;
-                kembali.Show();
-                this.Hide();
-            }
+        private void Pindah_FormClosed3(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
         }
 
         private void Kembali_FormClosed1(object sender, FormClosedEventArgs e)
@@ -314,6 +314,19 @@ namespace kasir
         }
 
         private void Pindah3_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            kasir_stok pindah = new kasir_stok();
+            pindah.FormClosed += Pindah_FormClosed2;
+            pindah.Show();
+            this.Hide();
+        }
+
+        private void Pindah_FormClosed2(object sender, FormClosedEventArgs e)
         {
             this.Close();
         }

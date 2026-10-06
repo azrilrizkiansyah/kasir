@@ -34,9 +34,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.button10 = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
-            this.button9 = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,6 +69,7 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
+            this.button10 = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -120,7 +119,6 @@
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel4.Controls.Add(this.panel8);
-            this.panel4.Controls.Add(this.button9);
             this.panel4.Controls.Add(this.label19);
             this.panel4.Controls.Add(this.dataGridView1);
             this.panel4.Controls.Add(this.panel6);
@@ -136,8 +134,8 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.White;
-            this.panel8.Controls.Add(this.label1);
             this.panel8.Controls.Add(this.button10);
+            this.panel8.Controls.Add(this.label1);
             this.panel8.Controls.Add(this.label21);
             this.panel8.Location = new System.Drawing.Point(926, 140);
             this.panel8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -157,17 +155,6 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "15";
             // 
-            // button10
-            // 
-            this.button10.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.button10.Location = new System.Drawing.Point(184, 5);
-            this.button10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(120, 32);
-            this.button10.TabIndex = 19;
-            this.button10.Text = "Lihat detail...";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
             // label21
             // 
             this.label21.AutoSize = true;
@@ -179,16 +166,6 @@
             this.label21.Size = new System.Drawing.Size(161, 24);
             this.label21.TabIndex = 11;
             this.label21.Text = "Total Stok Buku";
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(1124, 355);
-            this.button9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(112, 35);
-            this.button9.TabIndex = 28;
-            this.button9.Text = "Buka kasir";
-            this.button9.UseVisualStyleBackColor = true;
             // 
             // label19
             // 
@@ -488,6 +465,7 @@
             this.btn_Restore_Data.Text = "Restore Data";
             this.btn_Restore_Data.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Restore_Data.UseVisualStyleBackColor = false;
+            this.btn_Restore_Data.Click += new System.EventHandler(this.btn_Restore_Data_Click_1);
             // 
             // Btn_BackupData
             // 
@@ -613,6 +591,18 @@
             this.label23.TabIndex = 0;
             this.label23.Text = "BukuKita";
             // 
+            // button10
+            // 
+            this.button10.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button10.Location = new System.Drawing.Point(189, 8);
+            this.button10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(120, 33);
+            this.button10.TabIndex = 20;
+            this.button10.Text = "Lihat detail...";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
             // Dash_admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -650,9 +640,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel6;
@@ -688,6 +676,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.Button button10;
     }
 }
 

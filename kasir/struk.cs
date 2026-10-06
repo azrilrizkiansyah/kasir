@@ -67,5 +67,10 @@ namespace kasir
         {
 
         }
+
+        private void btn_batal_Click(object sender, EventArgs e)
+        {
+            struk.ActiveForm.Close();
+        }
     }
 }
