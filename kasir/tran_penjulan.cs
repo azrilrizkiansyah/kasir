@@ -181,6 +181,36 @@ namespace kasir
             }
         }
 
+        private string BuatTeksStruk(long idTransaksi, decimal total, decimal bayar, decimal kembali)
+        {
+            var sb = new StringBuilder();
+            int width = 40;
+            Func<string, string> center = s => s.PadLeft((width + s.Length) / 2).PadRight(width);
+
+            sb.AppendLine("========================================");
+            sb.AppendLine(center("TOKO BUKU"));
+            sb.AppendLine("========================================");
+            sb.AppendLine($"No: {idTransaksi}\nTanggal: {DateTime.Now:yyyy-MM-dd HH:mm}");
+            sb.AppendLine("----------------------------------------");
+            sb.AppendLine(string.Format("{0,-6}{1,-18}{2,3}{3,9}", "Kode", "Judul", "Jml", "Subtotal"));
+
+            foreach (DataRow row in dataGridView1.Rows)
+            {
+                string judul = row["judul"].ToString();
+                judul = judul.Length > 15 ? judul.Substring(0, 15) + ".." : judul;
+                sb.AppendLine(string.Format("{0,-6}{1,-18}{2,3} {3,9:N0}", row["kode_buku"], judul, row["jumlah"], row["subtotal"]));
+            }
+
+            sb.AppendLine("----------------------------------------");
+            sb.AppendLine(string.Format("{0,-30}{1,10:N0}", "TOTAL:", total));
+            sb.AppendLine(string.Format("{0,-30}{1,10:N0}", "BAYAR:", bayar));
+            sb.AppendLine(string.Format("{0,-30}{1,10:N0}", "KEMBALIAN:", kembali));
+            sb.AppendLine("========================================");
+            sb.AppendLine(center("TERIMA KASIH"));
+
+            return sb.ToString();
+        }
+
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
            

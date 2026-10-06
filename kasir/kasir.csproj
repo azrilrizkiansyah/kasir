@@ -150,6 +150,12 @@
     <Compile Include="Laporan_penjualan.Designer.cs">
       <DependentUpon>Laporan_penjualan.cs</DependentUpon>
     </Compile>
+    <Compile Include="struk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="struk.Designer.cs">
+      <DependentUpon>struk.cs</DependentUpon>
+    </Compile>
     <Compile Include="tran_penjulan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Laporan_penjualan.resx">
       <DependentUpon>Laporan_penjualan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="struk.resx">
+      <DependentUpon>struk.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="tran_penjulan.resx">
       <DependentUpon>tran_penjulan.cs</DependentUpon>
