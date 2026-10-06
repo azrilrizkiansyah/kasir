@@ -167,18 +167,17 @@ namespace kasir
         {
            
         }
-        private void HitungTotalBayar()
+        private decimal HitungTotalBayar()
         {
             decimal grandTotal = 0;
-
-           
             foreach (DataRow row in dtKeranjang.Rows)
             {
-                if (row["subtotal"] != DBNull.Value)
+                if (row["Subtotal"] != DBNull.Value)
                 {
-                    grandTotal += Convert.ToDecimal(row["subtotal"]);
+                    grandTotal += Convert.ToDecimal(row["Subtotal"]);
                 }
             }
+            return grandTotal;
         }
 
         private string BuatTeksStruk(long idTransaksi, decimal total, decimal bayar, decimal kembali)
@@ -394,48 +393,25 @@ namespace kasir
                 return;
             }
 
-            decimal totalBayar = 0;
-            foreach (DataRow row in dtKeranjang.Rows)
-            {
-                totalBayar += Convert.ToDecimal(row["Subtotal"]);
-            }
+            decimal totalBayar = HitungTotalBayar();
 
-            if (textBox2.Text == "")
+            if (string.IsNullOrWhiteSpace(textBox2.Text))
             {
-                MessageBox.Show("Uang pembayaran belum diisi!", "Peringatan",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Uang pembayaran belum diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 textBox2.Focus();
                 return;
             }
 
             decimal uangBayar;
-
-            if (!decimal.TryParse(textBox2.Text, out uangBayar))
+            if (!decimal.TryParse(textBox2.Text, out uangBayar) || uangBayar < totalBayar)
             {
-                MessageBox.Show("Masukkan uang dengan angka!", "Peringatan",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textBox2.Clear();
-                textBox2.Focus();
-                return;
-            }
-
-            if (uangBayar < totalBayar)
-            {
-                MessageBox.Show("Uang pembayaran kurang!\n\n" +
-                                "Total: Rp " + totalBayar.ToString("N0") + "\n" +
-                                "Uang: Rp " + uangBayar.ToString("N0"),
-                                "Peringatan",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning);
-
-                textBox2.Clear();
+                MessageBox.Show($"Uang pembayaran kurang/tidak valid!\n\nTotal: Rp {totalBayar:N0}", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 textBox2.Focus();
                 return;
             }
 
             decimal kembalian = uangBayar - totalBayar;
 
-            // kode kamu yang lama mulai dari sini
             MySqlConnection koneksi = new MySqlConnection(konfigurasi);
             MySqlTransaction transaksi = null;
 
@@ -443,23 +419,63 @@ namespace kasir
             {
                 koneksi.Open();
                 transaksi = koneksi.BeginTransaction();
-                transaksi.Commit();
-                MessageBox.Show("Transaksi berhasil disimpan.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-               
+                // A. Insert Header Transaksi (Tabel: transactions)
+                string sqlPenjualan = "INSERT INTO transactions (tanggal, total_harga, id_user) VALUES (NOW(), @total, @idUser); SELECT LAST_INSERT_ID();";
+                MySqlCommand cmdPenjualan = new MySqlCommand(sqlPenjualan, koneksi, transaksi);
+                cmdPenjualan.Parameters.AddWithValue("@total", totalBayar);
+                cmdPenjualan.Parameters.AddWithValue("@idUser", 2);
+
+                long idTransaksi = Convert.ToInt64(cmdPenjualan.ExecuteScalar());
+
+                // B. Insert Detail Transaksi (Tabel: transaction_details) & Update Stok (Tabel: books)
+                foreach (DataRow row in dtKeranjang.Rows)
+                {
+                    int idBuku = Convert.ToInt32(row["IdBuku"]);
+                    int jumlah = Convert.ToInt32(row["Jumlah"]);
+                    decimal subtotal = Convert.ToDecimal(row["Subtotal"]);
+
+                    // Detail
+                    string sqlDetail = "INSERT INTO transaction_details (id_transaksi, id_buku, jumlah, subtotal) VALUES (@idTrx, @idBuku, @jumlah, @subtotal)";
+                    MySqlCommand cmdDetail = new MySqlCommand(sqlDetail, koneksi, transaksi);
+                    cmdDetail.Parameters.AddWithValue("@idTrx", idTransaksi);
+                    cmdDetail.Parameters.AddWithValue("@idBuku", idBuku);
+                    cmdDetail.Parameters.AddWithValue("@jumlah", jumlah);
+                    cmdDetail.Parameters.AddWithValue("@subtotal", subtotal);
+                    cmdDetail.ExecuteNonQuery();
+
+                    // Update Stok
+                    string sqlUpdateStok = "UPDATE books SET stok = stok - @jumlah WHERE id_buku = @idBuku";
+                    MySqlCommand cmdStok = new MySqlCommand(sqlUpdateStok, koneksi, transaksi);
+                    cmdStok.Parameters.AddWithValue("@jumlah", jumlah);
+                    cmdStok.Parameters.AddWithValue("@idBuku", idBuku);
+                    cmdStok.ExecuteNonQuery();
+                }
+
+                transaksi.Commit();
+
+                // C. Buat Teks Struk
+                string teksStruk = BuatTeksStruk(idTransaksi, totalBayar, uangBayar, kembalian);
+
+                // D. Buka Form Struk Terpisah
+                struk formStruk = new struk(teksStruk);
+                formStruk.ShowDialog();
+
+                // E. Reset Form Transaksi
                 dtKeranjang.Clear();
                 textBox2.Clear();
                 selectedKodeBuku = "";
+                HitungTotalBayar();
                 MuatDaftarBuku();
             }
             catch (Exception ex)
             {
                 if (transaksi != null) transaksi.Rollback();
-                MessageBox.Show("Transaksi gagal: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Transaksi gagal disimpan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                if (koneksi.State == ConnectionState.Open) koneksi.Close();
+                if (koneksi != null && koneksi.State == ConnectionState.Open) koneksi.Close();
             }
         }
     }
