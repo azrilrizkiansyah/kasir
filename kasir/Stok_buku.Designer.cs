@@ -139,6 +139,7 @@
             this.btn_log_out.Text = "↩ keluar";
             this.btn_log_out.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_log_out.UseVisualStyleBackColor = false;
+            this.btn_log_out.Click += new System.EventHandler(this.btn_log_out_Click);
             // 
             // btn_Restore_Data
             // 

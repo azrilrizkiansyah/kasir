@@ -40,7 +40,7 @@ namespace kasir
                 string query = @"
                     SELECT kode_buku, judul, stok FROM books
                     UNION ALL
-                    SELECT 'TOTAL' AS kode_buku, 'TOTAL KESELURUHAN STOK' AS judul, IFNULL(SUM(stok), 0) AS stok FROM books";
+                    SELECT 'TOTAL' AS kode_buku, '' AS judul, IFNULL(SUM(stok), 0) AS stok FROM books";
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);

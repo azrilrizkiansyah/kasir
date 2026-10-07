@@ -33,6 +33,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.button10 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -69,7 +70,6 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.button10 = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -142,6 +142,18 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(315, 198);
             this.panel8.TabIndex = 25;
+            // 
+            // button10
+            // 
+            this.button10.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button10.Location = new System.Drawing.Point(189, 8);
+            this.button10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(120, 33);
+            this.button10.TabIndex = 20;
+            this.button10.Text = "Lihat detail...";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // label1
             // 
@@ -405,6 +417,8 @@
             // 
             // panel10
             // 
+            this.panel10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.panel10.Controls.Add(this.label2);
             this.panel10.Controls.Add(this.btn_log_out);
@@ -590,18 +604,6 @@
             this.label23.Size = new System.Drawing.Size(120, 33);
             this.label23.TabIndex = 0;
             this.label23.Text = "BukuKita";
-            // 
-            // button10
-            // 
-            this.button10.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.button10.Location = new System.Drawing.Point(189, 8);
-            this.button10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(120, 33);
-            this.button10.TabIndex = 20;
-            this.button10.Text = "Lihat detail...";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // Dash_admin
             // 

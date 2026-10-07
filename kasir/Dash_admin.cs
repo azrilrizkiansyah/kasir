@@ -91,7 +91,7 @@ namespace kasir
                 string query = "SELECT SUM(stok) FROM books";
                 MySqlCommand cmd = new MySqlCommand(query, koneksi);
                 int totalStok = System.Convert.ToInt32(cmd.ExecuteScalar());
-                label3.Text = totalStok > 0 ? totalStok + " " : "";
+                label1.Text = totalStok > 0 ? totalStok + " " : "";
             }
             catch (Exception ex)
             {

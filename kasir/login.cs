@@ -48,8 +48,8 @@ namespace kasir
 
         private void login_Load(object sender, EventArgs e)
         {
+            textBox2.UseSystemPasswordChar = true;
             SendMessage(textBox1.Handle, 0x1501, (IntPtr)1, "Masukan username Anda");
-            
             SendMessage(textBox2.Handle, 0x1501, (IntPtr)1, "Masukan password Anda");
             textBox1.Focus();
             

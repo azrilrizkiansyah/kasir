@@ -290,5 +290,10 @@ namespace kasir
             txt_buku_baru.Clear();
             dtStok.Rows.Clear();
         }
+
+        private void btn_log_out_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
