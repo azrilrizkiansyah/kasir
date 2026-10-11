@@ -78,11 +78,6 @@ namespace kasir
 
         private void tran_penjulan_Load(object sender, EventArgs e)
         {
-            btn_tambah_buku.Enabled = false;
-            btn_laporaPenjual.Enabled = false;
-            Btn_BackupData.Enabled = false;
-            btn_Restore_Data.Enabled = false;
-            AktifkanMenu(btn_transaksi);
             SendMessage(textBox1.Handle, 0x1501, (IntPtr)1, "Cari buku disini....");
             MySqlConnection koneksi = new MySqlConnection(konfigurasi);
             MySqlDataReader hasil = null;

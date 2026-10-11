@@ -37,10 +37,9 @@ namespace kasir
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Laporan_penjualan pindah2 = new Laporan_penjualan();
-            pindah2.FormClosed += Pindah2_FormClosed;
-            pindah2.Show();
-            this.Hide();
+            // Open Laporan_penjualan inside the main panel as MDI-like child
+            BukaFormAnak(new Laporan_penjualan());
+            AktifkanMenu(btn_laporaPenjual);
         }
 
         private void Pindah2_FormClosed(object sender, FormClosedEventArgs e)
@@ -213,13 +212,25 @@ namespace kasir
                 }
             }
         }
+        public void BukaFormAnak(Form formAnak)
+        {
+            panelUtama.Controls.Clear(); 
+
+            formAnak.TopLevel = false;
+            formAnak.FormBorderStyle = FormBorderStyle.None; 
+            formAnak.Dock = DockStyle.Fill;                 
+
+            panelUtama.Controls.Add(formAnak);
+            formAnak.Show();
+        }
+       
 
         private void btn_tambah_buku_Click(object sender, EventArgs e)
         {
-            dafta_buku pindah = new dafta_buku();
-            pindah.FormClosed += Pindah_FormClosed;
-            pindah.Show();
-            this.Hide();
+            dafta_buku formStok = new dafta_buku();
+            BukaFormAnak(formStok);
+            AktifkanMenu(btn_tambah_buku);
+            
         }
 
         private void Pindah_FormClosed(object sender, FormClosedEventArgs e)
@@ -229,10 +240,9 @@ namespace kasir
 
         private void btn_manajemenStok_Click(object sender, EventArgs e)
         {
-            Stok_buku pindah3 = new Stok_buku();
-            pindah3.FormClosed += Pindah3_FormClosed;
-            pindah3.Show();
-            this.Hide();
+            // Open Stok_buku inside the main panel
+            BukaFormAnak(new Stok_buku());          
+            AktifkanMenu(btn_manajemenStok);
         }
 
         private void Pindah3_FormClosed(object sender, FormClosedEventArgs e)
@@ -273,7 +283,8 @@ namespace kasir
 
         private void button16_Click(object sender, EventArgs e)
         {
-
+            panelUtama.Controls.Clear();
+            AktifkanMenu(button16);
         }
 
         private void btn_tambah_buku_Click_1(object sender, EventArgs e)
@@ -298,10 +309,9 @@ namespace kasir
 
         private void btn_manajemenStok_Click_1(object sender, EventArgs e)
         {
-            Stok_buku pindah3 = new Stok_buku();
-            pindah3.FormClosed += Pindah3_FormClosed1;
-            pindah3.Show();
-            this.Hide();
+            // Open Stok_buku inside the main panel (alternate handler)
+            BukaFormAnak(new Stok_buku());
+            AktifkanMenu(btn_manajemenStok);
         }
 
         private void Pindah3_FormClosed1(object sender, FormClosedEventArgs e)
@@ -363,18 +373,15 @@ namespace kasir
 
         private void btn_tambah_buku_Click_2(object sender, EventArgs e)
         {
-            dafta_buku pindah = new dafta_buku();
-            pindah.FormClosed += Pindah_FormClosed1;
-            pindah.Show();
-            this.Hide();
+            // Open dafta_buku inside the main panel
+            BukaFormAnak(new dafta_buku());
+            AktifkanMenu(btn_tambah_buku);
         }
 
         private void btn_laporaPenjual_Click_1(object sender, EventArgs e)
         {
-            Laporan_penjualan pindah2 = new Laporan_penjualan();
-            pindah2.FormClosed += Pindah2_FormClosed1;
-            pindah2.Show();
-            this.Hide();
+            BukaFormAnak(new Laporan_penjualan());
+            AktifkanMenu(btn_laporaPenjual);
         }
 
         private void btn_Restore_Data_Click_1(object sender, EventArgs e)
@@ -433,6 +440,11 @@ namespace kasir
                 kembali.Show();
                 this.Hide();
             }
+        }
+
+        private void btn_transaksi_Click(object sender, EventArgs e)
+        {
+
         }
     }
     

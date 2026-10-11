@@ -73,9 +73,9 @@ namespace kasir
 
         private void Stok_buku_Load(object sender, EventArgs e)
         {
-            AktifkanMenu(btn_manajemenStok);
+            
             BuatStrukturTabel();
-            btn_transaksi.Enabled = false;
+           
         }
 
         private void button16_Click(object sender, EventArgs e)

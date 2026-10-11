@@ -34,9 +34,9 @@ namespace kasir
 
             conn.Close();
 
-            btn_transaksi.Enabled = false;
+            
             txt_id.ReadOnly = true;
-            AktifkanMenu(btn_manajemenBuku);
+            
             btn_update.Enabled = false;
             btn_hapus.Enabled = false;
         }
@@ -357,6 +357,11 @@ namespace kasir
                     MessageBox.Show("Gagal memulihkan data. Error: " + ex.Message, "Error Validation", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void btn_cari_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -38,8 +38,7 @@ namespace kasir
         private void Laporan_penjualan_Load_1(object sender, EventArgs e)
         {
             cmbperiode.SelectedIndex = 0;
-            btn_transaksi.Enabled = false;
-            AktifkanMenu(btn_laporaPenjual);
+            
         }
 
 

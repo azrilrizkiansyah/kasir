@@ -21,11 +21,8 @@ namespace kasir
 
         private void kasir_stok_Load(object sender, EventArgs e)
         {
-            btn_laporaPenjual.Enabled = false;
-            btn_tambah_buku.Enabled = false;
-            Btn_BackupData.Enabled = false;
-            btn_Restore_Data.Enabled = false;
-            AktifkanMenu(btn_manajemenStok);
+           
+            
             MuatDataStok();
 
         }
