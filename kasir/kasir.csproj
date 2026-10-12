@@ -132,6 +132,12 @@
     <Compile Include="kasir_stok.Designer.cs">
       <DependentUpon>kasir_stok.cs</DependentUpon>
     </Compile>
+    <Compile Include="riwayar_tran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="riwayar_tran.Designer.cs">
+      <DependentUpon>riwayar_tran.cs</DependentUpon>
+    </Compile>
     <Compile Include="Stok_buku.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="kasir_stok.resx">
       <DependentUpon>kasir_stok.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="riwayar_tran.resx">
+      <DependentUpon>riwayar_tran.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Stok_buku.resx">
       <DependentUpon>Stok_buku.cs</DependentUpon>
