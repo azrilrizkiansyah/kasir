@@ -150,7 +150,7 @@
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(822, 39);
             this.panel9.TabIndex = 79;
-           
+            // 
             // label20
             // 
             this.label20.AutoSize = true;
