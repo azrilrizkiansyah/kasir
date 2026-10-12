@@ -298,30 +298,7 @@ namespace kasir
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(selectedKodeBuku))
-            {
-                MessageBox.Show("Pilih buku dari ListBox terlebih dahulu!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            int jumlahBeli = (int)numericUpDown1.Value;
-
-            if (jumlahBeli <= 0)
-            {
-                MessageBox.Show("Masukkan jumlah beli yang valid!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (selectedStokBuku < jumlahBeli)
-            {
-                MessageBox.Show($"Stok tidak cukup! Stok tersedia: {selectedStokBuku}", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            decimal subtotal = selectedHargaBuku * jumlahBeli;
-            dtKeranjang.Rows.Add(selectedJudulBuku, selectedHargaBuku, jumlahBeli, subtotal, selectedKodeBuku, selectedIdBuku);
-
-            numericUpDown1.Value = 1;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)

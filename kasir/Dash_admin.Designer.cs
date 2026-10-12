@@ -41,10 +41,10 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.panelUtama = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -70,16 +70,16 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button10 = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.panelUtama = new System.Windows.Forms.Panel();
             this.panel10.SuspendLayout();
-            this.panelUtama.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel8.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.panelUtama.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel10
@@ -272,16 +272,16 @@
             this.label23.TabIndex = 0;
             this.label23.Text = "BukuKita";
             // 
-            // panelUtama
+            // panel3
             // 
-            this.panelUtama.AutoSize = true;
-            this.panelUtama.Controls.Add(this.panel4);
-            this.panelUtama.Controls.Add(this.panel3);
-            this.panelUtama.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelUtama.Location = new System.Drawing.Point(310, 0);
-            this.panelUtama.Name = "panelUtama";
-            this.panelUtama.Size = new System.Drawing.Size(1242, 709);
-            this.panelUtama.TabIndex = 31;
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Location = new System.Drawing.Point(1, 5);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1241, 85);
+            this.panel3.TabIndex = 3;
             // 
             // label3
             // 
@@ -307,16 +307,21 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Ringkasan toko buku hari ini\r\n";
             // 
-            // panel3
+            // panel4
             // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Location = new System.Drawing.Point(1, 5);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1241, 85);
-            this.panel3.TabIndex = 3;
+            this.panel4.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel4.Controls.Add(this.panel8);
+            this.panel4.Controls.Add(this.label19);
+            this.panel4.Controls.Add(this.dataGridView1);
+            this.panel4.Controls.Add(this.panel6);
+            this.panel4.Controls.Add(this.panel5);
+            this.panel4.Controls.Add(this.panel9);
+            this.panel4.Controls.Add(this.label6);
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Location = new System.Drawing.Point(1, 87);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1241, 632);
+            this.panel4.TabIndex = 4;
             // 
             // label5
             // 
@@ -601,21 +606,16 @@
             this.button10.Text = "Lihat detail...";
             this.button10.UseVisualStyleBackColor = true;
             // 
-            // panel4
+            // panelUtama
             // 
-            this.panel4.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel4.Controls.Add(this.panel8);
-            this.panel4.Controls.Add(this.label19);
-            this.panel4.Controls.Add(this.dataGridView1);
-            this.panel4.Controls.Add(this.panel6);
-            this.panel4.Controls.Add(this.panel5);
-            this.panel4.Controls.Add(this.panel9);
-            this.panel4.Controls.Add(this.label6);
-            this.panel4.Controls.Add(this.label5);
-            this.panel4.Location = new System.Drawing.Point(1, 87);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1241, 632);
-            this.panel4.TabIndex = 4;
+            this.panelUtama.AutoSize = true;
+            this.panelUtama.Controls.Add(this.panel4);
+            this.panelUtama.Controls.Add(this.panel3);
+            this.panelUtama.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelUtama.Location = new System.Drawing.Point(310, 0);
+            this.panelUtama.Name = "panelUtama";
+            this.panelUtama.Size = new System.Drawing.Size(1242, 709);
+            this.panelUtama.TabIndex = 31;
             // 
             // Dash_admin
             // 
@@ -631,9 +631,10 @@
             this.Load += new System.EventHandler(this.Dash_admin_Load);
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
-            this.panelUtama.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -643,8 +644,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.panelUtama.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -664,7 +664,9 @@
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Panel panelUtama;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Button button10;
@@ -691,9 +693,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panelUtama;
     }
 }
 
