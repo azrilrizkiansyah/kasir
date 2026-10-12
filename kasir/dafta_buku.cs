@@ -364,14 +364,40 @@ namespace kasir
 
         }
 
-        private void panel9_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
+           
+        }
 
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                txt_id.Text =
+                    dataGridView1.Rows[e.RowIndex].Cells["id_buku"].Value.ToString();
+
+                txt_kode.Text =
+                    dataGridView1.Rows[e.RowIndex].Cells["kode_buku"].Value.ToString();
+
+                txt_judul.Text =
+                    dataGridView1.Rows[e.RowIndex].Cells["judul"].Value.ToString();
+
+                txt_pengarang.Text =
+                    dataGridView1.Rows[e.RowIndex].Cells["pengarang"].Value.ToString();
+
+                txt_penerbit.Text =
+                    dataGridView1.Rows[e.RowIndex].Cells["penerbit"].Value.ToString();
+
+                txt_harga.Text =
+                    dataGridView1.Rows[e.RowIndex].Cells["harga"].Value.ToString();
+
+                txt_hargabuku.Text =
+                    dataGridView1.Rows[e.RowIndex].Cells["stok"].Value.ToString();
+
+                btn_tambah.Enabled = false;
+                btn_update.Enabled = true;
+                btn_hapus.Enabled = true;
+            }
         }
     }
 }
