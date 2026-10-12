@@ -373,112 +373,7 @@ namespace kasir
 
         private void btn_bayar_Click(object sender, EventArgs e)
         {
-            if (dtKeranjang.Rows.Count == 0)
-            {
-                MessageBox.Show("Keranjang belanja masih kosong!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            decimal totalBayar = HitungTotalBayar();
-
-            if (string.IsNullOrWhiteSpace(textBox2.Text))
-            {
-                MessageBox.Show("Uang pembayaran belum diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textBox2.Focus();
-                return;
-            }
-
-            decimal uangBayar;
-            if (!decimal.TryParse(textBox2.Text, out uangBayar) || uangBayar < totalBayar)
-            {
-                MessageBox.Show($"Uang pembayaran kurang/tidak valid!\n\nTotal: Rp {totalBayar:N0}", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textBox2.Focus();
-                return;
-            }
-
-            decimal kembalian = uangBayar - totalBayar;
-
-            MySqlConnection koneksi = new MySqlConnection(konfigurasi);
-            MySqlTransaction transaksi = null;
-
-            try
-            {
-                koneksi.Open();
-                transaksi = koneksi.BeginTransaction();
-
-                // A. Insert Header Transaksi
-                string sqlPenjualan = "INSERT INTO transactions (tanggal, total_harga, id_user) VALUES (NOW(), @total, @idUser); SELECT LAST_INSERT_ID();";
-                MySqlCommand cmdPenjualan = new MySqlCommand(sqlPenjualan, koneksi, transaksi);
-                cmdPenjualan.Parameters.AddWithValue("@total", totalBayar);
-                cmdPenjualan.Parameters.AddWithValue("@idUser", 2); 
-
-                long idTransaksi = Convert.ToInt64(cmdPenjualan.ExecuteScalar());
-
-                // B. Insert Detail Transaksi & Update Stok
-                foreach (DataGridViewRow row in dataGridView1.Rows)
-                {
-                    // Lewati baris kosong paling bawah (NewRow) jika ada
-                    if (row.IsNewRow) continue;
-
-                    int idBuku = Convert.ToInt32(row.Cells["IdBuku"].Value);
-                    int jumlah = Convert.ToInt32(row.Cells["Jumlah"].Value);
-                    decimal subtotal = Convert.ToDecimal(row.Cells["Subtotal"].Value);
-
-                    // Insert Detail
-                    string sqlDetail = "INSERT INTO transaction_details (id_transaksi, id_buku, jumlah, subtotal) VALUES (@idTrx, @idBuku, @jumlah, @subtotal)";
-                    MySqlCommand cmdDetail = new MySqlCommand(sqlDetail, koneksi, transaksi);
-                    cmdDetail.Parameters.AddWithValue("@idTrx", idTransaksi);
-                    cmdDetail.Parameters.AddWithValue("@idBuku", idBuku);
-                    cmdDetail.Parameters.AddWithValue("@jumlah", jumlah);
-                    cmdDetail.Parameters.AddWithValue("@subtotal", subtotal);
-                    cmdDetail.ExecuteNonQuery();
-
-                    // Update Stok
-                    string sqlUpdateStok = "UPDATE books SET stok = stok - @jumlah WHERE id_buku = @idBuku";
-                    MySqlCommand cmdStok = new MySqlCommand(sqlUpdateStok, koneksi, transaksi);
-                    cmdStok.Parameters.AddWithValue("@jumlah", jumlah);
-                    cmdStok.Parameters.AddWithValue("@idBuku", idBuku);
-                    cmdStok.ExecuteNonQuery();
-                }
-
-                transaksi.Commit();
-
-                // C. Buat Teks Struk
-                string teksStruk = BuatTeksStruk(idTransaksi, totalBayar, uangBayar, kembalian);
-
-                // D. Buka Form Struk Terpisah
-                struk formStruk = new struk(teksStruk);
-                formStruk.ShowDialog();
-
-                // E. Reset Form Transaksi
-                dtKeranjang.Clear();
-                textBox2.Clear();
-                selectedKodeBuku = "";
-                HitungTotalBayar();
-                MuatDaftarBuku();
-            }
-            catch (Exception ex)
-            {
-                // Cek apakah transaksi masih aktif sebelum melakukan Rollback
-                if (transaksi != null && transaksi.Connection != null)
-                {
-                    try
-                    {
-                        transaksi.Rollback();
-                    }
-                    catch
-                    {
-                        // Abaikan jika rollback gagal
-                    }
-                }
-
-                // Tampilkan pesan error SQL yang sebenarnya terjadi
-                MessageBox.Show("Transaksi gagal disimpan:\n" + ex.Message, "Error Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (koneksi != null && koneksi.State == ConnectionState.Open) koneksi.Close();
-            }
+            
         }
 
         private void panel10_Paint(object sender, PaintEventArgs e)
@@ -581,6 +476,116 @@ namespace kasir
             else
             {
                 MessageBox.Show("Pilih buku yang ingin dihapus!");
+            }
+        }
+
+        private void btn_bayar_Click_1(object sender, EventArgs e)
+        {
+            if (dtKeranjang.Rows.Count == 0)
+            {
+                MessageBox.Show("Keranjang belanja masih kosong!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            decimal totalBayar = HitungTotalBayar();
+
+            if (string.IsNullOrWhiteSpace(textBox2.Text))
+            {
+                MessageBox.Show("Uang pembayaran belum diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBox2.Focus();
+                return;
+            }
+
+            decimal uangBayar;
+            if (!decimal.TryParse(textBox2.Text, out uangBayar) || uangBayar < totalBayar)
+            {
+                MessageBox.Show($"Uang pembayaran kurang/tidak valid!\n\nTotal: Rp {totalBayar:N0}", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBox2.Focus();
+                return;
+            }
+
+            decimal kembalian = uangBayar - totalBayar;
+
+            MySqlConnection koneksi = new MySqlConnection(konfigurasi);
+            MySqlTransaction transaksi = null;
+
+            try
+            {
+                koneksi.Open();
+                transaksi = koneksi.BeginTransaction();
+
+                // A. Insert Header Transaksi
+                string sqlPenjualan = "INSERT INTO transactions (tanggal, total_harga, id_user) VALUES (NOW(), @total, @idUser); SELECT LAST_INSERT_ID();";
+                MySqlCommand cmdPenjualan = new MySqlCommand(sqlPenjualan, koneksi, transaksi);
+                cmdPenjualan.Parameters.AddWithValue("@total", totalBayar);
+                cmdPenjualan.Parameters.AddWithValue("@idUser", 2);
+
+                long idTransaksi = Convert.ToInt64(cmdPenjualan.ExecuteScalar());
+
+                // B. Insert Detail Transaksi & Update Stok
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    // Lewati baris kosong paling bawah (NewRow) jika ada
+                    if (row.IsNewRow) continue;
+
+                    int idBuku = Convert.ToInt32(row.Cells["IdBuku"].Value);
+                    int jumlah = Convert.ToInt32(row.Cells["Jumlah"].Value);
+                    decimal subtotal = Convert.ToDecimal(row.Cells["Subtotal"].Value);
+
+                    // Insert Detail
+                    string sqlDetail = "INSERT INTO transaction_details (id_transaksi, id_buku, jumlah, subtotal) VALUES (@idTrx, @idBuku, @jumlah, @subtotal)";
+                    MySqlCommand cmdDetail = new MySqlCommand(sqlDetail, koneksi, transaksi);
+                    cmdDetail.Parameters.AddWithValue("@idTrx", idTransaksi);
+                    cmdDetail.Parameters.AddWithValue("@idBuku", idBuku);
+                    cmdDetail.Parameters.AddWithValue("@jumlah", jumlah);
+                    cmdDetail.Parameters.AddWithValue("@subtotal", subtotal);
+                    cmdDetail.ExecuteNonQuery();
+
+                    // Update Stok
+                    string sqlUpdateStok = "UPDATE books SET stok = stok - @jumlah WHERE id_buku = @idBuku";
+                    MySqlCommand cmdStok = new MySqlCommand(sqlUpdateStok, koneksi, transaksi);
+                    cmdStok.Parameters.AddWithValue("@jumlah", jumlah);
+                    cmdStok.Parameters.AddWithValue("@idBuku", idBuku);
+                    cmdStok.ExecuteNonQuery();
+                }
+
+                transaksi.Commit();
+
+                // C. Buat Teks Struk
+                string teksStruk = BuatTeksStruk(idTransaksi, totalBayar, uangBayar, kembalian);
+
+                // D. Buka Form Struk Terpisah
+                struk formStruk = new struk(teksStruk);
+                formStruk.ShowDialog();
+
+                // E. Reset Form Transaksi
+                dtKeranjang.Clear();
+                textBox2.Clear();
+                selectedKodeBuku = "";
+                HitungTotalBayar();
+                MuatDaftarBuku();
+            }
+            catch (Exception ex)
+            {
+                // Cek apakah transaksi masih aktif sebelum melakukan Rollback
+                if (transaksi != null && transaksi.Connection != null)
+                {
+                    try
+                    {
+                        transaksi.Rollback();
+                    }
+                    catch
+                    {
+                        // Abaikan jika rollback gagal
+                    }
+                }
+
+                // Tampilkan pesan error SQL yang sebenarnya terjadi
+                MessageBox.Show("Transaksi gagal disimpan:\n" + ex.Message, "Error Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (koneksi != null && koneksi.State == ConnectionState.Open) koneksi.Close();
             }
         }
     }
