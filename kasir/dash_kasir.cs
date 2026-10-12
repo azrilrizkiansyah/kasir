@@ -16,6 +16,7 @@ namespace kasir
     public partial class dash_kasir : Form
     {
         string konfigurasi = "server=localhost;username=root;password=;database=toko_buku;";
+        private Form currentChild = null; 
         public dash_kasir()
         {
             InitializeComponent();
@@ -23,7 +24,7 @@ namespace kasir
 
         private void dash_kasir_Load(object sender, EventArgs e)
         {
-            btn_laporaPenjual.Enabled = false;
+           
             btn_manajemenStok.Enabled = true;
             btn_Restore_Data.Enabled = false;
             btn_tambah_buku.Enabled = false;
@@ -37,20 +38,53 @@ namespace kasir
             UpdateDashboardPenjualan();
 
             MySqlConnection koneksi = new MySqlConnection(konfigurasi);
-            try 
+            try
             {
                 koneksi.Open();
-                string query = "select * from  transaction_details";
+
+                // Query dengan JOIN agar otomatis mengambil nama buku dari tabel books
+                string query = @"SELECT 
+                        td.id_detail AS 'Detail ID', 
+                        td.id_transaksi AS 'ID Transaksi', 
+                        td.id_buku AS 'ID Buku', 
+                        b.judul AS 'Nama Buku', 
+                        td.jumlah AS 'Jumlah', 
+                        td.subtotal AS 'Subtotal' 
+                     FROM transaction_details td 
+                     JOIN books b ON td.id_buku = b.id_buku";
+
                 MySqlCommand cmd = new MySqlCommand(query, koneksi);
-                MySqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+
+                // Gunakan DataAdapter dan DataTable untuk mengisi data secara otomatis
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                // Masukkan DataTable ke DataGridView secara otomatis
+                dataGridView1.DataSource = null;
+                dataGridView1.Columns.Clear();
+                dataGridView1.AutoGenerateColumns = true;
+                dataGridView1.DataSource = dt;
+
+                // Supaya tampilannya rapi memenuhi lebar tabel
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                // Format mata uang untuk kolom Subtotal
+                if (dataGridView1.Columns["Subtotal"] != null)
                 {
-                    dataGridView1.Rows.Add(reader.GetInt32("id_detail").ToString(), reader.GetInt32("id_transaksi").ToString(), reader.GetInt32("id_buku").ToString(), reader.GetInt32("jumlah").ToString(), reader.GetDecimal("subtotal").ToString());
+                    dataGridView1.Columns["Subtotal"].DefaultCellStyle.Format = "N0";
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Gagal menampilkan data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (koneksi.State == ConnectionState.Open)
+                {
+                    koneksi.Close();
+                }
             }
 
 
@@ -249,6 +283,43 @@ namespace kasir
         {
             BukaFormAnak(new kasir_stok());
             AktifkanMenu(btn_manajemenStok);
+        }
+
+        private void btn_riwayat_Click(object sender, EventArgs e)
+        {
+
+            BukaFormAnak(new riwayar_tran());
+            AktifkanMenu(btn_riwayat);
+        }
+
+        private void btn_dashboard_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 1. Bersihkan form anak yang sedang aktif jika ada
+                if (currentChild != null)
+                {
+                    currentChild.Close();
+                    currentChild.Dispose();
+                    currentChild = null;
+                }
+
+                // 2. Kosongkan panel utama lalu muat ulang komponen/data dashboard
+                panelUtama.Controls.Clear();
+
+                // Panggil kembali fungsi data dashboard agar angka dan tabelnya muncul lagi
+                tampilkanStok();
+                tampilkanunitbuku();
+                TampilkanTotalSemuaTransaksi();
+                UpdateDashboardPenjualan();
+
+                // Aktifkan indikator warna tombol sidebar
+                AktifkanMenu(btn_dashboard);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Terjadi kesalahan saat membuka dashboard: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -53,25 +53,49 @@ namespace kasir
             AktifkanMenu(button16);
 
             MySqlConnection koneksi = new MySqlConnection(konfigurasi);
-            try 
+            try
             {
                 koneksi.Open();
-                string query = "select * from transaction_details;";
-                MySqlCommand eksekusi = new MySqlCommand(query, koneksi);
-                MySqlDataReader cmd = eksekusi.ExecuteReader();
-                while (cmd.Read())
+                string query = @"SELECT 
+                        td.id_detail AS 'Detail ID', 
+                        td.id_transaksi AS 'ID Transaksi', 
+                        td.id_buku AS 'ID Buku', 
+                        b.judul AS 'Nama Buku', 
+                        td.jumlah AS 'Jumlah', 
+                        td.subtotal AS 'Subtotal' 
+                     FROM transaction_details td 
+                     JOIN books b ON td.id_buku = b.id_buku";
+
+                MySqlCommand cmd = new MySqlCommand(query, koneksi);
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                dataGridView1.DataSource = null;
+                dataGridView1.Columns.Clear();
+                dataGridView1.AutoGenerateColumns = true;
+                dataGridView1.DataSource = dt;
+
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                if (dataGridView1.Columns["Subtotal"] != null)
                 {
-                    dataGridView1.Rows.Add(cmd.GetInt32("id_detail").ToString(),cmd.GetInt32("id_transaksi").ToString(),cmd.GetInt32("id_buku").ToString(),cmd.GetInt32("jumlah").ToString(),cmd.GetDecimal("subtotal").ToString());
+                    dataGridView1.Columns["Subtotal"].DefaultCellStyle.Format = "N0";
                 }
-                  
-
-
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Gagal menampilkan data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            koneksi.Close();
-            
+            finally
+            {
+                if (koneksi.State == ConnectionState.Open)
+                {
+                    koneksi.Close();
+                }
+            }
+
             UpdateDashboardPenjualan();
             TampilkanTotalSemuaTransaksi();
             tampilkanunitbuku();

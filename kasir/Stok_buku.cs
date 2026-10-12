@@ -24,16 +24,7 @@ namespace kasir
         }
         private Button tombolAktif = null;
 
-        private void AktifkanMenu(Button tombolPilihan)
-        {
-
-            if (tombolAktif != null)
-            {
-                tombolAktif.BackColor = Color.FromArgb(15, 23, 42);
-            }
-            tombolAktif = tombolPilihan;
-            tombolAktif.BackColor = Color.FromArgb(37, 99, 235);
-        }
+        
         private void BuatStrukturTabel()
         {
             dtStok.Columns.Clear();
@@ -63,55 +54,11 @@ namespace kasir
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-        private void Kembali_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void Stok_buku_Load(object sender, EventArgs e)
         {
             
             BuatStrukturTabel();
            
-        }
-
-        private void button16_Click(object sender, EventArgs e)
-        {
-            Dash_admin kembali = new Dash_admin();
-            kembali.FormClosed += Kembali_FormClosed;
-            kembali.Show();
-            this.Hide();
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btn_manajemenBuku_Click(object sender, EventArgs e)
-        {
-            dafta_buku pindah = new dafta_buku();
-            pindah.FormClosed += Pindah_FormClosed;
-            pindah.Show();
-            this.Hide();
-        }
-
-        private void Pindah_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btn_laporaPenjual_Click(object sender, EventArgs e)
-        {
-            Laporan_penjualan pindah = new Laporan_penjualan();
-            pindah.FormClosed += Pindah_FormClosed1;
-            pindah.Show();
-            this.Hide();
-        }
-
-        private void Pindah_FormClosed1(object sender, FormClosedEventArgs e)
-        {
-            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -189,83 +136,11 @@ namespace kasir
                 // Poin 6: Pesan Konfirmasi Sukses
                 MessageBox.Show("Stok berhasil diperbarui untuk semua buku.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Mengosongkan tabel kembali
-                dtStok.Rows.Clear();
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Gagal memperbarui stok: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (koneksi.State == ConnectionState.Open)
-                {
-                    koneksi.Close();
-                }
-            }
-        }
-
-        private void btn_cari_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txt_cari.Text))
-            {
-                MessageBox.Show("Masukkan Kode Buku atau Judul Buku terlebih dahulu!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            MySqlConnection koneksi = new MySqlConnection(konfigurasi);
-
-            try
-            {
-                koneksi.Open();
-
-                string query = "SELECT id_buku, kode_buku, judul, stok FROM books WHERE kode_buku = @keyword OR judul LIKE @keywordLike LIMIT 1";
-
-                MySqlCommand cmd = new MySqlCommand(query, koneksi);
-                cmd.Parameters.AddWithValue("@keyword", txt_cari.Text.Trim());
-                cmd.Parameters.AddWithValue("@keywordLike", "%" + txt_cari.Text.Trim() + "%");
-
-                MySqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    int idBuku = Convert.ToInt32(reader["id_buku"]);
-                    string kode = reader["kode_buku"].ToString();
-                    string judul = reader["judul"].ToString();
-                    int stokSaatIni = Convert.ToInt32(reader["stok"]);
-
-                    // Cek apakah buku sudah ada di dalam tabel agar tidak terduplikasi
-                    bool sudahAda = false;
-                    foreach (DataRow row in dtStok.Rows)
-                    {
-                        if (Convert.ToInt32(row["id_buku"]) == idBuku)
-                        {
-                            sudahAda = true;
-                            break;
-                        }
-                    }
-
-                    if (sudahAda)
-                    {
-                        MessageBox.Show("Buku ini sudah ada di dalam tabel!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        // Tambahkan ke tabel dengan nilai awal Jumlah Buku Baru = 0
-                        dtStok.Rows.Add(idBuku, kode, judul, stokSaatIni, 0);
-                        txt_cari.Clear();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Buku tidak ditemukan!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Terjadi kesalahan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -408,6 +283,77 @@ namespace kasir
                         "Error",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btn_cari_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txt_cari.Text))
+            {
+                MessageBox.Show("Masukkan Kode Buku atau Judul Buku terlebih dahulu!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            MySqlConnection koneksi = new MySqlConnection(konfigurasi);
+
+            try
+            {
+                koneksi.Open();
+
+                string query = "SELECT id_buku, kode_buku, judul, stok FROM books WHERE kode_buku = @keyword OR judul LIKE @keywordLike LIMIT 1";
+
+                MySqlCommand cmd = new MySqlCommand(query, koneksi);
+                cmd.Parameters.AddWithValue("@keyword", txt_cari.Text.Trim());
+                cmd.Parameters.AddWithValue("@keywordLike", "%" + txt_cari.Text.Trim() + "%");
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    int idBuku = Convert.ToInt32(reader["id_buku"]);
+                    string kode = reader["kode_buku"].ToString();
+                    string judul = reader["judul"].ToString();
+                    int stokSaatIni = Convert.ToInt32(reader["stok"]);
+
+                    // Cek apakah buku sudah ada di dalam tabel agar tidak terduplikasi
+                    bool sudahAda = false;
+                    foreach (DataRow row in dtStok.Rows)
+                    {
+                        if (Convert.ToInt32(row["id_buku"]) == idBuku)
+                        {
+                            sudahAda = true;
+                            break;
+                        }
+                    }
+
+                    if (sudahAda)
+                    {
+                        MessageBox.Show("Buku ini sudah ada di dalam tabel!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        // Tambahkan ke tabel dengan nilai awal Jumlah Buku Baru = 0
+                        dtStok.Rows.Add(idBuku, kode, judul, stokSaatIni, 0);
+                        txt_cari.Clear();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Buku tidak ditemukan!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Terjadi kesalahan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (koneksi.State == ConnectionState.Open)
+                {
+                    koneksi.Close();
                 }
             }
         }
