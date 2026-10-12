@@ -64,9 +64,11 @@ namespace kasir
 
             dataGridView1.DataSource = dtKeranjang;
 
-            
-            if (dataGridView1.Columns["KodeBuku"] != null) dataGridView1.Columns["KodeBuku"].Visible = false;
-            if (dataGridView1.Columns["IdBuku"] != null) dataGridView1.Columns["IdBuku"].Visible = false;
+
+            dataGridView1.SelectionMode =
+    DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
+            dataGridView1.AllowUserToAddRows = false;
         }
 
         private void Listbuku_SelectedIndexChanged(object sender, EventArgs e)
@@ -78,34 +80,13 @@ namespace kasir
 
         private void tran_penjulan_Load(object sender, EventArgs e)
         {
-            SendMessage(textBox1.Handle, 0x1501, (IntPtr)1, "Cari buku disini....");
-            MySqlConnection koneksi = new MySqlConnection(konfigurasi);
-            MySqlDataReader hasil = null;
-            string sql = "SELECT kode_buku, judul FROM books ORDER BY judul ASC";
+            SendMessage(
+                textBox1.Handle, 0x1501, (IntPtr)1,
+                "Cari buku disini....");
 
-            try
-            {
-                koneksi.Open();
-                MySqlCommand komando = new MySqlCommand(sql, koneksi);
-                hasil = komando.ExecuteReader();
+            MuatDaftarBuku();
 
-                Listbuku.Items.Clear();
-
-                while (hasil.Read())
-                {
-                    string itemTeks = $"{hasil["kode_buku"]} - {hasil["judul"]}";
-                    Listbuku.Items.Add(itemTeks);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Gagal memuat daftar buku: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (hasil != null && !hasil.IsClosed) hasil.Close();
-                if (koneksi != null && koneksi.State == ConnectionState.Open) koneksi.Close();
-            }
+            HitungTotalBayar();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -129,34 +110,44 @@ namespace kasir
         }
         private void MuatDaftarBuku()
         {
-            MySqlConnection koneksi = new MySqlConnection(konfigurasi);
-            MySqlDataReader hasil = null;
-            string sql = "SELECT kode_buku, judul FROM books ORDER BY judul ASC";
-
             try
             {
-                koneksi.Open();
-                MySqlCommand komando = new MySqlCommand(sql, koneksi);
-                hasil = komando.ExecuteReader();
-
-                Listbuku.Items.Clear(); 
-
-                while (hasil.Read())
+                using (MySqlConnection koneksi =
+                    new MySqlConnection(konfigurasi))
                 {
-                    string itemTeks = $"{hasil["kode_buku"]} - {hasil["judul"]}";
-                    Listbuku.Items.Add(itemTeks);
+                    koneksi.Open();
+
+                    string sql = @"SELECT kode_buku, judul
+                           FROM books
+                           WHERE stok > 0
+                           AND (kode_buku LIKE @cari
+                           OR judul LIKE @cari)
+                           ORDER BY judul ASC";
+
+                    MySqlCommand komando =
+                        new MySqlCommand(sql, koneksi);
+
+                    komando.Parameters.AddWithValue(
+                        "@cari", "%" + textBox1.Text + "%");
+
+                    MySqlDataReader hasil = komando.ExecuteReader();
+
+                    Listbuku.Items.Clear();
+
+                    while (hasil.Read())
+                    {
+                        Listbuku.Items.Add(
+                            hasil["kode_buku"] + " - " +
+                            hasil["judul"]);
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Gagal memuat daftar buku: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (hasil != null && !hasil.IsClosed) hasil.Close();
-                if (koneksi != null && koneksi.State == ConnectionState.Open) koneksi.Close();
+                MessageBox.Show("Gagal memuat buku: " + ex.Message);
             }
         }
+
 
         private void cyberButton2_Click(object sender, EventArgs e)
         {
@@ -164,16 +155,23 @@ namespace kasir
         }
         private decimal HitungTotalBayar()
         {
-            decimal grandTotal = 0;
-            foreach (DataRow row in dtKeranjang.Rows)
+            decimal subtotal = 0;
+
+            foreach (DataRow baris in dtKeranjang.Rows)
             {
-                if (row["Subtotal"] != DBNull.Value)
-                {
-                    grandTotal += Convert.ToDecimal(row["Subtotal"]);
-                }
+                subtotal += Convert.ToDecimal(baris["Subtotal"]);
             }
-            return grandTotal;
+
+            decimal diskon = 0;
+            decimal total = subtotal - diskon;
+
+            labelSub.Text = subtotal.ToString("N0");
+            labelDis.Text = diskon.ToString("N0");
+            labelTotal.Text = total.ToString("N0");
+
+            return total;
         }
+
 
         
         private string BuatTeksStruk(long idTransaksi, decimal total, decimal bayar, decimal kembali)
@@ -487,5 +485,104 @@ namespace kasir
         {
 
         }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+            MuatDaftarBuku();
+        }
+
+        private void Listbuku_DoubleClick(object sender, EventArgs e)
+        {
+
+            if (Listbuku.SelectedItem == null)
+                return;
+
+            string item = Listbuku.SelectedItem.ToString();
+            string kode = item.Split('-')[0].Trim();
+
+            try
+            {
+                using (MySqlConnection koneksi =
+                    new MySqlConnection(konfigurasi))
+                {
+                    koneksi.Open();
+
+                    string sql = @"SELECT id_buku, kode_buku,
+                           judul, harga, stok
+                           FROM books
+                           WHERE kode_buku = @kode";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, koneksi);
+                    cmd.Parameters.AddWithValue("@kode", kode);
+
+                    MySqlDataReader hasil = cmd.ExecuteReader();
+
+                    if (hasil.Read())
+                    {
+                        int id = Convert.ToInt32(hasil["id_buku"]);
+                        string judul = hasil["judul"].ToString();
+                        decimal harga = Convert.ToDecimal(hasil["harga"]);
+                        int stok = Convert.ToInt32(hasil["stok"]);
+
+                        // Periksa apakah buku sudah ada di keranjang
+                        bool ditemukan = false;
+
+                        foreach (DataRow baris in dtKeranjang.Rows)
+                        {
+                            if (Convert.ToInt32(baris["IdBuku"]) == id)
+                            {
+                                int jumlah = Convert.ToInt32(baris["Jumlah"]);
+
+                                if (jumlah >= stok)
+                                {
+                                    MessageBox.Show("Stok buku tidak cukup!");
+                                    return;
+                                }
+
+                                baris["Jumlah"] = jumlah + 1;
+                                baris["Subtotal"] = (jumlah + 1) * harga;
+
+                                ditemukan = true;
+                                break;
+                            }
+                        }
+
+                        // Jika buku belum ada, tambahkan baris baru
+                        if (!ditemukan)
+                        {
+                            dtKeranjang.Rows.Add(
+                                judul, harga, 1, harga, kode, id);
+                        }
+                    }
+
+                    hasil.Close();
+                }
+
+                HitungTotalBayar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal menambahkan buku: " + ex.Message);
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int index = dataGridView1.SelectedRows[0].Index;
+
+                dtKeranjang.Rows.RemoveAt(index);
+
+                HitungTotalBayar();
+
+                MessageBox.Show("Buku berhasil dihapus!");
+            }
+            else
+            {
+                MessageBox.Show("Pilih buku yang ingin dihapus!");
+            }
+        }
     }
 }
+

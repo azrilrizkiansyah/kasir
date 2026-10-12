@@ -32,6 +32,12 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelTotal = new System.Windows.Forms.Label();
+            this.labelDis = new System.Windows.Forms.Label();
+            this.labelSub = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btn_bayar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -41,12 +47,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.labelSub = new System.Windows.Forms.Label();
-            this.labelDis = new System.Windows.Forms.Label();
-            this.labelTotal = new System.Windows.Forms.Label();
             this.panelUtama.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -57,7 +57,7 @@
             // 
             this.panelUtama.Controls.Add(this.panel3);
             this.panelUtama.Location = new System.Drawing.Point(3, 1);
-            this.panelUtama.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelUtama.Margin = new System.Windows.Forms.Padding(2);
             this.panelUtama.Name = "panelUtama";
             this.panelUtama.Size = new System.Drawing.Size(1003, 478);
             this.panelUtama.TabIndex = 28;
@@ -101,15 +101,75 @@
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Location = new System.Drawing.Point(3, 58);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1003, 419);
             this.panel1.TabIndex = 29;
             // 
+            // labelTotal
+            // 
+            this.labelTotal.AutoSize = true;
+            this.labelTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotal.Location = new System.Drawing.Point(711, 307);
+            this.labelTotal.Name = "labelTotal";
+            this.labelTotal.Size = new System.Drawing.Size(18, 20);
+            this.labelTotal.TabIndex = 49;
+            this.labelTotal.Text = "0";
+            // 
+            // labelDis
+            // 
+            this.labelDis.AutoSize = true;
+            this.labelDis.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDis.Location = new System.Drawing.Point(711, 272);
+            this.labelDis.Name = "labelDis";
+            this.labelDis.Size = new System.Drawing.Size(18, 20);
+            this.labelDis.TabIndex = 48;
+            this.labelDis.Text = "0";
+            // 
+            // labelSub
+            // 
+            this.labelSub.AutoSize = true;
+            this.labelSub.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSub.Location = new System.Drawing.Point(711, 238);
+            this.labelSub.Name = "labelSub";
+            this.labelSub.Size = new System.Drawing.Size(18, 20);
+            this.labelSub.TabIndex = 47;
+            this.labelSub.Text = "0";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(374, 307);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 20);
+            this.label5.TabIndex = 46;
+            this.label5.Text = "Total";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(374, 272);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 20);
+            this.label2.TabIndex = 45;
+            this.label2.Text = "Diskon";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(374, 238);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 20);
+            this.label1.TabIndex = 44;
+            this.label1.Text = "Subtotal";
+            // 
             // btn_bayar
             // 
             this.btn_bayar.Location = new System.Drawing.Point(556, 354);
-            this.btn_bayar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_bayar.Margin = new System.Windows.Forms.Padding(2);
             this.btn_bayar.Name = "btn_bayar";
             this.btn_bayar.Size = new System.Drawing.Size(60, 25);
             this.btn_bayar.TabIndex = 43;
@@ -138,11 +198,12 @@
             this.button1.TabIndex = 40;
             this.button1.Text = "Hapus";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(378, 359);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(174, 20);
             this.textBox2.TabIndex = 38;
@@ -153,10 +214,11 @@
             this.Listbuku.ForeColor = System.Drawing.Color.Black;
             this.Listbuku.FormattingEnabled = true;
             this.Listbuku.Location = new System.Drawing.Point(6, 90);
-            this.Listbuku.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Listbuku.Margin = new System.Windows.Forms.Padding(2);
             this.Listbuku.Name = "Listbuku";
             this.Listbuku.Size = new System.Drawing.Size(304, 316);
             this.Listbuku.TabIndex = 37;
+            this.Listbuku.DoubleClick += new System.EventHandler(this.Listbuku_DoubleClick);
             // 
             // dataGridView1
             // 
@@ -184,6 +246,7 @@
             this.textBox1.Size = new System.Drawing.Size(303, 20);
             this.textBox1.TabIndex = 31;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // label4
             // 
@@ -195,66 +258,6 @@
             this.label4.TabIndex = 30;
             this.label4.Text = "Cari && Tambah Buku Ke Keranjang ";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(374, 238);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 20);
-            this.label1.TabIndex = 44;
-            this.label1.Text = "Subtotal";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(374, 272);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 20);
-            this.label2.TabIndex = 45;
-            this.label2.Text = "Diskon";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(374, 307);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 20);
-            this.label5.TabIndex = 46;
-            this.label5.Text = "Total";
-            // 
-            // labelSub
-            // 
-            this.labelSub.AutoSize = true;
-            this.labelSub.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSub.Location = new System.Drawing.Point(711, 238);
-            this.labelSub.Name = "labelSub";
-            this.labelSub.Size = new System.Drawing.Size(18, 20);
-            this.labelSub.TabIndex = 47;
-            this.labelSub.Text = "0";
-            // 
-            // labelDis
-            // 
-            this.labelDis.AutoSize = true;
-            this.labelDis.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDis.Location = new System.Drawing.Point(711, 272);
-            this.labelDis.Name = "labelDis";
-            this.labelDis.Size = new System.Drawing.Size(18, 20);
-            this.labelDis.TabIndex = 48;
-            this.labelDis.Text = "0";
-            // 
-            // labelTotal
-            // 
-            this.labelTotal.AutoSize = true;
-            this.labelTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTotal.Location = new System.Drawing.Point(711, 307);
-            this.labelTotal.Name = "labelTotal";
-            this.labelTotal.Size = new System.Drawing.Size(18, 20);
-            this.labelTotal.TabIndex = 49;
-            this.labelTotal.Text = "0";
-            // 
             // tran_penjulan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -265,7 +268,7 @@
             this.Controls.Add(this.panelUtama);
             this.Name = "tran_penjulan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form5";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.tran_penjulan_Load);
             this.panelUtama.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
