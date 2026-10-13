@@ -21,7 +21,6 @@ namespace kasir
         public Dash_admin()
         {
             InitializeComponent();
-            // capture the initial dashboard controls so we can restore them when closing child forms
             try
             {
                 defaultDashboardControls = panelUtama.Controls.Cast<Control>().ToArray();
@@ -272,7 +271,8 @@ namespace kasir
             if(typeof(T) == typeof(Dash_admin))
             {
                showdashboard();
-               return;
+                AktifkanMenu(button16);
+                return;
             }
 
            

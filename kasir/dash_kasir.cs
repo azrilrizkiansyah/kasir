@@ -16,10 +16,16 @@ namespace kasir
     public partial class dash_kasir : Form
     {
         string konfigurasi = "server=localhost;username=root;password=;database=toko_buku;";
-        private Form currentChild = null; 
+        private Form currentChild = null;
+        private Control[] defaultDashboardControls = null;
         public dash_kasir()
         {
             InitializeComponent();
+            try
+            {
+                defaultDashboardControls = panelUtama.Controls.Cast<Control>().ToArray();
+            }
+            catch { defaultDashboardControls = new Control[0]; }
         }
 
         private void dash_kasir_Load(object sender, EventArgs e)
@@ -221,20 +227,6 @@ namespace kasir
                 }
             }
         }
-        public void BukaFormAnak(Form formAnak)
-        {
-            panelUtama.Controls.Clear();
-
-            formAnak.TopLevel = false;
-            formAnak.FormBorderStyle = FormBorderStyle.None;
-            formAnak.Dock = DockStyle.Fill;
-
-            panelUtama.Controls.Add(formAnak);
-            formAnak.Show();
-        }
-
-        
-
         private void Kembali_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Close();
@@ -263,10 +255,74 @@ namespace kasir
             // Berikan warna khusus untuk menandakan menu sedang aktif (misalnya warna biru terang / sedikit lebih terang)
             tombolAktif.BackColor = Color.FromArgb(37, 99, 235);
         }
+        public void BukaFormAnak(Form formAnak)
+        {
+            // remove existing child if any
+            if (currentChild != null)
+            {
+                currentChild.Close();
+                currentChild.Dispose();
+                panelUtama.Controls.Remove(currentChild);
+                currentChild = null;
+            }
 
-       
+            // clear panel and show the new child
+            panelUtama.Controls.Clear();
 
-        
+            formAnak.TopLevel = false;
+            formAnak.FormBorderStyle = FormBorderStyle.None;
+            formAnak.Dock = DockStyle.Fill;
+
+            panelUtama.Controls.Add(formAnak);
+            formAnak.Show();
+
+            currentChild = formAnak;
+        }
+        private void pindahForm<T>(Button tombol, Form formAnak) where T : Form
+        {
+            if (typeof(T) == typeof(Dash_admin))
+            {
+                showdashboard();
+                AktifkanMenu(btn_dashboard);
+                return;
+            }
+
+
+        }
+        public void showdashboard()
+        {
+            try
+            {
+                // close and remove current child form
+                if (currentChild != null)
+                {
+                    currentChild.Close();
+                    currentChild.Dispose();
+                    panelUtama.Controls.Remove(currentChild);
+                    currentChild = null;
+                }
+
+                // restore the original dashboard controls
+                panelUtama.Controls.Clear();
+                if (defaultDashboardControls != null)
+                {
+                    foreach (var ctrl in defaultDashboardControls)
+                    {
+                        // avoid adding disposed controls
+                        if (ctrl != null && !ctrl.IsDisposed)
+                            panelUtama.Controls.Add(ctrl);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal menampilkan dashboard: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
 
         private void Pindah_FormClosed2(object sender, FormClosedEventArgs e)
         {
@@ -292,34 +348,7 @@ namespace kasir
             AktifkanMenu(btn_riwayat);
         }
 
-        private void btn_dashboard_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // 1. Bersihkan form anak yang sedang aktif jika ada
-                if (currentChild != null)
-                {
-                    currentChild.Close();
-                    currentChild.Dispose();
-                    currentChild = null;
-                }
+        private void btn_dashboard_Click(object sender, EventArgs e) => pindahForm<Dash_admin>(btn_dashboard, new Dash_admin());
 
-                // 2. Kosongkan panel utama lalu muat ulang komponen/data dashboard
-                panelUtama.Controls.Clear();
-
-                // Panggil kembali fungsi data dashboard agar angka dan tabelnya muncul lagi
-                tampilkanStok();
-                tampilkanunitbuku();
-                TampilkanTotalSemuaTransaksi();
-                UpdateDashboardPenjualan();
-
-                // Aktifkan indikator warna tombol sidebar
-                AktifkanMenu(btn_dashboard);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Terjadi kesalahan saat membuka dashboard: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
     }
 }
