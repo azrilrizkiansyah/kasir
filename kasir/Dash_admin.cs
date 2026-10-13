@@ -16,9 +16,17 @@ namespace kasir
     public partial class Dash_admin : Form
     {
         string konfigurasi = "server=localhost;username=root;password=;database=toko_buku;";
+        private Form cerrentChild = null;
+        private Control[] defaultDashboardControls = null;
         public Dash_admin()
         {
             InitializeComponent();
+            // capture the initial dashboard controls so we can restore them when closing child forms
+            try
+            {
+                defaultDashboardControls = panelUtama.Controls.Cast<Control>().ToArray();
+            }
+            catch { defaultDashboardControls = new Control[0]; }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -238,16 +246,68 @@ namespace kasir
         }
         public void BukaFormAnak(Form formAnak)
         {
-            panelUtama.Controls.Clear(); 
+            // remove existing child if any
+            if (cerrentChild != null)
+            {
+                cerrentChild.Close();
+                cerrentChild.Dispose();
+                panelUtama.Controls.Remove(cerrentChild);
+                cerrentChild = null;
+            }
+
+            // clear panel and show the new child
+            panelUtama.Controls.Clear();
 
             formAnak.TopLevel = false;
-            formAnak.FormBorderStyle = FormBorderStyle.None; 
-            formAnak.Dock = DockStyle.Fill;                 
+            formAnak.FormBorderStyle = FormBorderStyle.None;
+            formAnak.Dock = DockStyle.Fill;
 
             panelUtama.Controls.Add(formAnak);
             formAnak.Show();
+
+            cerrentChild = formAnak;
         }
-       
+        private void pindahForm<T>(Button tombol, Form formAnak) where T : Form
+        {
+            if(typeof(T) == typeof(Dash_admin))
+            {
+               showdashboard();
+               return;
+            }
+
+           
+        }
+        public void showdashboard()
+        {
+            try 
+            {
+                // close and remove current child form
+                if (cerrentChild != null)
+                {
+                    cerrentChild.Close();
+                    cerrentChild.Dispose();
+                    panelUtama.Controls.Remove(cerrentChild);
+                    cerrentChild = null;
+                }
+
+                // restore the original dashboard controls
+                panelUtama.Controls.Clear();
+                if (defaultDashboardControls != null)
+                {
+                    foreach (var ctrl in defaultDashboardControls)
+                    {
+                        // avoid adding disposed controls
+                        if (ctrl != null && !ctrl.IsDisposed)
+                            panelUtama.Controls.Add(ctrl);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal menampilkan dashboard: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         private void btn_tambah_buku_Click(object sender, EventArgs e)
         {
@@ -305,11 +365,8 @@ namespace kasir
             tombolAktif.BackColor = Color.FromArgb(37, 99, 235);
         }
 
-        private void button16_Click(object sender, EventArgs e)
-        {
-            panelUtama.Controls.Clear();
-            AktifkanMenu(button16);
-        }
+        private void button16_Click(object sender, EventArgs e) => pindahForm<Dash_admin>(button16, new Dash_admin());
+        
 
         private void btn_tambah_buku_Click_1(object sender, EventArgs e)
         {
