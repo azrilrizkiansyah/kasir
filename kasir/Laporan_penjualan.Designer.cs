@@ -253,6 +253,7 @@
             this.btn_ekspor.TabIndex = 39;
             this.btn_ekspor.Text = "Ekspor";
             this.btn_ekspor.UseVisualStyleBackColor = false;
+            this.btn_ekspor.Click += new System.EventHandler(this.btn_ekspor_Click);
             // 
             // button3
             // 
@@ -264,6 +265,7 @@
             this.button3.TabIndex = 38;
             this.button3.Text = "Terapkan";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // dtpsampai
             // 
@@ -291,6 +293,7 @@
             this.cmbperiode.Name = "cmbperiode";
             this.cmbperiode.Size = new System.Drawing.Size(121, 28);
             this.cmbperiode.TabIndex = 35;
+            this.cmbperiode.SelectedIndexChanged += new System.EventHandler(this.cmbperiode_SelectedIndexChanged);
             // 
             // label11
             // 

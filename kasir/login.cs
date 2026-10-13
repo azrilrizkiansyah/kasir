@@ -55,6 +55,14 @@ namespace kasir
             
 
         }
+        private void pindahform<T>() where T : Form, new()
+        {
+            T form = new T();
+            form.FormClosed += (s, args) => this.Close();
+            form.Show();
+            this.Hide();
+        }
+        
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -115,7 +123,7 @@ namespace kasir
                     string role = hasil["role"].ToString();
                     if (role == "admin")
                     {
-                        MessageBox.Show("Login berhasil sebagai admin", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                       
                         Dash_admin hal = new Dash_admin();
                         hal.FormClosed += Hal_FormClosed;
                         hal.Show();
@@ -123,7 +131,7 @@ namespace kasir
                     }
                     else if (role == "kasir")
                     {
-                        MessageBox.Show("Login berhasil sebagai kasir", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                      
                         dash_kasir ha2 = new dash_kasir();
                         ha2.FormClosed += Ha2_FormClosed;
                         ha2.Show();

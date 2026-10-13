@@ -44,6 +44,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_cari = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -54,6 +56,8 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.button2);
+            this.panel3.Controls.Add(this.btn_cari);
             this.panel3.Controls.Add(this.panel6);
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.panel2);
@@ -71,10 +75,10 @@
             this.panel6.BackColor = System.Drawing.Color.White;
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Controls.Add(this.label7);
-            this.panel6.Location = new System.Drawing.Point(856, 224);
+            this.panel6.Location = new System.Drawing.Point(856, 225);
             this.panel6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(341, 83);
+            this.panel6.Size = new System.Drawing.Size(340, 83);
             this.panel6.TabIndex = 49;
             // 
             // panel7
@@ -104,9 +108,9 @@
             this.panel5.Controls.Add(this.btn_tambah_stok);
             this.panel5.Controls.Add(this.btn_batal);
             this.panel5.Controls.Add(this.txt_buku_baru);
-            this.panel5.Location = new System.Drawing.Point(856, 299);
+            this.panel5.Location = new System.Drawing.Point(856, 298);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(341, 420);
+            this.panel5.Size = new System.Drawing.Size(340, 420);
             this.panel5.TabIndex = 48;
             // 
             // label5
@@ -128,6 +132,7 @@
             this.btn_tambah_stok.TabIndex = 36;
             this.btn_tambah_stok.Text = "Tambah Stok";
             this.btn_tambah_stok.UseVisualStyleBackColor = false;
+            this.btn_tambah_stok.Click += new System.EventHandler(this.btn_tambah_stok_Click);
             // 
             // btn_batal
             // 
@@ -152,7 +157,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Location = new System.Drawing.Point(4, 224);
+            this.panel2.Location = new System.Drawing.Point(4, 225);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(856, 83);
@@ -173,12 +178,13 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 299);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 298);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(856, 419);
+            this.dataGridView1.Size = new System.Drawing.Size(856, 418);
             this.dataGridView1.TabIndex = 47;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // txt_cari
             // 
@@ -192,7 +198,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(25, 131);
+            this.label4.Location = new System.Drawing.Point(26, 131);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(118, 27);
@@ -220,6 +226,25 @@
             this.label1.Size = new System.Drawing.Size(192, 27);
             this.label1.TabIndex = 9;
             this.label1.Text = "Manajemen Stok";
+            // 
+            // btn_cari
+            // 
+            this.btn_cari.Location = new System.Drawing.Point(362, 160);
+            this.btn_cari.Name = "btn_cari";
+            this.btn_cari.Size = new System.Drawing.Size(74, 32);
+            this.btn_cari.TabIndex = 50;
+            this.btn_cari.Text = "Cari";
+            this.btn_cari.UseVisualStyleBackColor = true;
+            this.btn_cari.Click += new System.EventHandler(this.btn_cari_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(533, 169);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(31, 8);
+            this.button2.TabIndex = 51;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // Stok_buku
             // 
@@ -264,5 +289,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_cari;
     }
 }

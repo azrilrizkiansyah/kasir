@@ -16,22 +16,15 @@ namespace kasir
     {
         string konfigurasi = "server=localhost;database=toko_buku;username=root;password=;";
         DataTable dtStok = new DataTable();
+        private int idBukuTerpilih = 0;
         public Stok_buku()
         {
             InitializeComponent();
+            dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
         }
         private Button tombolAktif = null;
 
-        private void AktifkanMenu(Button tombolPilihan)
-        {
-
-            if (tombolAktif != null)
-            {
-                tombolAktif.BackColor = Color.FromArgb(15, 23, 42);
-            }
-            tombolAktif = tombolPilihan;
-            tombolAktif.BackColor = Color.FromArgb(37, 99, 235);
-        }
+        
         private void BuatStrukturTabel()
         {
             dtStok.Columns.Clear();
@@ -61,65 +54,11 @@ namespace kasir
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void Kembali_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void Stok_buku_Load(object sender, EventArgs e)
         {
             
             BuatStrukturTabel();
            
-        }
-
-        private void button16_Click(object sender, EventArgs e)
-        {
-            Dash_admin kembali = new Dash_admin();
-            kembali.FormClosed += Kembali_FormClosed;
-            kembali.Show();
-            this.Hide();
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_manajemenBuku_Click(object sender, EventArgs e)
-        {
-            dafta_buku pindah = new dafta_buku();
-            pindah.FormClosed += Pindah_FormClosed;
-            pindah.Show();
-            this.Hide();
-        }
-
-        private void Pindah_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btn_laporaPenjual_Click(object sender, EventArgs e)
-        {
-            Laporan_penjualan pindah = new Laporan_penjualan();
-            pindah.FormClosed += Pindah_FormClosed1;
-            pindah.Show();
-            this.Hide();
-        }
-
-        private void Pindah_FormClosed1(object sender, FormClosedEventArgs e)
-        {
-            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -197,8 +136,7 @@ namespace kasir
                 // Poin 6: Pesan Konfirmasi Sukses
                 MessageBox.Show("Stok berhasil diperbarui untuk semua buku.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Mengosongkan tabel kembali
-                dtStok.Rows.Clear();
+                
             }
             catch (Exception ex)
             {
@@ -209,6 +147,142 @@ namespace kasir
                 if (koneksi.State == ConnectionState.Open)
                 {
                     koneksi.Close();
+                }
+            }
+        }
+
+        private void btn_batal_Click(object sender, EventArgs e)
+        {
+            txt_cari.Clear();
+            txt_buku_baru.Clear();
+            dtStok.Rows.Clear();
+        }
+
+       
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+{
+                if (e.RowIndex < 0)
+                    return;
+
+                DataGridViewRow baris = dataGridView1.Rows[e.RowIndex];
+
+                // Pastikan ID buku tidak kosong
+                if (baris.Cells["id_buku"].Value == null ||
+                    baris.Cells["id_buku"].Value == DBNull.Value)
+                {
+                    MessageBox.Show("ID buku tidak ditemukan!");
+                    return;
+                }
+
+                idBukuTerpilih = Convert.ToInt32(
+                    baris.Cells["id_buku"].Value);
+
+                // Ambil stok saat ini
+                object nilaiStok = baris.Cells["Stok Saat Ini"].Value;
+
+                label4.Text =
+                    (nilaiStok == null || nilaiStok == DBNull.Value)
+                    ? "0"
+                    : nilaiStok.ToString();
+
+                txt_buku_baru.Clear();
+                txt_buku_baru.Focus();
+            }
+
+        }
+
+        private void btn_tambah_stok_Click(object sender, EventArgs e)
+        {
+            if (idBukuTerpilih <= 0)
+            {
+                MessageBox.Show(
+                    "Cari dan klik dua kali buku yang ingin ditambah stoknya!",
+                    "Peringatan",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            int jumlahBaru;
+
+            if (!int.TryParse(txt_buku_baru.Text.Trim(), out jumlahBaru)
+                || jumlahBaru <= 0)
+            {
+                MessageBox.Show(
+                    "Masukkan jumlah stok tambahan yang valid!",
+                    "Peringatan",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (MySqlConnection koneksi =
+                new MySqlConnection(konfigurasi))
+            {
+                try
+                {
+                    koneksi.Open();
+
+                    string query = @"
+                UPDATE books
+                SET stok = stok + @jumlah
+                WHERE id_buku = @id";
+
+                    using (MySqlCommand cmd =
+                        new MySqlCommand(query, koneksi))
+                    {
+                        cmd.Parameters.AddWithValue("@jumlah", jumlahBaru);
+                        cmd.Parameters.AddWithValue("@id", idBukuTerpilih);
+
+                        int hasil = cmd.ExecuteNonQuery();
+
+                        if (hasil == 0)
+                        {
+                            MessageBox.Show("Data buku tidak ditemukan!");
+                            return;
+                        }
+                    }
+
+                    // Perbarui stok pada DataGridView
+                    foreach (DataRow row in dtStok.Rows)
+                    {
+                        if (Convert.ToInt32(row["id_buku"])
+                            == idBukuTerpilih)
+                        {
+                            int stokLama = Convert.ToInt32(
+                                row["Stok Saat Ini"]);
+
+                            row["Stok Saat Ini"] = stokLama + jumlahBaru;
+                            row["Jumlah Buku Baru"] = 0;
+                            break;
+                        }
+                    }
+
+                    label4.Text =
+                        dtStok.AsEnumerable()
+                            .Where(r => Convert.ToInt32(r["id_buku"])
+                                == idBukuTerpilih)
+                            .Select(r => r["Stok Saat Ini"].ToString())
+                            .FirstOrDefault() ?? "0";
+
+                    txt_buku_baru.Clear();
+
+                    MessageBox.Show(
+                        "Stok buku berhasil ditambahkan!",
+                        "Berhasil",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        "Gagal memperbarui stok: " + ex.Message,
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
             }
         }
@@ -282,18 +356,6 @@ namespace kasir
                     koneksi.Close();
                 }
             }
-        }
-
-        private void btn_batal_Click(object sender, EventArgs e)
-        {
-            txt_cari.Clear();
-            txt_buku_baru.Clear();
-            dtStok.Rows.Clear();
-        }
-
-        private void btn_log_out_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -25,16 +25,7 @@ namespace kasir
         // halo
         private Button tombolAktif = null;
 
-        private void AktifkanMenu(Button tombolPilihan)
-        {
-
-            if (tombolAktif != null)
-            {
-                tombolAktif.BackColor = Color.FromArgb(15, 23, 42);
-            }
-            tombolAktif = tombolPilihan;
-            tombolAktif.BackColor = Color.FromArgb(37, 99, 235);
-        }
+        
         private void Laporan_penjualan_Load_1(object sender, EventArgs e)
         {
             cmbperiode.SelectedIndex = 0;
@@ -42,101 +33,9 @@ namespace kasir
         }
 
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+        
 
-        }
-
-        private void button16_Click(object sender, EventArgs e)
-        {
-            Dash_admin kembali = new Dash_admin();
-            kembali.FormClosed += Kembali_FormClosed;
-            kembali.Show();
-            this.Hide();
-        }
-
-        private void Kembali_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btn_manajemenBuku_Click(object sender, EventArgs e)
-        {
-            dafta_buku pindah = new dafta_buku();
-            pindah.FormClosed += Pindah_FormClosed;
-            pindah.Show();
-            this.Hide();
-        }
-
-        private void Pindah_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btn_manajemenStok_Click(object sender, EventArgs e)
-        {
-            Stok_buku pindah2 = new Stok_buku();
-            pindah2.FormClosed += Pindah2_FormClosed;
-            pindah2.Show();
-            this.Hide();
-        }
-
-        private void Pindah2_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btn_log_out_Click(object sender, EventArgs e)
-        {
-            login awal = new login();
-            awal.FormClosed += Awal_FormClosed;
-            awal.Show();
-            this.Hide();
-        }
-
-        private void Awal_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btn_laporaPenjual_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmbperiode_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            DateTime hariIni = DateTime.Today;
-
-            if (cmbperiode.SelectedItem.ToString() == "Hari ini")
-            {
-                dtpdari.Value = hariIni;
-                dtpsampai.Value = hariIni;
-                dtpdari.Enabled = false;
-                dtpsampai.Enabled = false;
-            }
-            else if (cmbperiode.SelectedItem.ToString() == "Mingguan")
-            {
-                dtpdari.Value = hariIni.AddDays(-6);
-                dtpsampai.Value = hariIni;
-                dtpdari.Enabled = false;
-                dtpsampai.Enabled = false;
-            }
-            else if (cmbperiode.SelectedItem.ToString() == "Bulanan")
-            {
-                dtpdari.Value = new DateTime(hariIni.Year, hariIni.Month, 1);
-                dtpsampai.Value = hariIni;
-                dtpdari.Enabled = false;
-                dtpsampai.Enabled = false;
-            }
-            else if (cmbperiode.SelectedItem.ToString() == "Rentang Tanggal")
-            {
-                dtpdari.Enabled = true;
-                dtpsampai.Enabled = true;
-            }
-
-            TampilkanLaporan();
-        }
+        
         private void TampilkanLaporan()
         {
             MySqlConnection koneksi = new MySqlConnection(konfigurasi);
@@ -220,6 +119,42 @@ namespace kasir
             }
         }
 
+        
+
+        private void cmbperiode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DateTime hariIni = DateTime.Today;
+
+            if (cmbperiode.SelectedItem.ToString() == "Hari ini")
+            {
+                dtpdari.Value = hariIni;
+                dtpsampai.Value = hariIni;
+                dtpdari.Enabled = false;
+                dtpsampai.Enabled = false;
+            }
+            else if (cmbperiode.SelectedItem.ToString() == "Mingguan")
+            {
+                dtpdari.Value = hariIni.AddDays(-6);
+                dtpsampai.Value = hariIni;
+                dtpdari.Enabled = false;
+                dtpsampai.Enabled = false;
+            }
+            else if (cmbperiode.SelectedItem.ToString() == "Bulanan")
+            {
+                dtpdari.Value = new DateTime(hariIni.Year, hariIni.Month, 1);
+                dtpsampai.Value = hariIni;
+                dtpdari.Enabled = false;
+                dtpsampai.Enabled = false;
+            }
+            else if (cmbperiode.SelectedItem.ToString() == "Rentang Tanggal")
+            {
+                dtpdari.Enabled = true;
+                dtpsampai.Enabled = true;
+            }
+
+            TampilkanLaporan();
+        }
+
         private void btn_ekspor_Click(object sender, EventArgs e)
         {
             if (dataGridView2.Rows.Count == 0)
@@ -267,78 +202,7 @@ namespace kasir
         private void button3_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void Btn_BackupData_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "SQL Files (*.sql)|*.sql";
-            saveFileDialog.FileName = $"Backup_Database_{DateTime.Now:yyyyMMdd_HHmmss}.sql";
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                // Sesuaikan dengan connection string kamu
-                string connString = "server=localhost;user=root;password=;database=toko_buku;";
-
-                using (MySqlConnection conn = new MySqlConnection(connString))
-                {
-                    using (MySqlCommand cmd = new MySqlCommand())
-                    {
-                        using (MySqlBackup mb = new MySqlBackup(cmd))
-                        {
-                            try
-                            {
-                                cmd.Connection = conn;
-                                conn.Open();
-
-                                // Ekspor data ke file SQL
-                                mb.ExportToFile(saveFileDialog.FileName);
-
-                                MessageBox.Show("Backup data berhasil disimpan!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show("Gagal melakukan backup data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        private void btn_Restore_Data_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "SQL Files (*.sql)|*.sql";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    // Path ke mysql.exe XAMPP
-                    string mysqlPath = @"C:\xampp\mysql\bin\mysql.exe";
-
-                    string cmdText = $"-u root nama_database_kamu -e \"source {openFileDialog.FileName.Replace(@"\", "/")}\"";
-
-                    System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo();
-                    psi.FileName = mysqlPath;
-                    psi.Arguments = cmdText;
-                    psi.RedirectStandardOutput = true;
-                    psi.UseShellExecute = false;
-                    psi.CreateNoWindow = true;
-
-                    using (System.Diagnostics.Process process = System.Diagnostics.Process.Start(psi))
-                    {
-                        process.WaitForExit();
-                    }
-
-                    MessageBox.Show("Data berhasil dipulihkan.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Gagal memulihkan data. Error: " + ex.Message, "Error Validation", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            TampilkanLaporan();
         }
     }
     

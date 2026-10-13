@@ -30,6 +30,7 @@ namespace kasir
 
             adapter.Fill(tabel);
 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.DataSource = tabel;
         }
     }

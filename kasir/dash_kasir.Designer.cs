@@ -29,19 +29,6 @@
         private void InitializeComponent()
         {
             this.panelUtama = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btn_log_out = new System.Windows.Forms.Button();
-            this.btn_Restore_Data = new System.Windows.Forms.Button();
-            this.Btn_BackupData = new System.Windows.Forms.Button();
-            this.btn_manajemenStok = new System.Windows.Forms.Button();
-            this.btn_transaksi = new System.Windows.Forms.Button();
-            this.btn_tambah_buku = new System.Windows.Forms.Button();
-            this.btn_laporaPenjual = new System.Windows.Forms.Button();
-            this.btn_dashboard = new System.Windows.Forms.Button();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -70,14 +57,27 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btn_log_out = new System.Windows.Forms.Button();
+            this.btn_Restore_Data = new System.Windows.Forms.Button();
+            this.Btn_BackupData = new System.Windows.Forms.Button();
+            this.btn_manajemenStok = new System.Windows.Forms.Button();
+            this.btn_transaksi = new System.Windows.Forms.Button();
+            this.btn_tambah_buku = new System.Windows.Forms.Button();
+            this.btn_riwayat = new System.Windows.Forms.Button();
+            this.btn_dashboard = new System.Windows.Forms.Button();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.panelUtama.SuspendLayout();
-            this.panel10.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel9.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelUtama
@@ -95,190 +95,6 @@
             this.panelUtama.Name = "panelUtama";
             this.panelUtama.Size = new System.Drawing.Size(1300, 794);
             this.panelUtama.TabIndex = 0;
-            // 
-            // panel10
-            // 
-            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
-            this.panel10.Controls.Add(this.label1);
-            this.panel10.Controls.Add(this.btn_log_out);
-            this.panel10.Controls.Add(this.btn_Restore_Data);
-            this.panel10.Controls.Add(this.Btn_BackupData);
-            this.panel10.Controls.Add(this.btn_manajemenStok);
-            this.panel10.Controls.Add(this.btn_transaksi);
-            this.panel10.Controls.Add(this.btn_tambah_buku);
-            this.panel10.Controls.Add(this.btn_laporaPenjual);
-            this.panel10.Controls.Add(this.btn_dashboard);
-            this.panel10.Controls.Add(this.panel11);
-            this.panel10.Controls.Add(this.label22);
-            this.panel10.Controls.Add(this.label23);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel10.Location = new System.Drawing.Point(0, 0);
-            this.panel10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(310, 709);
-            this.panel10.TabIndex = 38;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.DodgerBlue;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(26, 33);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 55);
-            this.label1.TabIndex = 30;
-            this.label1.Text = "🕮";
-            // 
-            // btn_log_out
-            // 
-            this.btn_log_out.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_log_out.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_log_out.ForeColor = System.Drawing.Color.White;
-            this.btn_log_out.Location = new System.Drawing.Point(18, 682);
-            this.btn_log_out.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btn_log_out.Name = "btn_log_out";
-            this.btn_log_out.Size = new System.Drawing.Size(262, 43);
-            this.btn_log_out.TabIndex = 8;
-            this.btn_log_out.Text = "↩ keluar";
-            this.btn_log_out.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_log_out.UseVisualStyleBackColor = false;
-            // 
-            // btn_Restore_Data
-            // 
-            this.btn_Restore_Data.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
-            this.btn_Restore_Data.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_Restore_Data.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_Restore_Data.Location = new System.Drawing.Point(18, 532);
-            this.btn_Restore_Data.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btn_Restore_Data.Name = "btn_Restore_Data";
-            this.btn_Restore_Data.Size = new System.Drawing.Size(262, 43);
-            this.btn_Restore_Data.TabIndex = 8;
-            this.btn_Restore_Data.Text = "Restore Data";
-            this.btn_Restore_Data.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Restore_Data.UseVisualStyleBackColor = false;
-            // 
-            // Btn_BackupData
-            // 
-            this.Btn_BackupData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
-            this.Btn_BackupData.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Btn_BackupData.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Btn_BackupData.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_BackupData.Location = new System.Drawing.Point(18, 465);
-            this.Btn_BackupData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Btn_BackupData.Name = "Btn_BackupData";
-            this.Btn_BackupData.Size = new System.Drawing.Size(262, 43);
-            this.Btn_BackupData.TabIndex = 9;
-            this.Btn_BackupData.Text = "Backup Data";
-            this.Btn_BackupData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_BackupData.UseVisualStyleBackColor = false;
-            // 
-            // btn_manajemenStok
-            // 
-            this.btn_manajemenStok.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
-            this.btn_manajemenStok.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_manajemenStok.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_manajemenStok.Location = new System.Drawing.Point(18, 400);
-            this.btn_manajemenStok.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btn_manajemenStok.Name = "btn_manajemenStok";
-            this.btn_manajemenStok.Size = new System.Drawing.Size(262, 43);
-            this.btn_manajemenStok.TabIndex = 7;
-            this.btn_manajemenStok.Text = "Manajemen Stok";
-            this.btn_manajemenStok.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_manajemenStok.UseVisualStyleBackColor = false;
-            this.btn_manajemenStok.Click += new System.EventHandler(this.btn_manajemenStok_Click);
-            // 
-            // btn_transaksi
-            // 
-            this.btn_transaksi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
-            this.btn_transaksi.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_transaksi.ForeColor = System.Drawing.Color.White;
-            this.btn_transaksi.Location = new System.Drawing.Point(18, 202);
-            this.btn_transaksi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btn_transaksi.Name = "btn_transaksi";
-            this.btn_transaksi.Size = new System.Drawing.Size(262, 43);
-            this.btn_transaksi.TabIndex = 3;
-            this.btn_transaksi.Text = "Transaksi Penjualan";
-            this.btn_transaksi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_transaksi.UseVisualStyleBackColor = false;
-            this.btn_transaksi.Click += new System.EventHandler(this.btn_transaksi_Click);
-            // 
-            // btn_tambah_buku
-            // 
-            this.btn_tambah_buku.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
-            this.btn_tambah_buku.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_tambah_buku.ForeColor = System.Drawing.Color.White;
-            this.btn_tambah_buku.Location = new System.Drawing.Point(18, 272);
-            this.btn_tambah_buku.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btn_tambah_buku.Name = "btn_tambah_buku";
-            this.btn_tambah_buku.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_tambah_buku.Size = new System.Drawing.Size(262, 43);
-            this.btn_tambah_buku.TabIndex = 4;
-            this.btn_tambah_buku.Text = "Tambah Buku Data";
-            this.btn_tambah_buku.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_tambah_buku.UseMnemonic = false;
-            this.btn_tambah_buku.UseVisualStyleBackColor = false;
-            // 
-            // btn_laporaPenjual
-            // 
-            this.btn_laporaPenjual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
-            this.btn_laporaPenjual.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_laporaPenjual.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_laporaPenjual.Location = new System.Drawing.Point(18, 335);
-            this.btn_laporaPenjual.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btn_laporaPenjual.Name = "btn_laporaPenjual";
-            this.btn_laporaPenjual.Size = new System.Drawing.Size(262, 43);
-            this.btn_laporaPenjual.TabIndex = 6;
-            this.btn_laporaPenjual.Text = "Laporan Penjualan ";
-            this.btn_laporaPenjual.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_laporaPenjual.UseVisualStyleBackColor = false;
-            // 
-            // btn_dashboard
-            // 
-            this.btn_dashboard.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_dashboard.ForeColor = System.Drawing.Color.White;
-            this.btn_dashboard.Location = new System.Drawing.Point(18, 131);
-            this.btn_dashboard.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btn_dashboard.Name = "btn_dashboard";
-            this.btn_dashboard.Size = new System.Drawing.Size(262, 43);
-            this.btn_dashboard.TabIndex = 1;
-            this.btn_dashboard.Text = "Dashboard";
-            this.btn_dashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_dashboard.UseVisualStyleBackColor = true;
-            // 
-            // panel11
-            // 
-            this.panel11.BackColor = System.Drawing.Color.White;
-            this.panel11.Location = new System.Drawing.Point(0, 98);
-            this.panel11.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(306, 2);
-            this.panel11.TabIndex = 1;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label22.Location = new System.Drawing.Point(122, 64);
-            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(114, 22);
-            this.label22.TabIndex = 1;
-            this.label22.Text = "Kasir Toko Buku";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.Color.White;
-            this.label23.Location = new System.Drawing.Point(120, 31);
-            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(120, 33);
-            this.label23.TabIndex = 0;
-            this.label23.Text = "BukuKita";
             // 
             // panel2
             // 
@@ -378,12 +194,6 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.DimGray;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5});
             this.dataGridView1.GridColor = System.Drawing.Color.White;
             this.dataGridView1.Location = new System.Drawing.Point(24, 427);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -598,6 +408,192 @@
             this.label4.TabIndex = 41;
             this.label4.Text = "Dashboard";
             // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
+            this.panel10.Controls.Add(this.label1);
+            this.panel10.Controls.Add(this.btn_log_out);
+            this.panel10.Controls.Add(this.btn_Restore_Data);
+            this.panel10.Controls.Add(this.Btn_BackupData);
+            this.panel10.Controls.Add(this.btn_manajemenStok);
+            this.panel10.Controls.Add(this.btn_transaksi);
+            this.panel10.Controls.Add(this.btn_tambah_buku);
+            this.panel10.Controls.Add(this.btn_riwayat);
+            this.panel10.Controls.Add(this.btn_dashboard);
+            this.panel10.Controls.Add(this.panel11);
+            this.panel10.Controls.Add(this.label22);
+            this.panel10.Controls.Add(this.label23);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel10.Location = new System.Drawing.Point(0, 0);
+            this.panel10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(310, 709);
+            this.panel10.TabIndex = 38;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(26, 33);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 55);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "🕮";
+            // 
+            // btn_log_out
+            // 
+            this.btn_log_out.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_log_out.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_log_out.ForeColor = System.Drawing.Color.White;
+            this.btn_log_out.Location = new System.Drawing.Point(18, 682);
+            this.btn_log_out.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_log_out.Name = "btn_log_out";
+            this.btn_log_out.Size = new System.Drawing.Size(262, 43);
+            this.btn_log_out.TabIndex = 8;
+            this.btn_log_out.Text = "↩ keluar";
+            this.btn_log_out.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_log_out.UseVisualStyleBackColor = false;
+            // 
+            // btn_Restore_Data
+            // 
+            this.btn_Restore_Data.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
+            this.btn_Restore_Data.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Restore_Data.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_Restore_Data.Location = new System.Drawing.Point(18, 532);
+            this.btn_Restore_Data.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Restore_Data.Name = "btn_Restore_Data";
+            this.btn_Restore_Data.Size = new System.Drawing.Size(262, 43);
+            this.btn_Restore_Data.TabIndex = 8;
+            this.btn_Restore_Data.Text = "Restore Data";
+            this.btn_Restore_Data.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Restore_Data.UseVisualStyleBackColor = false;
+            // 
+            // Btn_BackupData
+            // 
+            this.Btn_BackupData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
+            this.Btn_BackupData.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Btn_BackupData.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.Btn_BackupData.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_BackupData.Location = new System.Drawing.Point(18, 465);
+            this.Btn_BackupData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Btn_BackupData.Name = "Btn_BackupData";
+            this.Btn_BackupData.Size = new System.Drawing.Size(262, 43);
+            this.Btn_BackupData.TabIndex = 9;
+            this.Btn_BackupData.Text = "Backup Data";
+            this.Btn_BackupData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_BackupData.UseVisualStyleBackColor = false;
+            // 
+            // btn_manajemenStok
+            // 
+            this.btn_manajemenStok.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
+            this.btn_manajemenStok.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_manajemenStok.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_manajemenStok.Location = new System.Drawing.Point(18, 400);
+            this.btn_manajemenStok.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_manajemenStok.Name = "btn_manajemenStok";
+            this.btn_manajemenStok.Size = new System.Drawing.Size(262, 43);
+            this.btn_manajemenStok.TabIndex = 7;
+            this.btn_manajemenStok.Text = "Manajemen Stok";
+            this.btn_manajemenStok.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_manajemenStok.UseVisualStyleBackColor = false;
+            this.btn_manajemenStok.Click += new System.EventHandler(this.btn_manajemenStok_Click);
+            // 
+            // btn_transaksi
+            // 
+            this.btn_transaksi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
+            this.btn_transaksi.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_transaksi.ForeColor = System.Drawing.Color.White;
+            this.btn_transaksi.Location = new System.Drawing.Point(18, 202);
+            this.btn_transaksi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_transaksi.Name = "btn_transaksi";
+            this.btn_transaksi.Size = new System.Drawing.Size(262, 43);
+            this.btn_transaksi.TabIndex = 3;
+            this.btn_transaksi.Text = "Transaksi Penjualan";
+            this.btn_transaksi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_transaksi.UseVisualStyleBackColor = false;
+            this.btn_transaksi.Click += new System.EventHandler(this.btn_transaksi_Click);
+            // 
+            // btn_tambah_buku
+            // 
+            this.btn_tambah_buku.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
+            this.btn_tambah_buku.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_tambah_buku.ForeColor = System.Drawing.Color.White;
+            this.btn_tambah_buku.Location = new System.Drawing.Point(18, 272);
+            this.btn_tambah_buku.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_tambah_buku.Name = "btn_tambah_buku";
+            this.btn_tambah_buku.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_tambah_buku.Size = new System.Drawing.Size(262, 43);
+            this.btn_tambah_buku.TabIndex = 4;
+            this.btn_tambah_buku.Text = "Tambah Buku Data";
+            this.btn_tambah_buku.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_tambah_buku.UseMnemonic = false;
+            this.btn_tambah_buku.UseVisualStyleBackColor = false;
+            // 
+            // btn_riwayat
+            // 
+            this.btn_riwayat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
+            this.btn_riwayat.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_riwayat.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_riwayat.Location = new System.Drawing.Point(18, 335);
+            this.btn_riwayat.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_riwayat.Name = "btn_riwayat";
+            this.btn_riwayat.Size = new System.Drawing.Size(262, 43);
+            this.btn_riwayat.TabIndex = 6;
+            this.btn_riwayat.Text = "Riwayat transaksi";
+            this.btn_riwayat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_riwayat.UseVisualStyleBackColor = false;
+            this.btn_riwayat.Click += new System.EventHandler(this.btn_riwayat_Click);
+            // 
+            // btn_dashboard
+            // 
+            this.btn_dashboard.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_dashboard.ForeColor = System.Drawing.Color.White;
+            this.btn_dashboard.Location = new System.Drawing.Point(18, 131);
+            this.btn_dashboard.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_dashboard.Name = "btn_dashboard";
+            this.btn_dashboard.Size = new System.Drawing.Size(262, 43);
+            this.btn_dashboard.TabIndex = 1;
+            this.btn_dashboard.Text = "Dashboard";
+            this.btn_dashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_dashboard.UseVisualStyleBackColor = true;
+            this.btn_dashboard.Click += new System.EventHandler(this.btn_dashboard_Click);
+            // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.Color.White;
+            this.panel11.Location = new System.Drawing.Point(0, 98);
+            this.panel11.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(306, 2);
+            this.panel11.TabIndex = 1;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.label22.Location = new System.Drawing.Point(122, 64);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(114, 22);
+            this.label22.TabIndex = 1;
+            this.label22.Text = "Kasir Toko Buku";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.White;
+            this.label23.Location = new System.Drawing.Point(120, 31);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(120, 33);
+            this.label23.TabIndex = 0;
+            this.label23.Text = "BukuKita";
+            // 
             // dash_kasir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -612,8 +608,6 @@
             this.Load += new System.EventHandler(this.dash_kasir_Load);
             this.panelUtama.ResumeLayout(false);
             this.panelUtama.PerformLayout();
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel8.ResumeLayout(false);
@@ -625,6 +619,8 @@
             this.panel5.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -668,7 +664,7 @@
         private System.Windows.Forms.Button btn_manajemenStok;
         private System.Windows.Forms.Button btn_transaksi;
         private System.Windows.Forms.Button btn_tambah_buku;
-        private System.Windows.Forms.Button btn_laporaPenjual;
+        private System.Windows.Forms.Button btn_riwayat;
         private System.Windows.Forms.Button btn_dashboard;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Label label22;
